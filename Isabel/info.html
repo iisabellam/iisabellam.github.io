@@ -6,6 +6,7 @@
     <style>
         body{
             font-family: "Arial Narrow";
+            margin-right: 20px;
         }
         header{
             float: center;
@@ -32,6 +33,7 @@
             color: orange;
             text-decoration-style: dashed;
             font-style: italic;
+            transition: 0.3s ease;
         }
         header ul li a#onlink{
             color: orange;
@@ -50,6 +52,49 @@
         }
         header ol li a:hover{
             opacity: 0.5;
+            transition: 0.3s ease;
+        }
+        .container {
+            position: relative;
+            width: 300px;
+            float: left;
+            background-color: white;
+        }
+        .image {
+            opacity: 1;
+            display: block;
+            width: 40%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%)
+        }
+        .container:hover .image {
+            opacity: 0.3;
+        }
+        .container:hover .middle {
+            opacity: 1;
+        }
+        .text {
+            color: black;
+            font-family: "Malayalam MN";
+            padding: 16px 32px;
+            font-size: 60px;
+            opacity: 0.8;
+        }
+        .lol{
+            width: 100%;
+        }
+        .lol .container{
+            width: 25%;
         }
     </style>
 </head>
@@ -59,13 +104,13 @@
     <header>
         <ul>
             <li>
-                <a href="index.html" id="onlink">HJEM</a>
+                <a href="index.html">HJEM</a>
             </li>
             <li>
-                <a href="info.html">OM MEG</a>
+                <a href="info.html" id="onlink">LOL</a>
             </li>
             <li>
-                <a href="livet.html">LIVET</a>
+                <a href="livet.html">HAHAH</a>
             </li>
         </ul>
         <ol>
@@ -96,6 +141,33 @@
             </li>
         </ol>
     </header>
+
+    <div class="lol">
+    <div class="container">
+        <img src="ibilder/seng.jpg" class="image" style="width:100%; padding: 5px; ">
+        <div class="middle">
+            <div class="text">SENG</div>
+        </div>
+    </div>
+    <div class="container">
+        <img src="ibilder/lys.jpg" class="image" style="width:100%; padding: 5px; ">
+        <div class="middle">
+            <div class="text">LYS</div>
+        </div>
+    </div>
+    <div class="container">
+        <img src="ibilder/palme.jpg" class="image" style="width:100%;padding: 5px; ">
+        <div class="middle">
+            <div class="text">PALME</div>
+        </div>
+    </div>
+    <div class="container">
+        <img src="ibilder/baby.jpg" class="image" style="width:100%; padding: 5px; ">
+        <div class="middle">
+            <div class="text">BABY</div>
+        </div>
+    </div>
+    </div>
 
 </body>
 </html>
