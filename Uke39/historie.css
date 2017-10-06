@@ -56,7 +56,7 @@ img{
     width: 100%;
 }
 .tid{
-    background-color: lightgray;
+    background-color: darkorange;
     grid-column: 2/3;
     min-height: 100vh;
 }

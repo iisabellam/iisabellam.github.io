@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+    height: 100%;
+}
+header {
+    background-color: darkgray;
+    background: rgba(152, 152, 152, 0.8);
+    float: left;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    z-index: 20;
+}
+header #meny{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+header a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+    font-family: 'Abel', sans-serif;
+    font-size: 50px;
+    opacity: 1;
+}
+#en{
+    background-image: url("bilder/bb1.JPG");
+    height: 50vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#to{
+    background-image: url("bilder/to.JPG");
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
