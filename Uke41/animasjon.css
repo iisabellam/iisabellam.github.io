@@ -22,7 +22,27 @@ body{
     }
 }
 @keyframes karsten {
+    from{
+        left: 0;
+    }
     to{
+        left: 128px;
+    }
+}
+@keyframes karstennede {
+    from{
+        left: 128px;
+    }
+    to{
+        left: 568px;
+    }
+}
+@keyframes karstenfaller {
+    from{
+        left: 128px;
+    }
+    to{
+        top: calc(450px - 32px);
         left: 128px;
     }
 }
@@ -117,6 +137,7 @@ h1{
     opacity:0;
 }
 #lemmings{
+    overflow: hidden;
     position: relative;
     width: 600px;
     height: 450px;
@@ -131,14 +152,36 @@ h1{
     width: 32px;
     height: 32px;
     top: calc(200px - 32px);
-    left: 0;
-    animation: karsten 4s steps(32) forwards;
+    left: -100px;
+    animation: karsten 4s steps(32);
 }
 .walkright{
     background-image: url("bilder/lemmingwalkr.gif");
     width: 32px;
     height: 32px;
     animation: walkright 1s steps(8) forwards infinite;
+}
+#karstenfaller{
+    width: 32px;
+    height: 32px;
+    top: calc(200px - 32px);
+    left: -100px;
+    animation: karstenfaller 4s steps(40);
+    animation-delay: 4s;
+}
+.fallright{
+    background-image: url("bilder/lemmingfloatr.gif");
+    width: 32px;
+    height: 32px;
+    animation: walkright 1s steps(8) forwards infinite;
+}
+#karstennede{
+    width: 32px;
+    height: 32px;
+    top: calc(450px - 32px);
+    left: -100px;
+    animation: karstennede 12s steps(90) forwards;
+    animation-delay: 8s;
 }
 #gulv{
     position: absolute;
