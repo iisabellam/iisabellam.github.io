@@ -1,22 +1,86 @@
 @keyframes fugl{
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    100%{
+        background-position: -3600px 0;
+        opacity: 1;
+    }
+}
+@keyframes fuugl {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+        background-position: -3600px;
+    }
+}
+@keyframes bakgrunn {
+    from{
+        background-color: grey;
+    }
     to{
-      background-position: -3600px 0;
+        background-color: bisque;
+    }
+}
+@keyframes vann {
+    0%{
+        background-position: 0 200px;
+        opacity: 0;
+    }
+    10%{
+        background-position: 800px 100px;
+        opacity: 0.3;
+    }
+    20%{
+        background-position: 1800px 20px;
+        opacity: 0.5;
+    }
+    70%{
+        background-position: 6800px 0px;
+        opacity: 0.9;
+    }
+    85%{
+        background-position: 8300px -5px;
+        opacity: 1;
+    }
+    100%{
+        background-position: 9800px 200px;
+        opacity: 0;
     }
 }
 body{
     margin: 0;
     background-color: grey;
+    animation: bakgrunn 2s linear forwards;
+    animation-delay: 20.5s;
+}
+body > * {
+    position: absolute;
 }
 #fugl{
+    opacity: 0;
     background-image: url("bilder/stripe-01.png");
-    margin: auto;
+    position: absolute;
+    top: 372px;
+    left: 200px;
     height: 300px;
     width: 300px;
-    animation: fugl 1.5s steps(12) infinite;
+    animation-name: fugl, fuugl;
+    animation-timing-function: steps(12), steps(12);
+    animation-delay: 22s, 23.5s;
+    animation-iteration-count: 1, infinite;
+    animation-duration: 1.5s, 1.5s;
 }
 .vann{
     position: absolute;
-    margin-left: 30vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .vann h1{
     margin:0;
@@ -28,25 +92,283 @@ body{
     background-image: url("bilder/vann-01.png");
     background-repeat: repeat-x;
     -webkit-background-clip: text;
-    animation: vann 100s linear;
+    animation: vann 20s linear;
+    opacity: 0;
 }
-@keyframes vann {
+@keyframes stamme {
     0%{
-        background-position: 0 200px;
-    }
-    5%{
-        background-position: 800px 100px;
-    }
-    10%{
-        background-position: 1800px 20px;
+        transform: scale(1);
+        opacity: 0;
     }
     50%{
-        background-position: 8000px 0px;
-    }
-    75%{
-        background-position: 13000px -5px;
+        transform: scale(1.3);
+        opacity: 1;
     }
     100%{
-        background-position: 18000px -10px;
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes blader {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.3;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+#stamme #stammee{
+    height: 100vh;
+    opacity: 0;
+    animation: stamme 1s linear forwards;
+    animation-delay: 21s;
+}
+#blader{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translate(0,0);
+    opacity: 0;
+    animation: blader 1.5s linear forwards;
+    animation-delay: 22s;
+}
+#faall .oransje1{
+    position: absolute;
+    opacity: 0;
+    height: 70px;
+    animation: oransje1 12s linear infinite;
+    animation-delay: 24s;
+}
+#faall .oransje2{
+    position: absolute;
+    opacity: 0;
+    height: 70px;
+    animation: oransje2 5s linear infinite;
+    animation-delay: 26.5s;
+}
+#faall .rod1{
+    position: absolute;
+    opacity: 0;
+    height: 70px;
+    animation: rod1 8s linear infinite;
+    animation-delay: 25s;
+}
+#faall .rod2{
+    position: absolute;
+    opacity: 0;
+    height: 70px;
+    animation: rod2 6s linear infinite;
+    animation-delay: 29s;
+}
+#faall .oransje3{
+    position: absolute;
+    opacity: 0;
+    height: 70px;
+    animation: oransje3 10s linear infinite;
+    animation-delay: 27s;
+}
+#faall .rod3{
+    position: absolute;
+    opacity: 0;
+    height: 70px;
+    animation: rod3 9s linear infinite;
+    animation-delay: 25.5s;
+}
+#faall .oransje4{
+    position: absolute;
+    opacity: 0;
+    height: 70px;
+    animation: oransje4 8s linear infinite;
+    animation-delay: 28s;
+}
+#faall .rod4{
+    position: absolute;
+    opacity: 0;
+    height: 70px;
+    animation: rod4 5s linear infinite;
+    animation-delay: 27s;
+}
+@keyframes rod4 {
+    0%{
+        opacity: 0.5;
+        top: -20px;
+        left: 100px;
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 0.5;
+        top: 100vh;
+        left: 100px;
+        transform: rotate(-1.5turn);
+    }
+}
+@keyframes oransje4 {
+    0%{
+        opacity: 0.5;
+        top: -20px;
+        left: 500px;
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 0.5;
+        top: 100vh;
+        left: 500px;
+        transform: rotate(-2.5turn);
+    }
+}
+@keyframes rod3 {
+    0%{
+        opacity: 0.5;
+        top: -20px;
+        left: 1000px;
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 0.5;
+        top: 100vh;
+        left: 1000px;
+        transform: rotate(1.5turn);
+    }
+}
+@keyframes oransje3 {
+    0%{
+        opacity: 0.5;
+        top: -20px;
+        left: 1100px;
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 0.5;
+        top: 100vh;
+        left: 1100px;
+        transform: rotate(-1turn);
+    }
+}
+@keyframes rod1 {
+    0%{
+        opacity: 0.5;
+        top: -20px;
+        left: 400px;
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 0.5;
+        top: 100vh;
+        left: 400px;
+        transform: rotate(2turn);
+    }
+}
+@keyframes rod2 {
+    0%{
+        opacity: 0.5;
+        top: -20px;
+        left: 650px;
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 0.5;
+        top: 100vh;
+        left: 650px;
+        transform: rotate(-0.5turn);
+    }
+}
+@keyframes oransje1 {
+    0%{
+        opacity: 0.5;
+        top: -20px;
+        left: 200px;
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 0.5;
+        top: 100vh;
+        left: 200px;
+        transform: rotate(1turn);
+    }
+}
+@keyframes oransje2 {
+    0%{
+        opacity: 0.5;
+        top: -20px;
+        left: 800px;
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 0.5;
+        top: 100vh;
+        left: 800px;
+        transform: rotate(-1turn);
+    }
+}
+#tekst {
+    position: absolute;
+    top: 25%;
+    left: 60%;
+}
+#tekst h1{
+    font-family: "Open Sans", Arial;
+    font-weight: 300;
+    font-size: 60px;
+    color: darkorange;
+    opacity: 0;
+    text-align: center;
+    text-shadow: 1px 1px 4px gray;
+}
+#tekst .velkommen{
+    animation: velkommen 1s linear forwards;
+    animation-delay: 23s;
+}
+#tekst .til{
+    animation: til 1s linear forwards;
+    animation-delay: 24s;
+}
+#tekst .min{
+    animation: min 1s linear forwards;
+    animation-delay: 25s;
+}
+@keyframes velkommen {
+    0%{
+        opacity: 0;
+        transform: scale(1);
+    }
+    50%{
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes til {
+    0%{
+        opacity: 0;
+        transform: scale(1);
+    }
+    50%{
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes min {
+    0%{
+        opacity: 0;
+        transform: scale(1);
+    }
+    50%{
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
     }
 }
