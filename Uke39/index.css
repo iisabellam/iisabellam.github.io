@@ -45,7 +45,7 @@ main{
     grid-column-gap: 14px;
 }
 @media (max-width: 900px){
-    main{
+    main{8
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
