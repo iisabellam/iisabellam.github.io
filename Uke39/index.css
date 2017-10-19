@@ -21,9 +21,6 @@ header{
     align-items: center;
     padding: 10px;
 }
-ul{
-
-}
 a{
     text-decoration: none;
     color: gray;
@@ -45,7 +42,7 @@ main{
     grid-column-gap: 14px;
 }
 @media (max-width: 900px){
-    main{8
+    main{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
