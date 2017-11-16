@@ -117,3 +117,6 @@ h2{
     height: 0px;
     animation: svarc 0.3s ease-in-out forwards;
 }
+footer{
+    height: 100px;
+}
