@@ -1,0 +1,269 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    font-family: Montserrat, Arial;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+body > header{
+    padding: 5px 0px 2px 0px;
+    z-index: 4;
+}
+body > header > nav{
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    border-bottom: 1px black solid;
+    background-color: white;
+    position: fixed;
+    top: 0px;
+    padding-top: 5px;
+    width: 100vw;
+}
+body > header > nav > .logo{
+    grid-column: span 2;
+    text-align: left;
+    margin-left: 15%;
+}
+body > header > nav > .icon > img{
+    margin-top: 15px;
+    max-height: 30px;
+    transition: transform 200ms ease-in-out;
+    opacity: 0.5;
+}
+body > header > nav > .icon > img:hover{
+    opacity: 1;
+    transform: scale(1.07);
+}
+body > header > nav > .logo > img{
+    margin-top: 2px;
+    max-width: 200px;
+    transition: transform 200ms ease-in-out;
+}
+body > header > nav > .logo > img:hover {
+    transform: scale(1.1);
+}
+body > header > .undermeny{
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    padding: 5px;
+    text-transform: uppercase;
+    margin-top: 68px;
+    border-bottom: 1px solid black;
+}
+main{
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-gap: 3px;
+    grid-template-columns: repeat(5,1fr);
+}
+main > .overskrift{
+    text-align: center;
+    margin: 5px 10px;
+    letter-spacing: 1.3px;
+}
+main > .filter{
+    margin-top: 5px;
+    line-height: 23px;
+    color: black;
+}
+main > article{
+    background-color: white;
+    position: relative;
+    transition: 0.5s;
+    overflow: hidden;
+}
+main > article:hover{
+    transform: scale(1.05);
+    box-shadow: 3px 3px 5px gray;
+    z-index: 3;
+}
+main > article:hover  .quick{
+    opacity: 1;
+    z-index: 3;
+}
+main > article > .quick > h8:hover{
+    opacity: 1;
+    color: red;
+    z-index: 3;
+}
+main > article > .quick{
+    position: absolute;
+    bottom: 48px;
+    background: rgba(152, 152, 152, 0.8);
+    padding: 8px 3px;
+    text-align: center;
+    opacity: 0;
+    width: 100%;
+    cursor: pointer;
+}
+main > article > .quick > h8{
+    opacity: 1;
+    color: white;
+    z-index: 3;
+}
+main > article > a > img{
+    width: 100%;
+}
+main > article > a > .tekst{
+    margin: 5px;
+    position: relative;
+}
+body > footer{
+    background-color: gray;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: white;
+    padding: 0px 30px;
+}
+body > footer > article{
+    text-align: left;
+    margin: 10px;
+    font-size: 10px;
+    color: #565656;
+}
+body > footer > article > a{
+    color: white;
+    font-size: 15px;
+}
+body > footer > article > li {
+    text-decoration: none;
+    list-style: none;
+    line-height: 1.7em;
+    letter-spacing: 1.3px;
+    padding-top: 5px;
+}
+body > footer > article > li > a{
+    color: #3f3f3f;
+    font-size: 13px;
+}
+body > footer > article > li > a:hover{
+    color: #aeaeae;
+}
+h6{
+    font-size: 12px;
+}
+h7{
+    font-size: 10px;
+}
+h8{
+    transition: 0.5s;
+}
+a{
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+a:hover{
+    color: red;
+}
+.lol{
+    opacity: 0;
+}
+.lik{
+    position: absolute;
+    right: 5px;
+    top: 20%;
+}
+
+.col2{
+    grid-column: span 2;
+}
+.col3{
+    grid-column: span 3;
+    letter-spacing: normal;
+}
+.col4{
+    grid-column: span 4;
+    letter-spacing: normal;
+}
+.col5{
+    grid-column: span 5;
+}
+.row2{
+    grid-row: span 2;
+}
+.row10{
+    grid-row: span 10;
+}
+#genser {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: 205px;
+}
+#toggle-1:checked ~ #genser {
+    color: red;
+}
+#toggle-1:checked ~ article:not(.genser){
+    display: none;
+}
+input{
+    display: none;
+
+}
+#bukse {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: 225px;
+}
+#toggle-2:checked ~ #bukse {
+    color: red;
+}
+#toggle-2:checked ~ article:not(.bukse){
+    display: none;
+}
+#jumpsuit {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: 245px;
+}
+#toggle-3:checked ~ #jumpsuit {
+    color: red;
+}
+#toggle-3:checked ~ article:not(.jumpsuit){
+    display: none;
+}
+#kjole {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: 265px;
+}
+#toggle-4:checked ~ #kjole {
+    color: red;
+}
+#toggle-4:checked ~ article:not(.kjole){
+    display: none;
+}
+#jakke {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: 285px;
+}
+#toggle-5:checked ~ #jakke {
+    color: red;
+}
+#toggle-5:checked ~ article:not(.jakke){
+    display: none;
+}
+label{
+    font-size: 14px;
+}
+.strek{
+    position: absolute;
+    border-bottom: 1px black solid;
+    width: 180px;
+}
