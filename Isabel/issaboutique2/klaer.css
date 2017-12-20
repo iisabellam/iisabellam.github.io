@@ -195,11 +195,21 @@ a:hover{
 .row10{
     grid-row: span 10;
 }
-#genser {
+#alle {
     cursor: pointer;
     user-select: none;
     position: absolute;
     top: 205px;
+    color: black;
+}
+#toggle-0:checked ~ #alle {
+    color: red;
+}
+#genser {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: 225px;
 }
 #toggle-1:checked ~ #genser {
     color: red;
@@ -207,6 +217,11 @@ a:hover{
 #toggle-1:checked ~ article:not(.genser){
     display: none;
 }
+
+#toggle-1:checked ~ article.genser {
+    display: block;
+}
+
 input{
     display: none;
 
@@ -215,11 +230,12 @@ input{
     cursor: pointer;
     user-select: none;
     position: absolute;
-    top: 225px;
+    top: 245px;
 }
 #toggle-2:checked ~ #bukse {
     color: red;
 }
+
 #toggle-2:checked ~ article:not(.bukse){
     display: none;
 }
@@ -227,7 +243,7 @@ input{
     cursor: pointer;
     user-select: none;
     position: absolute;
-    top: 245px;
+    top: 265px;
 }
 #toggle-3:checked ~ #jumpsuit {
     color: red;
@@ -239,7 +255,7 @@ input{
     cursor: pointer;
     user-select: none;
     position: absolute;
-    top: 265px;
+    top: 285px;
 }
 #toggle-4:checked ~ #kjole {
     color: red;
@@ -251,7 +267,7 @@ input{
     cursor: pointer;
     user-select: none;
     position: absolute;
-    top: 285px;
+    top: 305px;
 }
 #toggle-5:checked ~ #jakke {
     color: red;
