@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+body{
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    font-family: Montserrat, Arial;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+body > header{
+    padding: 5px 0px 2px 0px;
+    z-index: 4;
+}
+body > header > nav{
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    border-bottom: 1px black solid;
+    background-color: white;
+    position: fixed;
+    top: 0px;
+    padding-top: 5px;
+    width: 100vw;
+}
+body > header > nav > .logo{
+    grid-column: span 2;
+    text-align: left;
+    margin-left: 15%;
+}
+body > header > nav > .icon > img{
+    margin-top: 15px;
+    max-height: 30px;
+    transition: transform 200ms ease-in-out;
+    opacity: 0.5;
+}
+body > header > nav > .icon > img:hover{
+    opacity: 1;
+    transform: scale(1.07);
+}
+body > header > nav > .logo > img{
+    margin-top: 2px;
+    max-width: 200px;
+    transition: transform 200ms ease-in-out;
+}
+body > header > nav > .logo > img:hover {
+    transform: scale(1.1);
+}
+body > header > .undermeny{
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    padding: 5px;
+    text-transform: uppercase;
+    margin-top: 68px;
+    border-bottom: 1px solid black;
+}
+body > main{
+    max-width: 100vw;
+}
+body > main > article{
+    position: relative;
+}
+body > main > article > img{
+    width: 100%;
+}
+body > main > article > .skrift{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    height: 0;
+    width: 100%;
+    z-index: 3;
+}
+body > main > article > .skrift > h1{
+    font-size: 60px;
+    color: lightgrey;
+    text-shadow: 2px 2px 5px black;
+    text-align: center;
+    z-index: 3;
+    transition: 0.4s;
+}
+body > footer{
+    background-color: gray;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: white;
+    padding: 0px 30px;
+}
+body > footer > article{
+    text-align: left;
+    margin: 10px;
+    font-size: 10px;
+    color: #565656;
+}
+body > footer > article > a{
+    color: white;
+    font-size: 15px;
+}
+body > footer > article > li {
+    text-decoration: none;
+    list-style: none;
+    line-height: 1.7em;
+    letter-spacing: 1.3px;
+    padding-top: 5px;
+}
+body > footer > article > li > a{
+    color: #3f3f3f;
+    font-size: 13px;
+}
+body > footer > article > li > a:hover{
+    color: #aeaeae;
+}
+h6{
+    font-size: 12px;
+}
+h7{
+    font-size: 10px;
+}
+h8{
+    transition: 0.5s;
+}
+a{
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+a:hover{
+    color: cornflowerblue;
+}
+.lol{
+    opacity: 0;
+}
+.lik{
+    position: absolute;
+    right: 5px;
+    top: 20%;
+}
+
+.col2{
+    grid-column: span 2;
+}
+.col3{
+    grid-column: span 3;
+    letter-spacing: normal;
+}
+.col4{
+    grid-column: span 4;
+    letter-spacing: normal;
+}
+.col5{
+    grid-column: span 5;
+}
+.col10{
+    grid-column: span 10;
+}
+.col20{
+    grid-column: span 20;
+}
+.row13{
+    grid-row: span 1.3;
+}
+.row2{
+    grid-row: span 2;
+}
+.row12{
+    grid-row: span 12;
+}

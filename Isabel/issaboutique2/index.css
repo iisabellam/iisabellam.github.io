@@ -263,7 +263,6 @@ a{
 a:hover{
     color: red;
 }
-
 .col2{
     grid-column: span 2;
 }

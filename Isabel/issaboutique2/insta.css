@@ -30,6 +30,10 @@ body > header > nav > .logo{
     text-align: left;
     margin-left: 15%;
 }
+body > header > nav > .icon > .valgt{
+    opacity: 1;
+    transform: scale(1.07);
+}
 body > header > nav > .icon > img{
     margin-top: 15px;
     max-height: 30px;
