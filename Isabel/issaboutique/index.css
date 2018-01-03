@@ -57,6 +57,10 @@ body > header > .undermeny{
     margin-top: 68px;
     border-bottom: 1px solid black;
 }
+
+body > header > .undermeny > .icon2 {
+    display: none;
+}
 body > main{
     display: grid;
     grid-gap: 10px;
@@ -64,20 +68,30 @@ body > main{
     max-width: 1200px;
     margin: auto;
     margin-top: 10px;
+    overflow: hidden;
 }
 body > main > article{
     background-color: white;
     text-align: center;
     overflow: hidden;
 }
+body > main > .header{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    width: 400%;
+}
+#slides_top{
+    transition: 1s ease;
+}
 body > main > article > .nytt{
     max-height: 100%;
+    max-width: 100%;
     position: relative;
     text-align: center;
 }
 body > main > article > .nytt > a > img{
     transition: transform 200ms ease-in-out;
-    max-width: 100%;
+    width: calc(100% + 5px);
 }
 body > main > article > .nytt > a > img:hover{
     transform: scale(1.05);
@@ -168,12 +182,30 @@ body > .main > .shop {
     position: absolute;
     top: 50%;
     height: 25px;
+    cursor: pointer;
+    z-index: 5;
 }
 .pil1{
     left: 15px;
+    z-index: 5;
 }
 .pil2{
     right: 15px;
+    z-index: 5;
+}
+.piil1{
+    display: none;
+}
+.piil2{
+    display: none;
+}
+.pil3{
+    left: 15px;
+    z-index: 5;
+}
+.pil4{
+    right: 15px;
+    z-index: 5;
 }
 .insta{
     display: grid;
@@ -190,6 +222,10 @@ body > .main > article > h2{
 body > .main > article > .boksforig > .insta > div > img {
     width: 100%;
     user-select: none;
+    transition: 0.5s;
+}
+body > .main > article > .boksforig > .insta > div > img:hover {
+    opacity: 0.8;
 }
 body > footer{
     background-color: gray;
@@ -226,14 +262,20 @@ body > footer > article > li > a:hover{
     text-align: right;
     margin-right: 15%;
 }
+h1{
+    transition: 0.5s;
+}
+h5{
+    transition: 0.5s;
+}
 a{
     text-decoration: none;
     color: black;
+    transition: 0.5s;
 }
 a:hover{
     color: red;
 }
-
 .col2{
     grid-column: span 2;
 }
@@ -247,4 +289,136 @@ a:hover{
 }
 .row2{
     grid-row: span 2;
+}
+
+@media (max-width: 900px){
+    body > header > nav{
+        display: grid;
+        grid-auto-flow: row;
+    }
+    body > header > nav > .logo{
+        grid-column: span 1;
+        text-align: center;
+        margin-left: 0;
+    }
+    body > header > nav > .icon{
+        display: none;
+    }
+    body > header > .undermeny{
+        display: grid;
+        grid-auto-flow: row;
+        text-align: center;
+        grid-gap: 10px;
+    }
+    body > header > .undermeny > .icon2{
+        display: block;
+        grid-gap: 10px;
+        z-index: -2;
+    }
+    body > header > .undermeny > .icon2 > img{
+        max-height: 25px;
+        transition: transform 200ms ease-in-out;
+        opacity: 0.5;
+        text-align: center;
+    }
+    body > header > .undermeny > .icon2 > img:hover{
+        opacity: 1;
+        transform: scale(1.07);
+    }
+    .insta{
+        width: 650%; /* 1 bilde = 25% */
+    }
+    body > .main > article > h2{
+        margin: 20px;
+        text-align: center;
+    }
+    body > .main > article > .boksforig > .insta > div > img {
+        width: 100%;
+        user-select: none;
+        transition: 0.5s;
+    }
+    body > .main > article > .boksforig > .insta > div > img:hover {
+        opacity: 0.8;
+    }
+    .pill1{
+        display: none;
+    }
+    .pill2{
+        display: none;
+    }
+    .piil1{
+        display: block;
+    }
+    .piil2{
+        display: block;
+    }
+    .fot1{
+        grid-column: span 2;
+        text-align: center;
+    }
+    .fot2{
+        grid-column: span 4;
+    }
+}
+@media (max-width: 700px){
+    body > header > nav{
+        display: grid;
+        grid-auto-flow: row;
+    }
+    body > header > nav > .logo{
+        grid-column: span 1;
+        text-align: center;
+        margin-left: 0;
+    }
+    body > header > nav > .icon{
+        display: none;
+    }
+    body > header > .undermeny{
+        display: grid;
+        grid-auto-flow: row;
+        text-align: center;
+        grid-gap: 10px;
+    }
+    body > header > .undermeny > .icon2{
+        display: block;
+        margin: auto;
+        grid-gap: 10px;
+    }
+    body > header > .undermeny > .icon2:hover{
+        color: red;
+    }
+    body > main > .col1{
+        grid-column: span 3;
+    }
+    .insta{
+        width: 650%; /* 1 bilde = 25% */
+    }
+    body > .main > article > h2{
+        margin: 20px;
+        text-align: center;
+    }
+    body > .main > article > .boksforig > .insta > div > img {
+        width: 100%;
+        user-select: none;
+        transition: 0.5s;
+    }
+    body > .main > article > .boksforig > .insta > div > img:hover {
+        opacity: 0.8;
+    }
+    .fot1{
+        grid-column: span 4;
+        text-align: center;
+    }
+    .pill1{
+        display: none;
+    }
+    .pill2{
+        display: none;
+    }
+    .piil1{
+        display: block;
+    }
+    .piil2{
+        display: block;
+    }
 }

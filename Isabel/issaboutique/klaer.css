@@ -61,6 +61,9 @@ body > header > .undermeny{
     margin-top: 68px;
     border-bottom: 1px solid black;
 }
+body > header > .undermeny > .icon2 {
+    display: none;
+}
 main{
     max-width: 1200px;
     margin: auto;
@@ -287,8 +290,40 @@ label{
     border-bottom: 1px black solid;
     width: 180px;
 }
-
 @media (max-width: 900px){
+    body > header > nav{
+        display: grid;
+        grid-auto-flow: row;
+    }
+    body > header > nav > .logo{
+        grid-column: span 1;
+        text-align: center;
+        margin-left: 0;
+    }
+    body > header > nav > .icon{
+        display: none;
+    }
+    body > header > .undermeny{
+        display: grid;
+        grid-auto-flow: row;
+        text-align: center;
+        grid-gap: 10px;
+    }
+    body > header > .undermeny > .icon2{
+        display: block;
+        grid-gap: 10px;
+        z-index: -2;
+    }
+    body > header > .undermeny > .icon2 > img{
+        max-height: 25px;
+        transition: transform 200ms ease-in-out;
+        opacity: 0.5;
+        text-align: center;
+    }
+    body > header > .undermeny > .icon2 > img:hover{
+        opacity: 1;
+        transform: scale(1.07);
+    }
     main{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -296,13 +331,50 @@ label{
     .menyy{
         display: none;
     }
+    .fot1{
+        grid-column: span 2;
+        text-align: center;
+    }
+    .fot2{
+        grid-column: span 4;
+    }
 }
-@media (max-width: 600px){
+@media (max-width: 700px){
+    body > header > nav{
+        display: grid;
+        grid-auto-flow: row;
+    }
+    body > header > nav > .logo{
+        grid-column: span 1;
+        text-align: center;
+        margin-left: 0;
+    }
+    body > header > nav > .icon{
+        display: none;
+    }
+    body > header > .undermeny{
+        display: grid;
+        grid-auto-flow: row;
+        text-align: center;
+        grid-gap: 10px;
+    }
+    body > header > .undermeny > .icon2{
+        display: block;
+        margin: auto;
+        grid-gap: 10px;
+    }
+    body > header > .undermeny > .icon2:hover{
+        color: red;
+    }
     main{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
     .menyy{
         display: none;
+    }
+    .fot1{
+        grid-column: span 4;
+        text-align: center;
     }
 }

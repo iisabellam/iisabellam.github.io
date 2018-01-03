@@ -1,0 +1,270 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    font-family: Montserrat, Arial;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+body > header{
+    padding: 5px 0px 2px 0px;
+    z-index: 4;
+}
+body > header > nav{
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    border-bottom: 1px black solid;
+    background-color: white;
+    position: fixed;
+    top: 0px;
+    padding-top: 5px;
+    width: 100vw;
+}
+body > header > nav > .logo{
+    grid-column: span 2;
+    text-align: left;
+    margin-left: 15%;
+}
+body > header > nav > .icon > img{
+    margin-top: 15px;
+    max-height: 30px;
+    transition: transform 200ms ease-in-out;
+    opacity: 0.5;
+}
+body > header > nav > .icon > img:hover{
+    opacity: 1;
+    transform: scale(1.07);
+}
+body > header > nav > .logo > img{
+    margin-top: 2px;
+    max-width: 200px;
+    transition: transform 200ms ease-in-out;
+}
+body > header > nav > .logo > img:hover {
+    transform: scale(1.1);
+}
+body > header > .undermeny{
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    padding: 5px;
+    text-transform: uppercase;
+    margin-top: 68px;
+    border-bottom: 1px solid black;
+}
+body > header > .undermeny > .icon2 {
+    display: none;
+}
+body > main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px 22px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+body > main > .nytt > a{
+    font-size: 0;
+}
+body > main > .nytt > a > img{
+    width: 100%;
+}
+body > main > .nytt > .skrift{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    height: 0;
+    width: 100%;
+    z-index: 3;
+}
+body > main > .nytt > .skrift > a > h1{
+    font-size: 40px;
+    color: lightgrey;
+    text-shadow: 2px 2px 5px black;
+    text-align: center;
+    z-index: 3;
+    transition: 0.4s;
+}
+body > main > .nytt > .skrift > a:hover h1{
+    color: red;
+    z-index: 3;
+}
+body > footer{
+    background-color: gray;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: white;
+    padding: 0px 30px;
+}
+body > footer > article{
+    text-align: left;
+    margin: 10px;
+    font-size: 10px;
+    color: #565656;
+}
+body > footer > article > a{
+    color: white;
+    font-size: 15px;
+}
+body > footer > article > li {
+    text-decoration: none;
+    list-style: none;
+    line-height: 1.7em;
+    letter-spacing: 1.3px;
+    padding-top: 5px;
+}
+body > footer > article > li > a{
+    color: #3f3f3f;
+    font-size: 13px;
+}
+body > footer > article > li > a:hover{
+    color: #aeaeae;
+}
+h2{
+
+    line-height: 30px;
+    text-transform: uppercase;
+
+}
+h4{
+
+    line-height: 30px;
+}
+h6{
+    font-size: 12px;
+
+    line-height: 50px;
+}
+h7{
+    font-size: 12px;
+    line-height: 30px;
+}
+h8{
+    transition: 0.5s;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+a{
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+a:hover{
+    color: red;
+}
+
+.col2{
+    grid-column: span 2;
+}
+.col3{
+    grid-column: span 3;
+    letter-spacing: normal;
+}
+.col4{
+    grid-column: span 4;
+    letter-spacing: normal;
+}
+.col5{
+    grid-column: span 5;
+}
+.col7{
+    grid-column: span 7;
+}
+.row2{
+    grid-row: span 2;
+}
+.row7{
+    grid-row: span 7;
+}
+.row12{
+    grid-row: span 12;
+}
+
+@media (max-width: 900px){
+    body > header > nav{
+        display: grid;
+        grid-auto-flow: row;
+    }
+    body > header > nav > .logo{
+        grid-column: span 1;
+        text-align: center;
+        margin-left: 0;
+    }
+    body > header > nav > .icon{
+        display: none;
+    }
+    body > header > .undermeny{
+        display: grid;
+        grid-auto-flow: row;
+        text-align: center;
+        grid-gap: 10px;
+    }
+    body > header > .undermeny > .icon2{
+        display: block;
+        grid-gap: 10px;
+        z-index: -2;
+    }
+    body > header > .undermeny > .icon2 > img{
+        max-height: 25px;
+        transition: transform 200ms ease-in-out;
+        opacity: 0.5;
+        text-align: center;
+    }
+    body > header > .undermeny > .icon2 > img:hover{
+        opacity: 1;
+        transform: scale(1.07);
+    }
+    body > main{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .fot1{
+        grid-column: span 2;
+        text-align: center;
+    }
+    .fot2{
+        grid-column: span 4;
+    }
+}
+@media (max-width: 700px){
+    body > header > nav{
+        display: grid;
+        grid-auto-flow: row;
+    }
+    body > header > nav > .logo{
+        grid-column: span 1;
+        text-align: center;
+        margin-left: 0;
+    }
+    body > header > nav > .icon{
+        display: none;
+    }
+    body > header > .undermeny{
+        display: grid;
+        grid-auto-flow: row;
+        text-align: center;
+        grid-gap: 10px;
+    }
+    body > header > .undermeny > .icon2{
+        display: block;
+        margin: auto;
+        grid-gap: 10px;
+    }
+    body > header > .undermeny > .icon2:hover{
+        color: red;
+    }
+    body > main{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .fot1{
+        grid-column: span 4;
+        text-align: center;
+    }
+}
