@@ -244,7 +244,7 @@ label{
     width: 180px;
 }
 
-@media (max-width: 900px){
+@media (max-width: 500px){
     body > header > nav{
         display: grid;
         grid-auto-flow: row;
@@ -265,6 +265,7 @@ label{
     }
     body > header > .undermeny > .icon2{
         display: block;
+        text-align: center;
         grid-gap: 10px;
         z-index: -2;
     }
@@ -293,7 +294,7 @@ label{
         grid-column: span 4;
     }
 }
-@media (max-width: 700px){
+@media (max-width: 400px){
     body > header > nav{
         display: grid;
         grid-auto-flow: row;

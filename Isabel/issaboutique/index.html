@@ -98,17 +98,17 @@
                 <img src="bilder/veskenelly.jpeg">
             </a>
         </article>
-        <article class="col1">
+        <article class="col1 sko">
             <a href="sko.html">
                 <h1>SHOES</h1>
             </a>
         </article>
-        <article class="col1">
+        <article class="col1 klaer">
             <a href="klaer.html">
                 <h1>CLOTHES</h1>
             </a>
         </article>
-        <article class="col1">
+        <article class="col1 tilbehor">
             <a href="soon.html">
                 <h1>ACCESSORIES</h1>
             </a>
@@ -320,7 +320,7 @@
 
         function forover_bottom() {
             if(marg1 < 0) {
-                marg1 = marg1 + 25;
+                marg1 = marg1 + 50;
             } else {
                 slides_bottom.animate([
                     {transform: "translateX(-20px)"},
@@ -337,8 +337,8 @@
 
         function bakover_bottom() {
 
-            if (marg1 > -550) {
-                marg1 = marg1 - 25;
+            if (marg1 > -1200) {
+                marg1 = marg1 - 50;
             } else {
                 slides_bottom.animate([
                     {transform: "translateX(20px)"},
