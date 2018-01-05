@@ -24,6 +24,7 @@ body > header > nav{
     top: 0px;
     padding-top: 5px;
     width: 100vw;
+    z-index: 5;
 }
 body > header > nav > .logo{
     grid-column: span 2;
@@ -63,6 +64,9 @@ body > header > .undermeny{
     border-bottom: 1px solid black;
 }
 body > header > .undermeny > .icon2 {
+    display: none;
+}
+body > header > .undermeny2{
     display: none;
 }
 main{
@@ -268,6 +272,50 @@ label{
     width: 180px;
 }
 
+#burger{
+    cursor: pointer;
+    display: grid;
+    width: 20px;
+    height: 16px;
+    align-content: space-between; /* mellomrom mellom linjene */
+    position: fixed;
+    top: 4%;
+    right: 5%;
+    z-index: 2;
+}
+#burger > div{
+    height: 2px;
+    background-color: gray;
+}
+#menu{
+    background-color: white;
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: calc(72px - 283px);
+    padding-top: 10px;
+    transition: 1s;
+    z-index: 1;
+}
+#cb:checked ~ #menu{
+    top: 0px;
+}
+#cb{
+    display: none;
+}
+#cb:checked ~ #burger > div:first-child{
+    transform: translateY(7px) rotate(45deg);
+    transition: 1s;
+}
+#cb:checked ~ #burger > div:nth-child(2){
+    opacity: 0;
+    transition: 1s;
+}
+#cb:checked ~ #burger > div:last-child{
+    transform: translateY(-7px) rotate(-45deg);
+    transition: 1s;
+}
+
 @media (max-width: 900px){
     body > header > nav{
         display: grid;
@@ -281,30 +329,39 @@ label{
     body > header > nav > .icon{
         display: none;
     }
+
     body > header > .undermeny{
+        text-align: center;
+        grid-gap: 10px;
+        display: none;
+    }
+
+    body > header > .undermeny2{
         display: grid;
-        grid-auto-flow: row;
+        grid-template-columns: 1fr auto auto 1fr;
         text-align: center;
+        margin: auto;
+        padding: 5px;
+        text-transform: uppercase;
+        margin-top: 68px;
+        border-bottom: 1px solid black;
         grid-gap: 10px;
     }
-    body > header > .undermeny > .icon2{
-        display: block;
-        grid-gap: 10px;
-        z-index: -2;
-    }
-    body > header > .undermeny > .icon2 > img{
-        max-height: 25px;
-        transition: transform 200ms ease-in-out;
+    .iiicon{
+        margin: 5px;
         opacity: 0.5;
-        text-align: center;
+        z-index: 2;
     }
-    body > header > .undermeny > .icon2 > img:hover{
+    .iiicon:hover{
         opacity: 1;
-        transform: scale(1.07);
+    }
+    body > header > .undermeny2 > a > img{
+        max-height: 20px;
     }
     main{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        margin-top: 68px;
     }
     .menyy{
         display: none;
@@ -315,6 +372,9 @@ label{
     }
     .fot2{
         grid-column: span 4;
+    }
+    #burger{
+        z-index: 7;
     }
 }
 @media (max-width: 700px){
@@ -331,22 +391,37 @@ label{
         display: none;
     }
     body > header > .undermeny{
-        display: grid;
-        grid-auto-flow: row;
         text-align: center;
         grid-gap: 10px;
+        display: none;
     }
-    body > header > .undermeny > .icon2{
-        display: block;
+
+    body > header > .undermeny2{
+        display: grid;
+        grid-template-columns: 1fr auto auto 1fr;
+        text-align: center;
         margin: auto;
+        padding: 5px;
+        text-transform: uppercase;
+        margin-top: 68px;
+        border-bottom: 1px solid black;
         grid-gap: 10px;
     }
-    body > header > .undermeny > .icon2:hover{
-        color: red;
+    .iiicon{
+        margin: 5px;
+        opacity: 0.5;
+        z-index: 2;
+    }
+    .iiicon:hover{
+        opacity: 1;
+    }
+    body > header > .undermeny2 > a > img{
+        max-height: 20px;
     }
     main{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        margin-top: 68px;
     }
     .menyy{
         display: none;
@@ -354,5 +429,8 @@ label{
     .fot1{
         grid-column: span 4;
         text-align: center;
+    }
+    #burger{
+        z-index: 7;
     }
 }
