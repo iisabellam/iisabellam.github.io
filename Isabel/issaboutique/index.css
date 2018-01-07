@@ -455,7 +455,7 @@ a:hover{
     }
 
 }
-@media (max-width: 500px){
+@media (max-width: 480px){
     body > header > nav{
         display: grid;
         grid-auto-flow: row;
