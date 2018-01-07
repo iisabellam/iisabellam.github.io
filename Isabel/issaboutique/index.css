@@ -406,12 +406,17 @@ a:hover{
     body > main > article > .nytt > .skrift > a > h1{
         font-size: 40px;
     }
-    body > main > .col1{
-        grid-column: span 3;
-    }
     body > main > article > a > img:hover{
         transform: scale(1);
         z-index: 1;
+    }
+    body > main > article > .kjop{
+        font-size: 12px;
+        top: 65%;
+        max-width: 30%;
+    }
+    body > main > article > a > h1{
+        font-size: 1.7em;
     }
     .insta{
         width: 1300%; /* 1 bilde = 25% */
@@ -530,6 +535,9 @@ a:hover{
     body > main > article > a > img:hover{
         transform: scale(1);
         z-index: 1;
+    }
+    body > main > article > a > h1{
+        font-size: 2.5em;
     }
     .insta{
         width: 1300%; /* 1 bilde = 50% */
