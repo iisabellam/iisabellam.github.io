@@ -315,6 +315,12 @@ label{
     transform: translateY(-7px) rotate(-45deg);
     transition: 1s;
 }
+.fil2{
+    display: none;
+}
+.strek2{
+    display: none;
+}
 
 @media (max-width: 900px){
     body > header > nav{
@@ -364,7 +370,38 @@ label{
         margin-top: 68px;
     }
     .menyy{
+        grid-column: span 3;
+    }
+    .fil1{
         display: none;
+    }
+    .fil2{
+        display: block;
+    }
+    .menyyy{
+        display: none;
+    }
+    #filter{
+        display: none;
+    }
+    #filter:checked ~ .menyl{
+        display: block;
+        position: static;
+        margin: 5px;
+    }
+    #visfilter{
+        margin: 5px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .strek {
+        width: 130px;
+        position: absolute;
+        top: 99px;
+        left: 4px;
+    }
+    .strek2{
+        display: block;
     }
     .fot1{
         grid-column: span 2;
@@ -390,6 +427,7 @@ label{
     body > header > nav > .icon{
         display: none;
     }
+
     body > header > .undermeny{
         text-align: center;
         grid-gap: 10px;
@@ -424,7 +462,38 @@ label{
         margin-top: 68px;
     }
     .menyy{
+        grid-column: span 2;
+    }
+    .fil1{
         display: none;
+    }
+    .fil2{
+        display: block;
+    }
+    .menyyy{
+        display: none;
+    }
+    #filter{
+        display: none;
+    }
+    #filter:checked ~ .menyl{
+        display: block;
+        position: static;
+        margin: 5px;
+    }
+    #visfilter{
+        margin: 5px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .strek {
+        width: 130px;
+        position: absolute;
+        top: 99px;
+        left: 4px;
+    }
+    .strek2{
+        display: block;
     }
     .fot1{
         grid-column: span 4;

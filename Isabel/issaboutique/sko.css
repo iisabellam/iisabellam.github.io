@@ -290,6 +290,12 @@ label{
     transform: translateY(-7px) rotate(-45deg);
     transition: 1s;
 }
+.fil2{
+    display: none;
+}
+.strek2{
+    display: none;
+}
 
 @media (max-width: 900px){
     body > header > nav{
@@ -338,7 +344,41 @@ label{
         margin-top: 68px;
     }
     .menyy{
+        grid-column: span 3;
+    }
+    .fil1{
         display: none;
+    }
+    .fil2{
+        display: block;
+    }
+    .menyyy{
+        display: none;
+    }
+    #filter{
+        display: none;
+    }
+    #filter:checked ~ .menyl{
+        display: block;
+        position: static;
+        margin: 5px;
+    }
+    #visfilter{
+        margin: 5px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .strek {
+        width: 130px;
+        position: absolute;
+        top: 99px;
+        left: 4px;
+    }
+    .strek2{
+        display: block;
+    }
+    .flat{
+        grid-column: span 3;
     }
     .fot1{
         grid-column: span 2;
@@ -398,7 +438,41 @@ label{
         margin-top: 68px;
     }
     .menyy{
+        grid-column: span 2;
+    }
+    .fil1{
         display: none;
+    }
+    .fil2{
+        display: block;
+    }
+    .menyyy{
+        display: none;
+    }
+    #filter{
+        display: none;
+    }
+    #filter:checked ~ .menyl{
+        display: block;
+        position: static;
+        margin: 5px;
+    }
+    #visfilter{
+        margin: 5px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .strek {
+        width: 130px;
+        position: absolute;
+        top: 99px;
+        left: 4px;
+    }
+    .strek2{
+        display: block;
+    }
+    .flat{
+        grid-column: span 1;
     }
     .fot1{
         grid-column: span 4;

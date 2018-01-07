@@ -268,6 +268,12 @@ input{
     position: absolute;
     top: 285px;
 }
+.fil2{
+    display: none;
+}
+.strek2{
+    display: none;
+}
 #toggle-4:checked ~ #kjole {
     color: red;
 }
@@ -386,7 +392,38 @@ label{
         margin-top: 68px;
     }
     .menyy{
+        grid-column: span 3;
+    }
+    .fil1{
         display: none;
+    }
+    .fil2{
+        display: block;
+    }
+    .menyyy{
+        display: none;
+    }
+    #filter{
+        display: none;
+    }
+    #filter:checked ~ .menyl{
+        display: block;
+        position: static;
+        margin: 5px;
+    }
+    #visfilter{
+        margin: 5px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .strek {
+        width: 130px;
+        position: absolute;
+        top: 99px;
+        left: 4px;
+    }
+    .strek2{
+        display: block;
     }
     .fot1{
         grid-column: span 2;
@@ -447,7 +484,38 @@ label{
         margin-top: 68px;
     }
     .menyy{
+        grid-column: span 2;
+    }
+    .fil1{
         display: none;
+    }
+    .fil2{
+        display: block;
+    }
+    .menyyy{
+        display: none;
+    }
+    #filter{
+        display: none;
+    }
+    #filter:checked ~ .menyl{
+        display: block;
+        position: static;
+        margin: 5px;
+    }
+    #visfilter{
+        margin: 5px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .strek {
+        width: 130px;
+        position: absolute;
+        top: 99px;
+        left: 4px;
+    }
+    .strek2{
+        display: block;
     }
     .fot1{
         grid-column: span 4;
