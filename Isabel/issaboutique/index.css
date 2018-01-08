@@ -98,7 +98,7 @@ body > main > article > .nytt > a > img{
     width: calc(100% + 5px);
 }
 body > main > article > .nytt > a > img:hover{
-    transform: scale(1);
+    transform: scale(1.05);
     max-width: 100%;
 }
 body > main > article > .nytt > .skrift{
