@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="bilder/logo-01.png" type="image/gif" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="kafte.css" type="text/css">
+    <title>Thirstea - Shop Coffee and Tea</title>
+</head>
+<body>
+
+    <header>
+        <div id="overmeny">
+            <a href="kaffe.html">kaffe</a>
+            <a href="te.html" class="valgt">te</a>
+            <a href="kunnskap.html">kunnskap</a>
+            <a href="handlekurv.html">handlekurv</a>
+        </div>
+        <div id="logo">
+            <a href="index.html"><img src="bilder/logo-01.png">thirstea</a>
+        </div>
+        <div id="header"><img src="bilder/header/te-01.png"></div>
+        <article id="filter">
+            <div id="btn1" class="sorter"><div>Sorter Etter</div> <i class="material-icons">keyboard_arrow_down</i></div>
+            <div id="btn2" class="sorter"><div>Velg Tesort</div> <i class="material-icons">keyboard_arrow_down</i></div>
+            <div id="btn3" class="sorter"><div>Velg Sortiment</div> <i class="material-icons">keyboard_arrow_down</i></div>
+        </article>
+        <div id="valg">
+            <section id="valg1" style="height: 0; opacity: 0;">
+                <div id="alfabetisk"><h3>Alfabetisk </h3><h9>50 produkter</h9><div class="linje"></div></div>
+                <div id="prislh"><h3>Pris: lav - høy</h3><h9>50 produkter</h9><div class="linje"></div></div>
+                <div id="prishl"><h3>Pris: høy - lav</h3><h9>50 produkter</h9><div class="linje"></div> </div>
+                <div id="oko"><h3>Økologisk<br><br></h3><h9>3 produkter</h9><div class="linje"></div> </div>
+            </section>
+            <section id="valg2" style="height: 0; opacity: 0;">
+                <div id="sort">
+                    <h3>Sort Te</h3>
+                    <h9>20 produkter</h9>
+                    <div class="linje"></div>
+                </div>
+                <div id="gronn">
+                    <h3>Grønn Te</h3>
+                    <h9>9 produkter</h9>
+                    <div class="linje"></div>
+                </div>
+                <div id="oolong">
+                    <h3>Oolong</h3>
+                    <h9>3 produkter</h9>
+                    <div class="linje"></div>
+                </div>
+                <div id="hvit">
+                    <h3>Hvit Te</h3>
+                    <h9>3 produkter</h9>
+                    <div class="linje"></div>
+                </div>
+                <div id="frukt">
+                    <h3>Frukt & Urter</h3>
+                    <h9>13 produkter</h9>
+                    <div class="linje"></div>
+                </div>
+                <div id="rooibos">
+                    <h3>Rooibos<br><br></h3>
+                    <h9>2 produkter</h9>
+                    <div class="linje"></div>
+                </div>
+            </section>
+            <section id="valg3" style="height: 0; opacity: 0;">
+                <div id="klassisker">
+                    <h3>Klassiskere<br><br></h3>
+                    <h9>4 produkter</h9>
+                    <div class="linje"></div>
+                </div>
+                <div id="sesong">
+                    <h3>Sesong Te<br><br></h3>
+                    <h9>6 produkter</h9>
+                    <div class="linje"></div>
+                </div>
+            </section>
+        </div>
+    </header>
+
+
+    <main>
+        <section id="produkter">
+
+        </section>
+    </main>
+
+
+    <footer>
+        <a href="om.html">om oss</a>
+        <a href="levering.html">levering</a>
+        <a href="spm.html">FAQ</a>
+        <a href="melding.html">tilbakemelding</a>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAuacdcw3Z2qnXxWkpp0ZdwYB6jU5wkj_8",
+            authDomain: "thirtea-120b2.firebaseapp.com",
+            databaseURL: "https://thirtea-120b2.firebaseio.com",
+            projectId: "thirtea-120b2",
+            storageBucket: "thirtea-120b2.appspot.com",
+            messagingSenderId: "97746196238"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script>
+        // HTML-elementer
+        const produkter = document.getElementById("produkter");
+        const valg2 = document.getElementById("valg2");
+        const btn2 = document.getElementById("btn2");
+        const valg1 = document.getElementById("valg1");
+        const btn1 = document.getElementById("btn1");
+        const valg3 = document.getElementById("valg3");
+        const btn3 = document.getElementById("btn3");
+
+        //firebase-kontakt
+        const db = firebase.database();
+        const te = db.ref("produkter/te");
+
+        function visprod(data) {
+            // Primærnøkkel
+            const key = data.key;
+            // Data om filmen
+            const te = data.val();
+
+            let article = `
+                <a href="${te.id}.html" id="${te.id}" class="prod">
+                    <img src="${te.bilde}">
+                    <h3>${te.navn}</h3>
+                    <div class="linje"></div>
+                    <br>
+                    <h6 class="flytt">${te.undertekst}</h6>
+                    <h7 class="flytt">${te.pris},00 NOK</h7>
+                    <div class="kjop vis"><h8>kjøp nå</h8></div>
+                    <div class="mer vis"><h8>les mer</h8></div>
+                </a>
+            `;
+            produkter.innerHTML += article;
+
+        }
+
+        function visfilmoppned (data) {
+            // Primærnøkkel
+            const key = data.key;
+            // Data om filmen
+            const film = data.val();
+
+            let article = `
+                <article>
+                    <img src="${film.Poster}">
+                    <div>
+                        <h1><b>${film.Title}</b></h1>
+                        <span><h2>${film.Genre}</h2></span>
+                        <span><a href="#"><h2>${film.Actors}</h2></a></span>
+                        <h3>${film.Plot}</h3>
+                    </div>
+                    <div class="meta">${film.Metascore}</div>
+                </div>
+                </article>
+            `;
+            allefilmer.innerHTML = article + allefilmer.innerHTML ;
+
+        }
+
+        te
+            .on("child_added", visprod);
+
+        btn1.onclick = () => {
+
+            if(valg1.style.height === "0px"  ){
+
+                valg1.style.height = "140px";
+                valg1.style.opacity = "1";
+                valg2.style.opacity = "0";
+                valg3.style.opacity = "0";
+                valg2.style.height = "0px";
+                valg3.style.height = "0px";
+                btn1.style.opacity = "0.5";
+                btn2.style.opacity = "1";
+                btn3.style.opacity = "1";
+            } else {
+                valg1.style.height = "0px";
+                valg1.style.opacity = "0";
+                btn1.style.opacity = "1";
+            }
+        },
+            btn2.onclick = () => {
+
+                if(valg2.style.height === "0px"  ){
+
+                    valg2.style.height = "300px";
+                    valg2.style.opacity = "1";
+                    valg1.style.opacity = "0";
+                    valg3.style.opacity = "0";
+                    valg1.style.height = "0px";
+                    valg3.style.height = "0px";
+                    btn2.style.opacity = "0.5";
+                    btn1.style.opacity = "1";
+                    btn3.style.opacity = "1";
+                } else {
+                    valg2.style.height = "0px";
+                    valg2.style.opacity = "0";
+                    btn2.style.opacity = "1";
+                }
+            },
+            btn3.onclick = () => {
+
+                if(valg3.style.height === "0px"  ){
+
+                    valg3.style.height = "140px";
+                    valg3.style.opacity = "1";
+                    valg2.style.opacity = "0";
+                    valg1.style.opacity = "0";
+                    valg2.style.height = "0px";
+                    valg1.style.height = "0px";
+                    btn3.style.opacity = "0.5";
+                    btn2.style.opacity = "1";
+                    btn1.style.opacity = "1";
+                } else {
+                    valg3.style.height = "0px";
+                    valg3.style.opacity = "0";
+                    btn3.style.opacity = "1";
+                }
+            }
+
+    </script>
+
+
+
+</body>
+</html>
