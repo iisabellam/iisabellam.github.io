@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="bilder/logo-01.png" type="image/gif" />
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="meld.css" type="text/css">
+    <title>Om Oss</title>
+</head>
+<body>
+
+    <header>
+        <div id="overmeny">
+            <a href="kaffe.html">kaffe</a>
+            <a href="te.html">te</a>
+            <a href="kunnskap.html">kunnskap</a>
+            <a href="handlekurv.html">handlekurv</a>
+        </div>
+        <div id="logo">
+            <a href="index.html"><img src="bilder/logo-01.png">thirstea</a>
+        </div>
+        <img id="header" src="bilder/header/meld.png">
+    </header>
+
+    <main>
+        <div id="main">
+            <h3>Tilbakemeldinger</h3>
+            <div id="kommentarer">
+
+            </div>
+            <hr style="margin: auto">
+            <div id="skriv">
+                <h2>Skriv tilbakemelding</h2>
+                <form id="skjema">
+                    <input type="text" placeholder="Navn" id="inpnavn">
+                    <br><br>
+                    <textarea placeholder="Kommentar" id="inpkom"></textarea>
+                    <br><br>
+                    <button type="submit" id="btnsend">Send</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="om.html">om oss</a>
+        <a href="levering.html">levering</a>
+        <a href="spm.html">FAQ</a>
+        <a href="melding.html">tilbakemelding</a>
+    </footer>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAuacdcw3Z2qnXxWkpp0ZdwYB6jU5wkj_8",
+            authDomain: "thirtea-120b2.firebaseapp.com",
+            databaseURL: "https://thirtea-120b2.firebaseio.com",
+            projectId: "thirtea-120b2",
+            storageBucket: "thirtea-120b2.appspot.com",
+            messagingSenderId: "97746196238"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script>
+
+        const skjema = document.getElementById("skjema");
+        const inpkom = document.getElementById("inpkom");
+        const inpnavn = document.getElementById("inpnavn");
+        const kommentarer = document.getElementById("kommentarer");
+        const timeStamp = () => {
+            let options = {
+                day: '2-digit',
+                month: '2-digit',
+                year: '2-digit',
+                hour: '2-digit',
+                minute:'2-digit'
+            };
+            let now = new Date().toLocaleString('no-NO', options);
+            return now;
+        };
+
+        const db = firebase.database();
+        const meldinger = db.ref("meldinger");
+
+
+        function lagremelding(evt) {
+            evt.preventDefault();
+            const melding = {
+                navn: inpnavn.value,
+                kommentar: inpkom.value,
+                tid: timeStamp()
+            };
+            meldinger.push(melding);
+            skjema.reset();
+            inpnavn.focus();
+        }
+
+        function vismelding(snap) {
+            const melding = snap.val();
+            kommentarer.innerHTML += `
+                    <article class="komt">
+                        <h5>${melding.navn}</h5>
+                        <h6>${melding.tid}</h6>
+                        <br>
+                        <br>
+                        <hr>
+                        <br>
+                        <h7>${melding.kommentar}</h7>
+                    </article>
+            `;
+        }
+
+        meldinger.on("child_added", vismelding);
+        skjema.onsubmit = lagremelding;
+
+    </script>
+
+
+</body>
+</html>

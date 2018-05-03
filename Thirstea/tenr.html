@@ -61,7 +61,7 @@
 
     <script>
 
-        //Finne id for kaffe
+        //Finne id for te
         var url_string = window.location.href;
         var url = new URL(url_string);
         var id = url.searchParams.get("id");
@@ -76,8 +76,8 @@
 
         //firebase-kontakt
         const db = firebase.database();
-        const kaffe = db.ref("produkter/kaffe");
-        const acde = db.ref("produkter/kaffe/acde");
+        const te = db.ref("produkter/te");
+        const beha = db.ref("produkter/te/beha");
         const handlekurv = db.ref("handlekurv");
 
 
@@ -89,56 +89,69 @@
                 vareid: key,
                 antall: 1,
                 user: "USERID",
-                varetype: "kaffe"
+                varetype: "te"
             });
         }
 
         function visinfo(data) {
 
             const key = data.key;
-            const acde = data.val();
+            const beha = data.val();
+            const handlekurv = db.ref("handlekurv");
+
+
+            function kjop(key) {
+                alert(key + " er lagt til i din handlekurv");
+
+
+                handlekurv.push({
+                    vareid: key,
+                    antall: 1,
+                    user: "USERID",
+                    varetype: "te"
+                });
+            }
 
             let article = `
-                <article id="lage">
-                <div id="friskhet">
-                    <img src="bilder/${acde.friskhet}-01.png"><br>
-                    <h7>Friskhet</h7>
-                </div>
-                <div id="sodme">
-                    <img src="bilder/${acde.sødme}-01.png"><br>
-                    <h7>Sødme</h7>
-                </div>
-                <div id="intensitet">
-                    <img src="bilder/${acde.intensitet}-01.png"><br>
-                    <h7>Intensitet</h7>
-                </div>
-                </article>
-                <article id="bilde">
-                    <img src="${acde.bilde}">
-                </article>
-                <article id="info">
-                    <h1>${acde.navn}</h1>
-                    <h3>${acde.undertekst}</h3>
-                    <hr>
-                    <h4>${acde.tekst}</h4>
-                    <h4>Smak: ${acde.smaksforventninger}</h4>
-                    <hr>
-                    <div id="tall">
-                        <h5>vekt: ${acde.vekt} G</h5>
-                        <h5>${acde.pris},00 NOK</h5>
+                    <article id="lage">
+                    <div id="friskhet">
+                        <h23>${beha.bryggetid}</h23><br>
+                        <h7>Bryggetid</h7>
                     </div>
-                    <hr>
-                    <div id="kjop" onclick="kjop('${key}')"><h6>Legg i Handlekurv</h6></div>
-                </article>
-            `;
+                    <div id="sodme">
+                        <h23>${beha.temp}</h23><br>
+                        <h7>Temp</h7>
+                    </div>
+                    <div id="intensitet">
+                        <h23>${beha.mengde}</h23><br>
+                        <h7>Menge</h7>
+                    </div>
+                    </article>
+                    <article id="bilde">
+                        <img src="${beha.bilde}">
+                    </article>
+                    <article id="info">
+                        <h1>${beha.navn}</h1>
+                        <h3>${beha.undertekst}</h3>
+                        <hr>
+                        <h4>${beha.tekst}</h4>
+                        <h4>Inneholder: ${beha.ingredienser}</h4>
+                        <hr>
+                        <div id="tall">
+                            <h5>vekt: ${beha.vekt}</h5>
+                            <h5>${beha.pris},00 NOK</h5>
+                        </div>
+                        <hr>
+                        <div id="kjop" onclick="kjop('${key}')"><h6>Legg i Handlekurv</h6></div>
+                    </article>
+                `;
             inf.innerHTML += article;
 
 
-
-            kaffe
-                .orderByChild("verdensdel")
-                .limitToLast(5)
-                .equalTo(`${acde.verdensdel}`)
+            te
+                .orderByChild("type")
+                .limitToFirst(5)
+                .equalTo(`${beha.type}`)
                 .on("child_added", visprod);
         }
 
@@ -147,20 +160,20 @@
             // Primærnøkkel
             const key = data.key;
             // Data om filmen
-            const kaffen = data.val();
+            const teen = data.val();
 
             let article = `
-                <a href="acde.html?id=${key}" id="${kaffen.id}" class="prod">
-                    <img src="${kaffen.bilde}">
-                    <h13>${kaffen.navn}</h13>
-                    <div class="linje"></div>
-                    <br>
-                    <h16 class="flytt">${kaffen.undertekst}</h16>
-                    <h17 class="flytt">${kaffen.pris},00 NOK</h17>
-                    <div class="kjop vis" onclick="kjop('${key}')"><h18>kjøp nå</h18></div>
-                    <div class="mer vis"><h18>les mer</h18></div>
-                </a>
-            `;
+                    <a href="tenr.html?id=${key}" id="${teen.id}" class="prod">
+                        <img src="${teen.bilde}">
+                        <h13>${teen.navn}</h13>
+                        <div class="linje"></div>
+                        <br>
+                        <h16 class="flytt">${teen.undertekst}</h16>
+                        <h17 class="flytt">${teen.pris},00 NOK</h17>
+                        <div class="kjop vis" onclick="kjop('${key}')"><h18>kjøp nå</h18></div>
+                        <div class="mer vis"><h18>les mer</h18></div>
+                    </a>
+                `;
             fler.innerHTML += article;
 
         }
@@ -168,7 +181,7 @@
 
 
 
-        kaffe
+        te
             .orderByChild("id")
             .equalTo(id.toLowerCase())
             .on("child_added", visinfo)

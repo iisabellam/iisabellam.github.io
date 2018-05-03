@@ -28,18 +28,40 @@
         </article>
         <div id="valg">
             <section id="valg1" style="height: 0; opacity: 0;">
-                <div id="alfabetisk"><h3>Alfabetisk </h3><h9>50 produkter</h9><div class="linje"></div></div>
-                <div id="prislh"><h3>Pris: lav - høy</h3><h9>50 produkter</h9><div class="linje"></div></div>
-                <div id="prishl"><h3>Pris: høy - lav</h3><h9>50 produkter</h9><div class="linje"></div> </div>
-                <div id="oko"><h3>Økologisk<br><br></h3><h9>3 produkter</h9><div class="linje"></div> </div>
+                <div id="alfabetisk" onclick=alfa()>
+                    <h3>Alfabetisk </h3>
+                    <h9>50 produkter</h9>
+                    <div class="linje"></div>
+                </div>
+                <div id="prislh" onclick=lavhoy()>
+                    <h3>Pris: lav - høy</h3>
+                    <h9>50 produkter</h9>
+                    <div class="linje">
+
+                    </div>
+                </div>
+                <div id="prishl" onclick=hoylav()>
+                    <h3>Pris: høy - lav</h3>
+                    <h9>50 produkter</h9>
+                    <div class="linje">
+
+                    </div>
+                </div>
+                <div id="oko" onclick=oko()>
+                    <h3>Økologisk<br><br></h3>
+                    <h9>3 produkter</h9>
+                    <div class="linje">
+
+                    </div>
+                </div>
             </section>
             <section id="valg2" style="height: 0; opacity: 0;">
-                <div id="sort">
+                <div id="sort" >
                     <h3>Sort Te</h3>
                     <h9>20 produkter</h9>
                     <div class="linje"></div>
                 </div>
-                <div id="gronn">
+                <div id="grønn">
                     <h3>Grønn Te</h3>
                     <h9>9 produkter</h9>
                     <div class="linje"></div>
@@ -66,12 +88,12 @@
                 </div>
             </section>
             <section id="valg3" style="height: 0; opacity: 0;">
-                <div id="klassisker">
+                <div id="klassisker" onclick=klas()>
                     <h3>Klassiskere<br><br></h3>
                     <h9>4 produkter</h9>
                     <div class="linje"></div>
                 </div>
-                <div id="sesong">
+                <div id="sesong" onclick=ses()>
                     <h3>Sesong Te<br><br></h3>
                     <h9>6 produkter</h9>
                     <div class="linje"></div>
@@ -122,6 +144,20 @@
         //firebase-kontakt
         const db = firebase.database();
         const te = db.ref("produkter/te");
+        const handlekurv = db.ref("handlekurv");
+
+
+        function kjop(key) {
+            alert(key + " er lagt til i din handlekurv");
+
+
+            handlekurv.push({
+                vareid: key,
+                antall: 1,
+                user: "USERID",
+                varetype: "te"
+            });
+        }
 
         function visprod(data) {
             // Primærnøkkel
@@ -130,14 +166,14 @@
             const te = data.val();
 
             let article = `
-                <a href="${te.id}.html" id="${te.id}" class="prod">
+                <a href="tenr.html?id=${key}" id="${te.id}" class="prod">
                     <img src="${te.bilde}">
                     <h3>${te.navn}</h3>
                     <div class="linje"></div>
                     <br>
                     <h6 class="flytt">${te.undertekst}</h6>
                     <h7 class="flytt">${te.pris},00 NOK</h7>
-                    <div class="kjop vis"><h8>kjøp nå</h8></div>
+                    <div class="kjop vis" onclick="kjop('${key}')"><h8>kjøp nå</h8></div>
                     <div class="mer vis"><h8>les mer</h8></div>
                 </a>
             `;
@@ -145,31 +181,98 @@
 
         }
 
-        function visfilmoppned (data) {
+        function visprodoppned (data) {
             // Primærnøkkel
             const key = data.key;
             // Data om filmen
-            const film = data.val();
+            const te = data.val();
 
             let article = `
-                <article>
-                    <img src="${film.Poster}">
-                    <div>
-                        <h1><b>${film.Title}</b></h1>
-                        <span><h2>${film.Genre}</h2></span>
-                        <span><a href="#"><h2>${film.Actors}</h2></a></span>
-                        <h3>${film.Plot}</h3>
-                    </div>
-                    <div class="meta">${film.Metascore}</div>
-                </div>
-                </article>
-            `;
-            allefilmer.innerHTML = article + allefilmer.innerHTML ;
+                    <a href="tenr.html?${key}" id="${te.id}" class="prod">
+                        <img src="${te.bilde}">
+                        <h3>${te.navn}</h3>
+                        <div class="linje"></div>
+                        <br>
+                        <h6 class="flytt">${te.undertekst}</h6>
+                        <h7 class="flytt">${te.pris},00 NOK</h7>
+                        <div class="kjop vis" onclick="kjop('${key}')"><h8>kjøp nå</h8></div>
+                        <div class="mer vis"><h8>les mer</h8></div>
+                    </a>
+                `;
+            produkter.innerHTML = article + produkter.innerHTML ;
 
         }
 
         te
             .on("child_added", visprod);
+
+
+        let typeknapper = document.querySelectorAll("#valg2 > div");
+        for(let knapp of typeknapper){
+            knapp.onclick = filtertype;
+        }
+
+        function filtertype() {
+            produkter.innerHTML = "";
+            te
+                .orderByChild("type")
+                .equalTo(this.id)
+                .on("child_added", visprod);
+
+        }
+
+        function alfa() {
+            produkter.innerHTML = "";
+            te
+                .orderByChild("navn")
+                .on("child_added", visprod);
+
+        }
+
+        function lavhoy() {
+            produkter.innerHTML = "";
+            te
+                .orderByChild("pris")
+                .on("child_added", visprod);
+
+        }
+
+        function hoylav() {
+            produkter.innerHTML = "";
+            te
+                .orderByChild("pris")
+                .on("child_added", visprodoppned);
+
+        }
+
+        function oko() {
+            produkter.innerHTML = "";
+            te
+                .orderByChild("økologisk")
+                .equalTo(true)
+                .on("child_added", visprod);
+
+        }
+
+        function klas() {
+            produkter.innerHTML = "";
+            te
+                .orderByChild("klassisk")
+                .equalTo(true)
+                .on("child_added", visprod);
+
+        }
+
+        function ses() {
+            produkter.innerHTML = "";
+            te
+                .orderByChild("sesong")
+                .equalTo(true)
+                .on("child_added", visprod);
+
+        }
+
+
 
         btn1.onclick = () => {
 

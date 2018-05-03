@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Montserrat|Crimson+Text" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="kafte.css" type="text/css">
-    <title>Thirstea - Shop Coffee and Tea</title>
+    <title>Kaffe - Thirstea - Shop Coffee and Tea</title>
 </head>
 <body>
 
@@ -29,44 +29,44 @@
         </article>
         <div id="valg">
             <section id="valg1" style="height: 0; opacity: 0;">
-                <div id="alfabetisk">
+                <div id="alfabetisk" onclick=alfa()>
                     <h3>Alfabetisk </h3>
                     <h9>36 produkter</h9>
                     <div class="linje"></div>
                 </div>
-                <div id="prislh">
+                <div id="prislh" onclick=lavhoy()>
                     <h3>Pris: lav - høy</h3>
                     <h9>36 produkter</h9>
                     <div class="linje"></div>
                 </div>
-                <div id="prishl">
+                <div id="prishl" onclick=hoylav()>
                     <h3>Pris: høy - lav</h3>
                     <h9>36 produkter</h9>
                     <div class="linje"></div>
                 </div>
-                <div id="oko">
+                <div id="oko" onclick=oko()>
                     <h3>Økologisk<br><br></h3>
                     <h9>7 produkter</h9>
                     <div class="linje"></div>
                 </div>
             </section>
             <section id="valg2" style="height: 0; opacity: 0;">
-                <div id="asia">
+                <div id="Asia">
                     <h3>Asia</h3>
                     <h9>6 produkter</h9>
                     <div class="linje"></div>
                 </div>
-                <div id="afrika">
+                <div id="Afrika">
                     <h3>Afrika</h3>
                     <h9>8 produkter</h9>
                     <div class="linje"></div>
                 </div>
-                <div id="soram">
+                <div id="Sør-Amerika">
                     <h3>Sør-Amerika</h3>
                     <h9>10 produkter</h9>
                     <div class="linje"></div>
                 </div>
-                <div id="melam">
+                <div id="Mellom-Amerika">
                     <h3>Mellom-Amerika</h3>
                     <h9>7 produkter</h9>
                     <div class="linje"></div>
@@ -78,12 +78,12 @@
                 </div>
             </section>
             <section id="valg3" style="height: 0; opacity: 0;">
-                <div id="normalb">
+                <div id="false" onclick=normal()>
                     <h3>Normalbrent<br><br></h3>
                     <h9>25 produkter</h9>
                     <div class="linje"></div>
                 </div>
-                <div id="espresso">
+                <div id="true" onclick=espr()>
                     <h3>Espresso<br><br></h3>
                     <h9>11 produkter</h9>
                     <div class="linje"></div>
@@ -137,6 +137,20 @@
         //firebase-kontakt
         const db = firebase.database();
         const kaffe = db.ref("produkter/kaffe");
+        const handlekurv = db.ref("handlekurv");
+
+
+        function kjop(key) {
+            alert(key + " er lagt til i din handlekurv");
+
+
+            handlekurv.push({
+               vareid: key,
+               antall: 1,
+               user: "USERID",
+                varetype: "kaffe"
+            });
+        }
 
         function visprod(data) {
             // Primærnøkkel
@@ -145,14 +159,14 @@
             const kaffe = data.val();
 
             let article = `
-                <a href="${kaffe.id}.html" id="${kaffe.id}" class="prod">
+                <a href="acde.html?id=${key}" id="${kaffe.id}" class="prod">
                     <img src="${kaffe.bilde}">
                     <h3>${kaffe.navn}</h3>
                     <div class="linje"></div>
                     <br>
                     <h6 class="flytt">${kaffe.undertekst}</h6>
                     <h7 class="flytt">${kaffe.pris},00 NOK</h7>
-                    <div class="kjop vis"><h8>kjøp nå</h8></div>
+                    <div class="kjop vis" onclick="kjop('${key}')"><h8>kjøp nå</h8></div>
                     <div class="mer vis"><h8>les mer</h8></div>
                 </a>
             `;
@@ -160,31 +174,98 @@
 
         }
 
-        function visfilmoppned (data) {
+        function visprodoppned (data) {
             // Primærnøkkel
             const key = data.key;
             // Data om filmen
-            const film = data.val();
+            const kaffe = data.val();
 
             let article = `
-                <article>
-                    <img src="${film.Poster}">
-                    <div>
-                        <h1><b>${film.Title}</b></h1>
-                        <span><h2>${film.Genre}</h2></span>
-                        <span><a href="#"><h2>${film.Actors}</h2></a></span>
-                        <h3>${film.Plot}</h3>
-                    </div>
-                    <div class="meta">${film.Metascore}</div>
-                </div>
-                </article>
-            `;
-            allefilmer.innerHTML = article + allefilmer.innerHTML ;
+                    <a href="acde.html?id=${key}" id="${kaffe.id}" class="prod">
+                        <img src="${kaffe.bilde}">
+                        <h3>${kaffe.navn}</h3>
+                        <div class="linje"></div>
+                        <br>
+                        <h6 class="flytt">${kaffe.undertekst}</h6>
+                        <h7 class="flytt">${kaffe.pris},00 NOK</h7>
+                        <div class="kjop vis" onclick="kjop('${key}')"><h8>kjøp nå</h8></div>
+                        <div class="mer vis"><h8>les mer</h8></div>
+                    </a>
+                `;
+            produkter.innerHTML = article + produkter.innerHTML ;
 
         }
 
+
+        // Viser alle kaffer
         kaffe
             .on("child_added", visprod);
+
+
+        let verdensdelknapper = document.querySelectorAll("#valg2 > div");
+        for(let knapp of verdensdelknapper){
+            knapp.onclick = filterVerdensdel;
+        }
+
+        function filterVerdensdel() {
+            produkter.innerHTML = "";
+            kaffe
+                .orderByChild("verdensdel")
+                .equalTo(this.id)
+                .on("child_added", visprod);
+
+        }
+
+        function alfa() {
+            produkter.innerHTML = "";
+            kaffe
+                .orderByChild("navn")
+                .on("child_added", visprod);
+
+        }
+
+        function lavhoy() {
+            produkter.innerHTML = "";
+            kaffe
+                .orderByChild("pris")
+                .on("child_added", visprod);
+
+        }
+
+        function hoylav() {
+            produkter.innerHTML = "";
+            kaffe
+                .orderByChild("pris")
+                .on("child_added", visprodoppned);
+
+        }
+
+        function oko() {
+            produkter.innerHTML = "";
+            kaffe
+                .orderByChild("økonologisk")
+                .equalTo(true)
+                .on("child_added", visprodoppned);
+
+        }
+
+        function normal() {
+            produkter.innerHTML = "";
+            kaffe
+                .orderByChild("espresso")
+                .equalTo(false)
+                .on("child_added", visprod);
+
+        }
+
+        function espr() {
+            produkter.innerHTML = "";
+            kaffe
+                .orderByChild("espresso")
+                .equalTo(true)
+                .on("child_added", visprod);
+
+        }
 
         btn1.onclick = () => {
 

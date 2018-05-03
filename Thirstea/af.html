@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="bilder/logo-01.png" type="image/gif" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Montserrat|Crimson+Text" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="kafte.css" type="text/css">
+    <title>Thirstea - Shop Coffee and Tea</title>
+</head>
+<body>
+
+<header>
+    <div id="overmeny">
+        <a href="kaffe.html" class="valgt">kaffe</a>
+        <a href="te.html">te</a>
+        <a href="kunnskap.html">kunnskap</a>
+        <a href="handlekurv.html">handlekurv</a>
+    </div>
+    <div id="logo">
+        <a href="index.html"><img src="bilder/logo-01.png">thirstea</a>
+    </div>
+    <div id="header"><img src="bilder/header/kaffe-01.png"></div>
+    <article id="filter">
+        <div id="btn1" class="sorter"><div>Sorter Etter</div> <i class="material-icons">keyboard_arrow_down</i></div>
+        <div id="btn2" class="sorter"><div>Velg Region</div> <i class="material-icons">keyboard_arrow_down</i></div>
+        <div id="btn3" class="sorter"><div>Velg Brenningsgrad</div> <i class="material-icons">keyboard_arrow_down</i></div>
+    </article>
+    <div id="valg">
+        <section id="valg1" style="height: 0; opacity: 0;">
+            <div id="alfabetisk" onclick=alfa()>
+                <h3>Alfabetisk </h3>
+                <h9>36 produkter</h9>
+                <div class="linje"></div>
+            </div>
+            <div id="prislh" onclick=lavhoy()>
+                <h3>Pris: lav - høy</h3>
+                <h9>36 produkter</h9>
+                <div class="linje"></div>
+            </div>
+            <div id="prishl" onclick=hoylav()>
+                <h3>Pris: høy - lav</h3>
+                <h9>36 produkter</h9>
+                <div class="linje"></div>
+            </div>
+            <div id="oko" onclick=oko()>
+                <h3>Økologisk<br><br></h3>
+                <h9>7 produkter</h9>
+                <div class="linje"></div>
+            </div>
+        </section>
+        <section id="valg2" style="height: 0; opacity: 0;">
+            <div id="Asia">
+                <h3>Asia</h3>
+                <h9>6 produkter</h9>
+                <div class="linje"></div>
+            </div>
+            <div id="Afrika">
+                <h3>Afrika</h3>
+                <h9>8 produkter</h9>
+                <div class="linje"></div>
+            </div>
+            <div id="Sør-Amerika">
+                <h3>Sør-Amerika</h3>
+                <h9>10 produkter</h9>
+                <div class="linje"></div>
+            </div>
+            <div id="Mellom-Amerika">
+                <h3>Mellom-Amerika</h3>
+                <h9>7 produkter</h9>
+                <div class="linje"></div>
+            </div>
+            <div id="blanding">
+                <h3>Blanding<br><br></h3>
+                <h9>5 produkter</h9>
+                <div class="linje"></div>
+            </div>
+        </section>
+        <section id="valg3" style="height: 0; opacity: 0;">
+            <div id="false" onclick=normal()>
+                <h3>Normalbrent<br><br></h3>
+                <h9>25 produkter</h9>
+                <div class="linje"></div>
+            </div>
+            <div id="true" onclick=espr()>
+                <h3>Espresso<br><br></h3>
+                <h9>11 produkter</h9>
+                <div class="linje"></div>
+            </div>
+        </section>
+    </div>
+</header>
+
+
+<main>
+    <section id="produkter">
+
+    </section>
+</main>
+
+
+<footer>
+    <a href="om.html">om oss</a>
+    <a href="levering.html">levering</a>
+    <a href="spm.html">FAQ</a>
+    <a href="melding.html">tilbakemelding</a>
+</footer>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAuacdcw3Z2qnXxWkpp0ZdwYB6jU5wkj_8",
+        authDomain: "thirtea-120b2.firebaseapp.com",
+        databaseURL: "https://thirtea-120b2.firebaseio.com",
+        projectId: "thirtea-120b2",
+        storageBucket: "thirtea-120b2.appspot.com",
+        messagingSenderId: "97746196238"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script>
+    // HTML-elementer
+    const produkter = document.getElementById("produkter");
+    const valg2 = document.getElementById("valg2");
+    const btn2 = document.getElementById("btn2");
+    const valg1 = document.getElementById("valg1");
+    const btn1 = document.getElementById("btn1");
+    const valg3 = document.getElementById("valg3");
+    const btn3 = document.getElementById("btn3");
+
+
+
+    //firebase-kontakt
+    const db = firebase.database();
+    const kaffe = db.ref("produkter/kaffe");
+
+    function visprod(data) {
+        // Primærnøkkel
+        const key = data.key;
+        // Data om filmen
+        const kaffe = data.val();
+
+        let article = `
+                <a href="acde.html?id=${key}" id="${kaffe.id}" class="prod">
+                    <img src="${kaffe.bilde}">
+                    <h3>${kaffe.navn}</h3>
+                    <div class="linje"></div>
+                    <br>
+                    <h6 class="flytt">${kaffe.undertekst}</h6>
+                    <h7 class="flytt">${kaffe.pris},00 NOK</h7>
+                    <div class="kjop vis"><h8>kjøp nå</h8></div>
+                    <div class="mer vis"><h8>les mer</h8></div>
+                </a>
+            `;
+        produkter.innerHTML += article;
+
+    }
+
+    function visprodoppned (data) {
+        // Primærnøkkel
+        const key = data.key;
+        // Data om filmen
+        const kaffe = data.val();
+
+        let article = `
+                    <a href="acde.html?id=${key}" id="${kaffe.id}" class="prod">
+                        <img src="${kaffe.bilde}">
+                        <h3>${kaffe.navn}</h3>
+                        <div class="linje"></div>
+                        <br>
+                        <h6 class="flytt">${kaffe.undertekst}</h6>
+                        <h7 class="flytt">${kaffe.pris},00 NOK</h7>
+                        <div class="kjop vis"><h8>kjøp nå</h8></div>
+                        <div class="mer vis"><h8>les mer</h8></div>
+                    </a>
+                `;
+        produkter.innerHTML = article + produkter.innerHTML ;
+
+    }
+
+
+    // Viser alle kaffer
+    kaffe
+        .orderByChild("verdensdel")
+        .equalTo("Afrika")
+        .on("child_added", visprod);
+
+
+    let verdensdelknapper = document.querySelectorAll("#valg2 > div");
+    for(let knapp of verdensdelknapper){
+        knapp.onclick = filterVerdensdel;
+    }
+
+    function filterVerdensdel() {
+        produkter.innerHTML = "";
+        kaffe
+            .orderByChild("verdensdel")
+            .equalTo(this.id)
+            .on("child_added", visprod);
+
+    }
+
+    function alfa() {
+        produkter.innerHTML = "";
+        kaffe
+            .orderByChild("navn")
+            .on("child_added", visprod);
+
+    }
+
+    function lavhoy() {
+        produkter.innerHTML = "";
+        kaffe
+            .orderByChild("pris")
+            .on("child_added", visprod);
+
+    }
+
+    function hoylav() {
+        produkter.innerHTML = "";
+        kaffe
+            .orderByChild("pris")
+            .on("child_added", visprodoppned);
+
+    }
+
+    function oko() {
+        produkter.innerHTML = "";
+        kaffe
+            .orderByChild("økonologisk")
+            .equalTo(true)
+            .on("child_added", visprodoppned);
+
+    }
+
+    function normal() {
+        produkter.innerHTML = "";
+        kaffe
+            .orderByChild("espresso")
+            .equalTo(false)
+            .on("child_added", visprod);
+
+    }
+
+    function espr() {
+        produkter.innerHTML = "";
+        kaffe
+            .orderByChild("espresso")
+            .equalTo(true)
+            .on("child_added", visprod);
+
+    }
+
+    btn1.onclick = () => {
+
+        if(valg1.style.height === "0px"  ){
+
+            valg1.style.height = "140px";
+            valg1.style.opacity = "1";
+            valg2.style.opacity = "0";
+            valg3.style.opacity = "0";
+            valg2.style.height = "0px";
+            valg3.style.height = "0px";
+            btn1.style.opacity = "0.5";
+            btn2.style.opacity = "1";
+            btn3.style.opacity = "1";
+        } else {
+            valg1.style.height = "0px";
+            valg1.style.opacity = "0";
+            btn1.style.opacity = "1";
+        }
+    },
+        btn2.onclick = () => {
+
+            if(valg2.style.height === "0px"  ){
+
+                valg2.style.height = "140px";
+                valg2.style.opacity = "1";
+                valg1.style.opacity = "0";
+                valg3.style.opacity = "0";
+                valg1.style.height = "0px";
+                valg3.style.height = "0px";
+                btn2.style.opacity = "0.5";
+                btn1.style.opacity = "1";
+                btn3.style.opacity = "1";
+            } else {
+                valg2.style.height = "0px";
+                valg2.style.opacity = "0";
+                btn2.style.opacity = "1";
+            }
+        },
+        btn3.onclick = () => {
+
+            if(valg3.style.height === "0px"  ){
+
+                valg3.style.height = "140px";
+                valg3.style.opacity = "1";
+                valg2.style.opacity = "0";
+                valg1.style.opacity = "0";
+                valg2.style.height = "0px";
+                valg1.style.height = "0px";
+                btn3.style.opacity = "0.5";
+                btn2.style.opacity = "1";
+                btn1.style.opacity = "1";
+            } else {
+                valg3.style.height = "0px";
+                valg3.style.opacity = "0";
+                btn3.style.opacity = "1";
+            }
+        }
+
+</script>
+
+
+
+</body>
+</html>

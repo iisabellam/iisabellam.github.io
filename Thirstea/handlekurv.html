@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="bilder/logo-01.png" type="image/gif" />
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="kunnskap.css" type="text/css">
-    <title>Thirstea - Shop Coffee and Tea</title>
+    <link rel="stylesheet" href="kurv.css" type="text/css">
+    <title>Handlekurv - Thirstea - Shop Coffee and Tea</title>
 </head>
 <body>
 
 <header>
     <div id="overmeny">
-        <a href="kaffe.html" >kaffe</a>
+        <a href="kaffe.html">kaffe</a>
         <a href="te.html">te</a>
-        <a href="kunnskap.html">kunnskap</a>
-        <a href="handlekurv.html" class="valgt">handlekurv</a>
+        <a href="kunnskap.html" class="valgt">kunnskap</a>
+        <a href="handlekurv.html">handlekurv</a>
     </div>
     <div id="logo">
         <a href="index.html"><img src="bilder/logo-01.png">thirstea</a>
@@ -23,7 +23,75 @@
 
 
 <main>
-    <div></div>
+    <div id="main">
+        <h1>din handlekurv</h1>
+        <div id="ting">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Produkt</th>
+                        <th>Vekt</th>
+                        <th>Antall</th>
+                        <th>Pris</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tbprod">
+
+                <tfoot>
+                    <tr>
+                        <td>Totalt:</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><span id="visPris"></span> NOK</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <h1 style="margin-top:20px">Kasse</h1>
+        <div id="kasse">
+            <h2>Personopplysninger</h2>
+            <form>
+                <div class="inphva delto">
+                    <h17>Fornavn</h17>
+                    <h17>Etternavn</h17>
+                </div>
+                <input type="text" placeholder="Fornavn" id="inpfornavn">
+                <input type="text" placeholder="Etternavn" id="inpetternavn">
+                <div class="inphva hel"><h17>Adresse</h17></div>
+                <input type="text" placeholder="Adresse" id="inpadresse">
+                <div class="inphva delto">
+                    <h17>Postnummer</h17>
+                    <h17>By</h17>
+                </div>
+                <input type="number" placeholder="Postnummer" id="inppostnr">
+                <input type="text" placeholder="By" id="inpby">
+                <div class="inphva delto">
+                    <h17>E-Mail</h17>
+                </div>
+                <input type="text" placeholder="E-mail" id="inpemail">
+                <div class="inphva delto">
+                    <h17>Telefonnummer</h17>
+                </div>
+                <input type="text" placeholder="Telefon" id="inptlf">
+                <h2>Betaling</h2>
+                <div class="inphva delto">
+                    <h17>Kortnummer</h17>
+                </div>
+                <input type="number" placeholder="Kortnummer" id="inpkortnr">
+                <div class="inphva delto">
+                    <h17>Utløpsdato</h17>
+                    <h17>CVV / CVC</h17>
+                </div>
+                <input type="text" placeholder="Utløpsdato" id="inputløp">
+                <input type="number" placeholder="CVV/CVC" id="inpcvv">
+                <button type="submit" id="btnbet">Betal nå</button>
+            </form>
+        </div>
+    </div>
 </main>
 
 
@@ -35,8 +103,93 @@
 </footer>
 
 
+
+<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAuacdcw3Z2qnXxWkpp0ZdwYB6jU5wkj_8",
+        authDomain: "thirtea-120b2.firebaseapp.com",
+        databaseURL: "https://thirtea-120b2.firebaseio.com",
+        projectId: "thirtea-120b2",
+        storageBucket: "thirtea-120b2.appspot.com",
+        messagingSenderId: "97746196238"
+    };
+    firebase.initializeApp(config);
+</script>
+
 <script>
 
+    const db = firebase.database();
+    const handlekurv = db.ref("handlekurv");
+    const tbprod = document.getElementById("tbprod");
+    const visPris = document.getElementById("visPris");
+
+    let pris = 0;
+
+    function fjern(id) {
+        let bestilling = handlekurv.child(id);
+        bestilling.remove();
+        //let rad = document.getElementById(id);
+        //tbprod.removeChild(rad);
+
+        tbprod.innerHTML = "";
+        pris = 0;
+        handlekurv.on("child_added", visVare);
+
+    }
+
+    function visVare(snapshot) {
+        let vare = snapshot.val();
+        let bestillingsid = snapshot.key;
+
+        let produkt = db.ref("produkter/" + vare.varetype + "/" + vare.vareid);
+
+        produkt.on("value", function(varesnap){
+           let data = varesnap.val();
+           let varenavn = data.navn;
+           console.log(varenavn);
+
+           pris += data.pris;
+           visPris.innerHTML = pris;
+
+           tbprod.innerHTML += `
+               <tr id="${bestillingsid}">
+                    <td>
+                        <img src="${data.bilde}">
+                    </td>
+                    <td>
+                        <h3>${data.navn}</h3>
+                    </td>
+                    <td>
+                        <h4>${data.vekt} G</h4>
+                    </td>
+                    <td>
+                        <select name="antall">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </td>
+                    <td>
+                        <h4>${data.pris} NOK</h4>
+                    </td>
+                    <td>
+                        <h4 style="cursor: pointer;" onclick="fjern('${bestillingsid}')">X</h4>
+                    </td>
+                </tr>
+           `;
+
+
+
+        });
+
+    }
+
+
+    handlekurv.on("child_added", visVare);
 
 </script>
 
