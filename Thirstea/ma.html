@@ -15,7 +15,7 @@
     <div id="overmeny">
         <a href="kaffe.html" class="valgt">kaffe</a>
         <a href="te.html">te</a>
-        <a href="kunnskap.html">kunnskap</a>
+        <a href="melding.html">tilbakemelding</a>
         <a href="handlekurv.html">handlekurv</a>
     </div>
     <div id="logo">
@@ -104,7 +104,6 @@
     <a href="om.html">om oss</a>
     <a href="levering.html">levering</a>
     <a href="spm.html">FAQ</a>
-    <a href="melding.html">tilbakemelding</a>
 </footer>
 
 
@@ -137,6 +136,20 @@
     //firebase-kontakt
     const db = firebase.database();
     const kaffe = db.ref("produkter/kaffe");
+    const handlekurv = db.ref("handlekurv");
+
+
+    function kjop(key) {
+        alert(key + " er lagt til i din handlekurv");
+
+
+        handlekurv.push({
+            vareid: key,
+            antall: 1,
+            user: "USERID",
+            varetype: "kaffe"
+        });
+    }
 
     function visprod(data) {
         // Primærnøkkel
@@ -152,7 +165,7 @@
                     <br>
                     <h6 class="flytt">${kaffe.undertekst}</h6>
                     <h7 class="flytt">${kaffe.pris},00 NOK</h7>
-                    <div class="kjop vis"><h8>kjøp nå</h8></div>
+                    <div class="kjop vis" onclick="kjop('${key}')"><h8>kjøp nå</h8></div>
                     <div class="mer vis"><h8>les mer</h8></div>
                 </a>
             `;
@@ -174,13 +187,14 @@
                         <br>
                         <h6 class="flytt">${kaffe.undertekst}</h6>
                         <h7 class="flytt">${kaffe.pris},00 NOK</h7>
-                        <div class="kjop vis"><h8>kjøp nå</h8></div>
+                        <div class="kjop vis" onclick="kjop('${key}')"><h8>kjøp nå</h8></div>
                         <div class="mer vis"><h8>les mer</h8></div>
                     </a>
                 `;
         produkter.innerHTML = article + produkter.innerHTML ;
 
     }
+
 
 
     // Viser alle kaffer
