@@ -136,7 +136,7 @@
 
             kaffe
                 .orderByChild("verdensdel")
-                .limitToLast(5)
+                .limitToLast(6)
                 .equalTo(`${acde.verdensdel}`)
                 .on("child_added", visprod);
         }

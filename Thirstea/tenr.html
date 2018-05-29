@@ -149,7 +149,7 @@
 
             te
                 .orderByChild("type")
-                .limitToFirst(5)
+                .limitToFirst(6)
                 .equalTo(`${beha.type}`)
                 .on("child_added", visprod);
         }
