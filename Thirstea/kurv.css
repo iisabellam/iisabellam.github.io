@@ -184,3 +184,43 @@ h17{
     text-transform: uppercase;
     margin: 7px;
 }
+@media (max-width: 900px) {
+    #main{
+        max-width: 90%;
+        margin: auto;
+    }
+    #ting{
+        margin: auto;
+        width: 100%;
+    }
+    #kasse{
+        max-width: 90%;
+        margin: auto;
+        overflow: hidden;
+    }
+    #inpfornavn, #inpetternavn, #inppostnr, #inpby, #inpcvv, #inputlop{
+        padding: 8px;
+        margin: 0;
+        width: 45%;
+        font-family: Montserrat,Arial;
+
+    }
+    #inpadresse, #inpemail, #inptlf, #inpkortnr{
+        padding: 8px;
+        width: 95%;
+    }
+    .inphva{
+        width: 100%;
+        text-align: left;
+        padding: 10px 0px 0px 0px;
+        margin-left: 5px;
+    }
+    .delto{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    #btnbet{
+        margin: 10px;
+        max-width: 95%;
+    }
+}

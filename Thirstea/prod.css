@@ -288,3 +288,18 @@ h23{
     text-transform: lowercase;
     font-weight: 100;
 }
+@media (max-width: 900px) {
+    #fler{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    #inf{
+        grid-template-columns: 1fr;
+    }
+    #lage{
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+    #bilde > img{
+        max-height: 300px;
+    }
+}

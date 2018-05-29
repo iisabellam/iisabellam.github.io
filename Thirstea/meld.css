@@ -40,6 +40,10 @@ header{
 }
 #header{
     width: 100%;
+    height: 410px;
+    background-image: url("bilder/header/meld.png");
+    background-size: cover;
+    background-position: 50% 50%;
 }
 main{
     background-color: #eeeeee;
@@ -140,4 +144,9 @@ h6{
 h7{
     font-family: Montserrat, Arial;
     font-size: 15px;
+}
+@media (max-width: 900px) {
+    #main{
+        max-width: 100%;
+    }
 }

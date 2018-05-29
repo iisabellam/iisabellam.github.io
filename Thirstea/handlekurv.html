@@ -88,7 +88,7 @@
                     </div>
                     <input type="text" placeholder="DD/MM" id="inputlop">
                     <input type="number" placeholder="CVV/CVC" id="inpcvv">
-                    <button type="submit" id="btnbet" onclick="slettkurv(), flyttkurv()">Betal nå</button>
+                    <button type="submit" id="btnbet" onclick="slettkurv()">Betal nå</button>
                 </form>
             </div>
         </div>
@@ -121,7 +121,7 @@
 
         const db = firebase.database();
         const handlekurv = db.ref("handlekurv");
-        const ordre = db.ref("ordre");
+        const ordrer = db.ref("ordrer");
         const tbprod = document.getElementById("tbprod");
         const visPris = document.getElementById("visPris");
         const perinfo = document.getElementById("perinfo");
@@ -136,6 +136,8 @@
         const inputlop = document.getElementById("inputlop");
         const inpcvv = document.getElementById("inpcvv");
 
+        let varene = [];
+
 
         function slettkurv() {
             let bestilling = handlekurv;
@@ -146,7 +148,7 @@
         }
 
         function lagreordre(evt) {
-            alert("Takk for at du handlet hos oss!")
+            alert("Takk for at du handlet hos oss!");
 
             evt.preventDefault();
             const order = {
@@ -161,7 +163,18 @@
                 utlop: inputlop.value,
                 cvv: inpcvv.value
             };
-            ordre.push(order);
+
+
+            let nyordre = db.ref("ordrer/" + new Date());
+
+            nyordre.set({
+                ordre: order,
+                produkter: varene
+            });
+
+
+            //personinfo.push(order);
+            //produkter.push(varene);
             perinfo.reset();
             inpfornavn.focus();
         }
@@ -183,6 +196,9 @@
 
         function visVare(snapshot) {
             let vare = snapshot.val();
+
+            varene.push(vare);
+
             let bestillingsid = snapshot.key;
 
             let produkt = db.ref("produkter/" + vare.varetype + "/" + vare.vareid);
