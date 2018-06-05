@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="bilder/logo-01.png" type="image/gif" />
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="bestilling.css" type="text/css">
+    <title>Bestillinger</title>
+</head>
+<body>
+
+<header>
+    <div id="overmeny">
+        <a href="kaffe.html">kaffe</a>
+        <a href="te.html">te</a>
+        <a href="melding.html">tilbakemelding</a>
+        <a href="handlekurv.html">handlekurv</a>
+    </div>
+    <div id="logo">
+        <a href="index.html"><img src="bilder/logo-01.png">thirstea</a>
+    </div>
+</header>
+
+<main>
+    <div id="main">
+        <h1>Bestillinger</h1>
+        <div id="bes">
+
+        </div>
+    </div>
+</main>
+
+<footer>
+    <a href="om.html">om oss</a>
+    <a href="levering.html">levering</a>
+    <a href="spm.html">FAQ</a>
+</footer>
+
+<script>
+    const db = firebase.database();
+    const ordrer = db.ref("produkter/ordrer");
+
+    function visordrer(data) {
+        // Primærnøkkel
+        const key = data.key;
+        // Data om filmen
+        const ordrer = data.val();
+
+        let article = `
+
+
+
+            `;
+        produkter.innerHTML += article;
+
+    }
+
+</script>
+
+</body>
+</html>
