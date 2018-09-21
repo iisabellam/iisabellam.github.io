@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Prøv Selv 90 Oppgave 3.</title>
+</head>
+<body>
+
+    <script>
+
+        var terningSum = 0;
+
+        while(terningSum < 50){
+            console.log("terningSum =" + terningSum);
+            terningSum = terningSum + Math.floor(Math.random()*6+1);
+        }
+
+        var i =10;
+
+        while (i < 30){ // med betingelsen 1<=30 gjør at den også skriver tallet 30
+            document.write(`${i}<br>`);
+            i = i+1; //hvis den øker med 2 for hver gang, da blir det skrevet halvparten av tallene
+        }
+
+
+
+    </script>
+
+
+</body>
+</html>

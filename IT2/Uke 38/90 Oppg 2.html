@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Prøv Selv 90 Oppgave 2.</title>
+</head>
+<body>
+
+    <canvas id="canvas" style="width: 500px; height: 500px;" ></canvas>
+
+    <script>
+
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var positionX = window.innerWidth;
+        var positionY = 0;
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        while(positionY < canvas.height){
+            ctx.moveTo(0,positionY);
+            ctx.lineTo(positionX, positionY);
+            ctx.stroke();
+            positionY = positionY + 10;
+        }
+
+
+    </script>
+
+
+</body>
+</html>
