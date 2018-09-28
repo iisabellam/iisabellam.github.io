@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgaver uke 39</title>
+    <style>
+        body{
+            display: grid;
+            grid-template-columns: repeat(17, 1fr);
+            grid-row-gap: 7px;
+            grid-column-gap: 7px;
+        }
+        div{
+            text-align: center;
+        }
+        h1{
+            grid-column: span 17;
+            text-align: center;
+        }
+        #oppg2kom{
+            grid-column: span 17;
+            text-align: center;
+        }
+        h10{
+            font-size: 20px;
+            color: red;
+        }
+        #b{
+            grid-column: 1;
+            grid-row: span 4;
+        }
+        #c{
+            grid-column: 1;
+        }
+        #sum{
+            grid-column: span 2;
+        }
+        .mittcanvas{
+            grid-column: span 16;
+        }
+        #gange{
+            grid-column: span 16;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+        }
+        #tabell{
+            background-color: peachpuff;
+            padding: 10px;
+            border-bottom: 0.5px solid;
+            text-align: center;
+            height: 10px;
+            width: 80px;
+        }
+        #lenker{
+            grid-column: span 17;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+
+        var i = 0;
+
+        document.write(`<h1>Oppgave 1: While-løkker</h1> `);
+
+        while (i<=100){
+            document.write(`<div>${i}</div>`);
+            i++;
+        }
+
+
+
+
+        document.write(`<h1>Oppgave 2: For-løkker</h1>`);
+
+        for (var u = 0; u<=100; u++){
+            document.write(`<div>${u}</div>`);
+        }
+
+        document.write(`<br><br>
+        <div id="oppg2kom">Jeg synes begge nøklene er ganske like, men er kanskje lettere å ha alt på en linje. Derfor likte jeg for-løkkelen er best egnet.</div>
+        `);
+
+
+
+
+
+        document.write(`<h1>Oppgave 3: Prøv Selv</h1>`);
+        document.write(`<h10>1. a)</h10>`);
+
+        for (var j = 10; j>=1; j--){
+            document.write(`<div>${j}</div>`);
+        }
+
+        document.write(`<h10 id="b">1. b)</h10>`);
+
+        for (var y = 2; y<=100; y+=2){
+            document.write(`<div>${y}</div>`);
+        }
+
+        document.write(`<h10 id="c">1. c)</h10>`);
+
+        var sum = 0;
+        for (var h = 1; h<=1000; h++){
+            sum = sum + h;
+        }
+        document.write(`<div id="sum">${sum}</div>`);
+
+
+
+
+
+        document.write(`<h10 id="c">2.</h10>`);
+
+        var tallA = 0;
+        var tallB = 1;
+        var tallF = tallA + tallB;
+        document.write(`<div>${tallB}</div>`);
+        document.write(`<div>${tallF}</div>`);
+        for (var l = 1; l<=8; l++){
+            tallA = tallB;
+            tallB = tallF;
+            tallF = tallA + tallB;
+            document.write(`<div>${tallF}</div>`);
+        }
+
+
+
+
+
+        document.write(`<h10 id="c">2. a)</h10>`);
+
+        document.write("<canvas width='400' height='200' id='mittcanvas' class='mittcanvas'></canvas>");
+
+        var mittcanvas = document.getElementById("mittcanvas");
+        var ctx = mittcanvas.getContext("2d");
+        var x = 0;
+
+        for (var linje = 0; linje<=10; linje++){
+            for(var y = 0; y<=160; y+=16) {
+                ctx.moveTo(x, y);
+                ctx.lineTo(500, y);
+                ctx.stroke();
+            }
+        }
+
+        document.write(`<h10 id="c">2. b)</h10>`);
+
+        document.write("<canvas width='400' height='400' id='canvas2' class='mittcanvas'></canvas>");
+
+        var canvas2 = document.getElementById("canvas2");
+        var ctx2 = canvas2.getContext("2d");
+
+        var x = 110;
+        var y = 140;
+        var side = 100;
+
+        for (var kvadrat = 1; kvadrat <= 10; kvadrat++) {
+
+
+            x = x - 10;
+            y = y - 10;
+            side = side + 20;
+            ctx2.strokeRect(x,y,side,side);
+        }
+
+
+
+
+        document.write(`<h10 id="c">3. </h10>`);
+
+        /* for (var d = 1; d<=10; d++){
+            for (var g = 1; g<=10; g++){
+                document.write(`<div>${d}  *  ${g} = ${d*g} </div>`);
+            }
+        }*/
+
+        document.write(`<div id="gange">`);
+
+        for(var i=1; i<=10; i++){
+            document.write(`<div>`);
+            for(var j =1; j<=10; j++){
+                document.write(`<div id="tabell">${i + "*" + j + "=" + (i*j) + ""}</div>`);
+            }
+            document.write(`</div>`);
+        }
+
+        document.write(`</div>`);
+
+        document.write(`<h1>Oppgave 4: Sangtekster</h1><div id="lenker">`);
+
+        document.write(`<a href="41.html">Oppgave 4.1 - All around the World</a>`);
+        document.write(`<a href="42.html">Oppgave 4.2 - Gucci Gang</a>`);
+        document.write(`<a href="43.html">Oppgave 4.3 - Surfin' Bird</a>`);
+
+        document.write(`</div>`);
+
+
+
+    </script>
+
+
+</body>
+</html>
