@@ -45,11 +45,12 @@
         }
         #tabell{
             background-color: peachpuff;
-            padding: 10px;
+            padding: 8px;
             border-bottom: 0.5px solid;
             text-align: center;
             height: 10px;
-            width: 80px;
+            font-size: 15px;
+            width: 85px;
         }
         #lenker{
             grid-column: span 17;
@@ -188,7 +189,7 @@
         for(var i=1; i<=10; i++){
             document.write(`<div>`);
             for(var j =1; j<=10; j++){
-                document.write(`<div id="tabell">${i + "*" + j + "=" + (i*j) + ""}</div>`);
+                document.write(`<div id="tabell">${i} * ${j} = ${i*j}</div>`);
             }
             document.write(`</div>`);
         }
