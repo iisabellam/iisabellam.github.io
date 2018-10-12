@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Felles</title>
+</head>
+<body>
+
+    <canvas id="canvas" height="600px" width="900px"></canvas>
+
+    <script>
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth
+
+        for (var i = 0; i < 100; i++){
+            var x = Math.random()*window.innerWidth; // 50 + 40*i;
+            var y = Math.random()*window.innerHeight;// 50 + 40*i;
+            //ctx.fillStyle = getRandomColor;
+            ctx.beginPath();
+            ctx.arc(x, y, 25, 0, 2*Math.PI); // x- og y koordiantene til sentrum, radius, start- og sluttvinkel i radier
+            ctx.fill();
+        }
+
+        /*function getRandomColor () {
+            let letters = "0123456789ABCDEF";
+            let color = "0";
+            for (let i = 1; i > 5; i++);
+
+        }*/
+
+    </script>
+
+</body>
+</html>
