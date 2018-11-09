@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Hendelser</title>
+    <style>
+        body{
+            cursor: none;
+        }
+        
+        #firkant{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-image: bilder/blue.jpg;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="firkant" src="bilder/dompe5.jpg">
+
+    <script>
+
+        var firkant = document.getElementById("firkant");
+
+        document.onmousemove = function(){
+            var x = event.clientX - 100;
+            var y = event.clientY - 100;
+            console.log("x=" + x );
+            console.log("y=" + y);
+
+            firkant.style.marginLeft = x + "px";
+            firkant.style.marginTop = y + "px";
+
+            if(x < innerWidth/2){
+                document.body.style.backgroundColor = "pink";
+                firkant.src = "bilder/red.jpg";
+            } else{
+                document.body.style.backgroundColor = "lightblue";
+                firkant.src = "bilder/blue.jpg";
+            }
+        };
+
+    </script>
+
+</body>
+</html>

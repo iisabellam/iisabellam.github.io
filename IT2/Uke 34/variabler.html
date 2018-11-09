@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Variabler</title>
+</head>
+<body>
+
+    <script>
+        var radius = 150; //dette er en variabel (skrives med små)
+        const PI = 3.14; // dette er en konstant (skrives med caps)
+
+        var areal = PI * radius * radius; //en variabel kan bestå av andre variabler
+        document.write(areal);
+
+        document.write(PI * radius * radius);
+
+        var fornavn = "Isabel";
+        var etternavn = "Lam";
+
+        document.write("<p>Hei " + fornavn + " " + etternavn + "</p>"); //skrive tekst med varianter
+        document.write(`<p> Hei ${fornavn} ${etternavn}</p>`); // skrive med varianter, uten hermetegn
+
+        var navn; //deklarer en variabel
+        navn = "tc"; //tilordne en verdi til en variabel
+        var jaja = "hei hei"; //definere en variabel
+
+
+        var minVariabel = "Hei!"; //defere en variabel
+        var minAndreVariabel; //deklarere en variabel
+        minAndreVariabel = 23;
+
+        var navneListe = ["Isabel", "Helene", "Helena", "Juni"]; // lager liste
+        document.write(navneListe[0]) //lengden er antall ting, nummer starter på 0
+
+        var megSelv = {
+            navn: "Isabel Lam",
+            jobb: "elev",
+            alder: 18,
+            høyde: 160,
+            hårfarge: "sort"
+        };
+        document.write(`<p> Hei jeg heter ${megSelv.navn} og er ${megSelv.jobb}. Jeg er ${megSelv.alder} år og ${megSelv.høyde} cm høy. </p>`);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Registering</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <main>
+        <div id="wrapper">
+            <h1 id="antall"> 0 </h1>
+            <div class="pers">personer</div>
+
+            <div id="varsel"> <br> </div>
+            <br>
+
+            <div id="fler">
+                <button id="minus" class="leggtil" data-code="Key"> - </button>
+                <button id="pluss" class="leggtil" data-code="Key"> + </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        const minus = document.getElementById("minus");
+        const pluss = document.getElementById("pluss");
+        const antall = document.getElementById("antall");
+        const varsel = document.getElementById("varsel");
+        let antpers = 0;
+
+
+        function trekkFra() {
+            antpers--;
+            if (antpers < 0){
+                antpers = 0;
+            }
+            antall.innerHTML = antpers;
+
+            if (antpers < 50){
+                varsel.innerHTML = "<br>";
+            } else if (antpers < 60){
+                varsel.innerHTML = `ADVARSEL! Det er kun plass til ${60-antpers} igjen!`;
+            } else if (antpers > 60){
+                varsel.innerHTML = "ADVARSEL! Det er for mange i rommet nå, noen må ut!";
+            }
+        }
+
+        function leggTil() {
+            antpers++;
+            antall.innerHTML = antpers;
+            if (antpers > 60){
+                varsel.innerHTML = "ADVARSEL! Det er for mange i rommet nå, noen må ut!";
+            } else if (antpers == 60){
+                varsel.innerHTML = "ADVARSEL! Det er ikke plass til flere nå!";
+            } else if (antpers > 50){
+                varsel.innerHTML = `ADVARSEL! Det er kun plass til ${60-antpers} igjen!`;
+            }
+        }
+
+        window.onkeydown = function (event) {
+            if (event.code === "ArrowUp"){
+                leggTil();
+            } else if (event.code === "ArrowDown"){
+                trekkFra();
+            }
+        }
+
+
+        minus.onclick = trekkFra;
+        pluss.onclick = leggTil;
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>If Setninger</title>
+</head>
+<body>
+
+    <h3>Hva heter hovedstaden i Vietnam</h3>
+    <input type="text" id="inpSvar" placeholder="Skriv ditt svar her">
+    <button id="btnSvar">Send inn</button>
+    <div id="divSvar"></div>
+
+
+    <script>
+
+        /* var a = 7;
+
+        if (a > 6){
+            document.write("a er større enn seks")
+        } else {
+            document.write("a er ikke større enn sekx")
+        };*/
+
+
+        var inpSvar = document.getElementById("inpSvar");
+        var btnSvar = document.getElementById("btnSvar");
+        var divSvar = document.getElementById("divSvar");
+
+        btnSvar.onclick = function () {
+            if (inpSvar.value === "Ha Noi" || inpSvar.value === "Hanoi"){
+                divSvar.innerHTML = "<p>Gratulerer du svarte riktig!</p>"
+            }
+            else {
+                divSvar.innerHTML = "<p>Du svarte desverre feil:( </p>"
+            }
+        };
+
+
+    </script>
+
+</body>
+</html>

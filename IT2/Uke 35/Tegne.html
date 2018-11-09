@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Tegne med JS</title>
+</head>
+<body>
+
+    <canvas id="myCanvas" width="400" height="300"></canvas>
+    <canvas id="nyCanvas" width="100" height="100"></canvas>
+    <canvas id="nyttCanvas" width="500" height="400"></canvas>
+
+    <script>
+        var myCanvas = document.getElementById("myCanvas");
+        var ctx1 = myCanvas.getContext("2d"); //Variabel som referer til 2D innholdet på myCanvas
+        ctx1.fillRect(30,60,70,50); //tegner en firkant på myCanvas, starter 30px til høyre og 60px fra toppen. Er 70*50px
+        ctx1.fillRect(100,150,300,100);
+        ctx1.fillStyle = "red";
+        ctx1.fillRect(150,10,100,100); //denne boksen blir rød
+
+        ctx1.moveTo(15,15); // flytter "pennen" til 15,15
+        ctx1.lineTo(200,200); // lager en strek til 200,200
+        ctx1.strokeStyle = "blue"; // setter farge på linjen
+        ctx1.stroke(); // tegner linjen
+
+
+        var nyCanvas = document.getElementById("nyCanvas");
+        var ctx2 = nyCanvas.getContext("2d");
+        ctx2.fillStyle = "red";
+        ctx2.fillRect(30,20,50,50);
+
+        var nyttCanvas = document.getElementById("nyttCanvas");
+        var ctx3 = nyttCanvas.getContext("2d");
+        ctx3.fillStyle = "green";
+        ctx3.strokeStyle = "red";
+        ctx3.fillRect(40,40,60,70);
+        ctx3.strokeRect(40,40,60,70);
+
+        ctx3.fillStyle ="blue";
+        ctx3.moveTo(200,200);
+        ctx3.lineTo(300,200);
+        ctx3.lineTo(250,300);
+        ctx3.lineTo(200,200);
+        ctx3.fill();
+
+        ctx3.strokeStyle = "black";
+        ctx3.moveTo(300,100);
+        ctx3.lineTo(350,40);
+        ctx3.lineTo(400,100);
+        ctx3.lineTo(400,180);
+        ctx3.lineTo(300,180);
+        ctx3.lineTo(300,100);
+        ctx3.stroke();
+
+        ctx3.fillStyle = "red";
+        ctx3.fillRect(30,300,150,100);
+        
+
+
+    </script>
+
+
+</body>
+</html>

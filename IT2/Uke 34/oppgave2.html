@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            text-align: center;
+        }
+        nav{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: antiquewhite;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            font-family: Helvetica;
+        }
+        #valgt{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="Oppgaver.html">Oppgave 1</a>
+        <a id="valgt" href="Oppgave2.html">Oppgave 2</a>
+        <a href="Oppgave3.html">Oppgave 3</a>
+    </nav>
+
+    <script>
+        var meg;
+        meg = "Isabel";
+
+        var fornavn = meg;
+        var etternavn = "Lam";
+        document.write(`<p> Hei ${fornavn}  ${etternavn}`);
+
+        var navn = prompt("Hva heter du?");
+        document.write(`
+            <p> Til ${navn}. <br> Jeg vil gjerne invitere deg til en kladde fest på lørdag.
+            Det vil bli servert mat, drikke og kake. Håper du vil komme ${navn} <br>
+            Håper vi ses!
+        `);
+
+    </script>
+
+</body>
+</html>

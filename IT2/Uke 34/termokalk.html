@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Termometer kalkulator</title>
+    <style>
+        body{
+            background-color: whitesmoke;
+            text-align: center;
+        }
+        h1{
+            font-family: "Kohinoor Telugu";
+            text-transform: uppercase;
+        }
+        #ftilc{
+            font-family: Helvetica;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Termometer kalkulator</h1>
+
+    <script>
+        var farenheit = prompt("Skriv inn temperatur i farenheit:");
+        var celsius = (farenheit - 32)/1.8;
+        console.log(celsius);
+        document.write(`<p id="ftilc">${farenheit} °F = ${celsius.toFixed(2)} °C</p>`); // toFixed = antall desimaler
+
+        // var farenheit = Number(prompt("Skriv inn temperatur i farenheit:")) //prompten blir et nummer istedenfor string
+
+    </script>
+
+</body>
+</html>

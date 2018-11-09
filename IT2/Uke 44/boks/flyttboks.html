@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Flytt Boks</title>
+    <style>
+        #boks{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: deeppink;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="boks"></div>
+
+    <script>
+
+        const boks = document.getElementById("boks");
+        let posY = 100;
+        let posX = 100;
+
+        window.onkeydown = function (event) {
+            if (event.code === "ArrowUp"){
+                posY -= 5;
+            } else if (event.code === "ArrowDown") {
+                posY += 5;
+            } else if (event.code === "ArrowRight"){
+                posX += 5;
+            } else if (event.code === "ArrowLeft"){
+                posX -= 5;
+            }
+
+            boks.style.left = posX + "px";
+            boks.style.top = posY + "px";
+        }
+
+    </script>
+
+</body>
+</html>

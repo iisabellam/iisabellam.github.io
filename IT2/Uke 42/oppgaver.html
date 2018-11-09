@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgaver</title>
+</head>
+<body>
+
+    <script>
+
+    function kvadrat(n){
+        // En funksjon som returnerer n^2.
+        // Inputparameter n: number
+        // -- Bytt ut XXX under med riktig kode ---
+        return Math.pow(n,2)
+    }
+
+    //Test av funksjon:
+    console.log(kvadrat(4)); // Skal gi 16 i konsollen
+    console.log(kvadrat(17)); // Skal gi 289 i konsollen
+
+    function erOddeTall(tall){
+        // En funksjon om returnerer true hvis tall er oddetall, og false hvis n er partall
+        // Inputparameter tall: number
+        // -- Skriv din kode under her: --
+        return tall%2!==0
+    }
+    //Test av funksjon:
+    console.log(erOddeTall(31)); // Skal gi true i konsollen
+    console.log(erOddeTall(52)); // Skal gi false i konsollen
+
+    function gange(n,m){
+        // En funksjon om returnerer true hvis tall er oddetall, og false hvis n er partall
+        // Inputparametre n: number, m: number
+        // -- Skriv din kode under her: --
+        return (n*m)%2!==0
+    }
+
+    console.log(gange(4,3));
+
+    function iFjerde(tallet){
+        // En funksjon som bruker funksjonen kvadrat(tallet), og returnerer tallet^4.
+        // Input tallet: number
+        // -- Skriv din kode under kode her: ---
+        return kvadrat(kvadrat(tallet));
+    }
+    console.log(iFjerde(5));
+
+
+    function løs(a,b,c) {
+        var x1 =((-b + Math.sqrt((b*b)-(4*a*c)))/(2*a)).toFixed(3);
+        var x2 =((-b - Math.sqrt((b*b)-(4*a*c)))/(2*a)).toFixed(3);
+
+        if ((b*b)-(4*a*c) < 0){
+            return ("Ingen løsning!");
+        } else if((b*b)-(4*a*c) === 0){
+            return ("Én løsning!");
+        } else{
+            return [x1,x2];
+        }
+    }
+    console.log(løs(2,8,3));
+
+    var tall = Math.floor(Math.random()*100)+1;
+
+    function gjettTall() {
+        var gjett = Number(prompt("Gjett et tall mellom 1 og 1000"));
+
+        if (gjett === tall){
+            alert("Du gjettet riktig!");
+        } else if (gjett > tall){
+            alert("Du gjettet for høyt, prøv på nytt!");
+            gjettTall();
+        } else {
+            alert("Du gjettet for lavt, gjett på nytt");
+            gjettTall();
+        }
+
+    }
+
+    console.log(tall);
+    //gjettTall();
+
+
+    var tallA = 0;
+    var tallB = 1;
+    var tallF = tallA + tallB;
+    console.log(tallB);
+    console.log(tallF);
+    for (var l = 1; l<=8; l++){
+        tallA = tallB;
+        tallB = tallF;
+        tallF = tallA + tallB;
+        console.log(tallF);
+    }
+
+
+    document.write(`<canvas width="1000px" height="1000px" id="canvas"></canvas>`);
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var tall1 = 0;
+    var tall2 = 1;
+    var tall3 = tall1 + tall2;
+
+    for (var i = 0; i <= 10; i++){
+        tall1 = tall2;
+        tall2 = tall3;
+        tall3 = tall1 + tall2;
+        ctx.beginPath();
+        ctx.strokeRect(10, 10, 10 + tall3, 10 + tall3 );
+        ctx.fill();
+    }
+
+    </script>
+
+</body>
+</html>

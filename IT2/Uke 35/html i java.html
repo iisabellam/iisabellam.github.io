@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Prøv selv s.69</title>
+    <style>
+        #bilde{
+            max-width: 700px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <p id="mittAvsnitt"> Heihallawhat</p>
+
+    <p id="natur"></p>
+    <p id="qoga">Hva heter du?</p>
+    <p id="filmer"></p>
+    <p id="handleliste"></p>
+
+    <img src="bilder/18.jpg" id="bilde">
+
+    <script>
+        var parMittAvsnitt = document.getElementById("mittAvsnitt"); // variabel som referer til ett html-element
+
+        parMittAvsnitt.innerHTML = "Denne teksten er laget av JS";
+        parMittAvsnitt.innerHTML += " jeg legger til tekst";
+
+        var parNatur = document.getElementById("natur");
+        parNatur.innerHTML = "Naturen i Norge er veldig fin";
+
+        var parQogA = document.getElementById("qoga");
+        //var svar = prompt("Hva heter du?");
+        //parQogA.innerHTML += `<br> ${svar}`;
+
+        var parFilmer = document.getElementById("filmer");
+        var filmer = ["The Giver", "The Longest Ride", "Divergent", "The Notebook"];
+
+        parFilmer.innerHTML = `
+        <ul>
+        <li>${filmer[0]}</li>
+        <li>${filmer[1]}</li>
+        <li>${filmer[2]}</li>
+        <li>${filmer[3]}</li>
+        </ul> `;
+
+        var parHandleliste = document.getElementById("handleliste");
+        //var forrett = prompt("Hva trenger du til forretten?");
+        //var hovedrett = prompt("Hva trenger du til hovedretten?");
+        //var dessert = prompt("Hva trenger du til desserten?");
+
+        /*parHandleliste.innerHTML = `
+        Ting jeg trenger til:
+        <ul>
+        <li>Forrett: <b>${forrett}</b></li>
+        <li>Hovedrett: <b>${hovedrett}</b></li>
+        <li>Dessert: <b>${dessert}</b></li>
+        </ul>`;*/
+
+        var imgBilde = document.getElementById("bilde");// variaber som referer til img-taggen
+        var bildeArray = ["bilder/18.jpg", "bilder/41.jpg", "bilder/79.jpg"];
+        imgBilde.src = bildeArray[Math.round(Math.random()*2)];
+
+
+    </script>
+
+</body>
+</html>

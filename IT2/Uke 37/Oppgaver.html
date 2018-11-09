@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgaver</title>
+    <style>
+        #info{
+            margin-top: 30px;
+            max-width: 400px;
+            font-family: Helvetica;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" placeholder="Skriv inn mobilmerke" id="mobilmerke">
+    <button id="søk">Søk</button>
+
+    <div id="info"></div>
+
+    <script>
+
+        var mittTall = 8;
+
+        if (mittTall === 10){
+            console.log("Tallet er lik 10");
+        } else{
+            console.log("Tallet er ikke lik 6");
+        };
+
+
+        if (mittTall > 6){
+            console.log("Tallet er større enn 6");
+        } else{
+            console.log("Tallet er mindre enn 6");
+        };
+
+        if (mittTall > 5 && mittTall < 15){
+            console.log("Tallet er større enn 5 og mindre enn 15");
+        } else {
+            console.log("Tallet er ikke større enn 5 og mindre enn 15");
+        };
+
+        /*console.log(8===10);
+        console.log(8>6);
+        console.log(5>8) || (8>15);
+        console.log(5<8) && (8<15);
+        console.log("Isabel" === "Per");*/
+
+        var info = document.getElementById("info");
+        const mobilmerke = document.getElementById("mobilmerke");
+        var søk = document.getElementById("søk");
+
+        søk.onclick = function () {
+            switch (mobilmerke.value){
+                case "Apple":
+                    info.innerHTML = "Du har en mobil fra merke Apple. Apple er et amerikansk multinasjonalt teknologiselskap som utvikler og selger forbrukerelektronikk, programvare, og personlige datamaskiner. Selskapets mest kjente produkter er Macintosh-familien med datamaskiner, iPod, iPhone, iPad og Apple Watch. ";
+                    document.body.style.backgroundColor = "lightgrey";
+                    break;
+                case "iPhone":
+                    info.innerHTML = "Du har en iPhone fra merke Apple. Apple er et amerikansk multinasjonalt teknologiselskap som utvikler og selger forbrukerelektronikk, programvare, og personlige datamaskiner. Selskapets mest kjente produkter er Macintosh-familien med datamaskiner, iPod, iPhone, iPad og Apple Watch.  ";
+                    document.body.style.backgroundColor = "lightgrey";
+                    break;
+                case "Samsung":
+                    info.innerHTML = "Du har en mobil fra  Samsung. Samsung er en av de største forretningsgruppene i Sør-Korea. Det startet som et eksportselskap i 1938, men utvidet seg raskt til andre områder. Samsung Group har godt over 400 000 ansatte over hele verden, og produserer biler, elektronikk, kjemikalier, fly, båter, handelsvarer, driver hoteller, fornøyelsesparker, bygger skyskrapere, produserer tekstiler, mat osv i separate selskaper, bygd opp etter den asiatiske finanskrisen.";
+                    document.body.style.backgroundColor = "pink";
+                    break;
+                case "Nokia":
+                    info.innerHTML = "Du har en mobil fra Nokia. Nokia er et finsk aksjeselskap. Nokia ble etablert i 1865 av Knut Fredrik Idestam for å produsere papir. Etter hvert vokste bedriften til et multinasjonalt selskap med ulike produkter som gummi, kjemikalier og etter hvert telekommunikasjon.";
+                    document.body.style.backgroundColor = "lightblue";
+                    break;
+                default:
+                    info.innerHTML = "Beklager, har ikke informasjon om din mobil";
+                    document.body.style.backgroundColor = "lightgreen";
+                    break;
+            }
+        };
+
+
+    </script>
+
+</body>
+</html>

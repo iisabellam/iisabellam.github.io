@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Prøv Selv s.64</title>
+</head>
+<body>
+
+    <script>
+        var antallFrukt = "3";
+        var antallGronnsaker = "2";
+        var antallVarer = antallFrukt + antallGronnsaker;
+        var antallVarernr = Number(antallFrukt) + Number(antallGronnsaker);
+
+        document.write(`<p> ${antallVarernr} er hvis jeg fjerner anførselstegnene, ${antallVarer} er hvis jeg ikke fjerner de.</p>`);
+
+
+        var vareUtenMoms = Number(prompt("Skriv inn varepris uten moms"));
+        var vareMedMoms = vareUtenMoms * 1.25;
+        document.write(`<p> Varen koster ${vareMedMoms.toFixed(2)} kr med moms </p> `);
+
+
+        var dataMengde = Number(prompt("Skriv inn  brukt datamengde i MB denne måneden:"));
+        var antSamtaler = Number(prompt("Skriv inn antall samtaler denne måneden:"));
+        var ringetid = Number(prompt("Skriv inn ringetid i minutter denne måneden:"));
+        var antSMS = Number(prompt("Skriv inn antall SMS sendt denne måneden:"));
+        var antMMS = Number(prompt("Skriv inn antall MMS sendt denne måneden:"));
+        var pris = dataMengde*10 + antSamtaler*0.89 + ringetid*0.39 + antSMS*0.69 + antMMS*1.99;
+        document.write(`<p> Mobilabonnementet koster ${pris.toFixed(2)} kr denne måneden </p>`);
+
+        var liste = ["Isabel", "Helena", "Vilde", "Celine", "Emilie"];
+        document.write(`<p> Siste verdien i arrayet er "${liste[4]}" </p>`);
+
+        var frukt1 = {
+            navn: "eple",
+            pris: 9
+        };
+
+        var frukt2 = {
+            navn: "banan",
+            pris: 12
+        };
+
+        var frukt3 = {
+            navn: "kiwi",
+            pris: 6
+        };
+
+        frukt2.pris = 15;
+
+        document.write(`<p> ${frukt1.navn} koster ${frukt1.pris} kr</p>`);
+        document.write(`<p> ${frukt2.navn} koster ${frukt2.pris} kr</p>`);
+        document.write(`<p> ${frukt3.navn} koster ${frukt3.pris} kr</p>`);
+
+    </script>
+
+</body>
+</html>

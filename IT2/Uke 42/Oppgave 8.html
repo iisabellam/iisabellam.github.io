@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 8</title>
+</head>
+<body>
+
+    <canvas id="canvas" width="500px" height="500px"></canvas>
+
+    <script>
+
+        const canvas = document.getElementById("canvas");
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        var ctx = canvas.getContext("2d");
+
+        document.onclick = function visskudd() {
+            document.onmousemove = function tegne() {
+                var x = event.clientX - 5;
+                var y = event.clientY - 5;
+
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, 2*Math.PI);
+                ctx.fill();
+
+                //document.write(`<div id="skudd" style="width: 20px; height 20px; border-radius: 50%; background-color: red; position: absolute; top: ${y}; left: ${x};"></div>`);
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>

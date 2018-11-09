@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>Enkel Kalkulator med input</title>
+</head>
+<body>
+
+    <h1>Enkel kalkulator med input</h1>
+
+    <input type="number" id="inpTall" placeholder="tall">
+    <input type="number" id="inpTall2" placeholder="tall">
+    <input type="text" id="tegn">
+    <button id="btnRegnUt">Regn Ut</button>
+    <span id="spnResultat"></span>
+
+    <br>
+    <br>
+    <br>
+    <input type="text" id="inpFarge" placeholder="Skriv inn Bakgrunnspfarge">
+
+
+    <script>
+
+        // --- Referanser ---
+        var inpTall = document.getElementById("inpTall");
+        var inpTall2 = document.getElementById("inpTall2");
+        var tegn = document.getElementById("tegn");
+        var spnResultat = document.getElementById("spnResultat");
+        var btnRegnUt = document.getElementById("btnRegnUt");
+        var inpFarge = document.getElementById("inpFarge");
+
+        // ----
+
+        btnRegnUt.onclick = function(){
+            if (tegn === "+"){
+                spnResultat.innerHTML = Number(inpTall.value) + Number(inpTall2.value);
+            }
+            else if (tegn === "-"){
+                spnResultat.innerHTML = Number(inpTall.value) - Number(inpTall2.value);
+            }
+            else if (tegn === "*"){
+                spnResultat.innerHTML = Number(inpTall.value) * Number(inpTall2.value);
+            }
+            else if (tegn === "/"){
+                spnResultat.innerHTML = Number(inpTall.value) / Number(inpTall2.value);
+            }
+        };
+
+
+
+        function endreStil() {
+            document.body.style.backgroundColor = inpFarge.value;
+        }
+
+        inpFarge.onkeyup = endreStil;
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Montserrat" rel="stylesheet">
+    <title>Bildekarusell</title>
+    <style>
+        body{
+            margin: auto;
+            text-align: center;
+        }
+        h1{
+            font-family: Montserrat;
+        }
+        div{
+            overflow: hidden;
+            height: 500px;
+            width: 715px;
+            margin: auto;
+        }
+        button{
+            padding: 15px;
+            background-color: #e0dddb;
+            color: white;
+            border: solid 0.5px #b4b4b4;
+            font-family: Montserrat;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BILDEKARUSELL</h1>
+    <div>
+    <img id="bilde" src="bilder/img1.jpeg" height="500px">
+    </div>
+        <br>
+    <button id="tilbake"> < </button>
+    <button id="tilfeldig"> Random </button>
+    <button id="fram"> > </button>
+
+    <script>
+
+        const bilde = document.getElementById("bilde");
+        const tilbake = document.getElementById("tilbake");
+        const fram = document.getElementById("fram");
+        const tilfeldig = document.getElementById("tilfeldig");
+        let array = ["img1.jpeg", "img2.jpeg", "img3.jpeg", "img4.jpeg", "img5.jpeg"]
+        let n = 0;
+
+        fram.onclick = function frambilde() {
+            n++;
+            if (n > 4){
+                n = 0;
+                bilde.src = "bilder/" + array[n];
+            } else{
+                bilde.src = "bilder/" + array[n];
+            }
+        };
+
+        tilbake.onclick = function bakbilde() {
+            n--;
+            if (n < 0){
+                n = 4;
+                bilde.src = "bilder/" + array[n];
+            } else{
+                bilde.src = "bilder/" + array[n];
+            }
+        };
+        
+        tilfeldig.onclick = function tilfeldigbilde() {
+            bilde.src = "bilder/img" + Math.floor(Math.random()*5+1) + ".jpeg";
+        }
+
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Huskeliste</title>
+</head>
+<body>
+
+    <div>
+        <input type="text" id="inpLeggTil" placeholder="Ting jeg må huske">
+        <button id="btnKnapp">Legg til</button>
+    </div>
+
+    <div id="divListe">
+        <ul id="ulListe">
+
+        </ul>
+    </div>
+
+    <script>
+        const inpLeggTil = document.getElementById("inpLeggTil");
+        const btnKnapp = document.getElementById("btnKnapp");
+        const divListe = document.getElementById("divListe");
+        const ulListe = document.getElementById("ulListe");
+
+        let punkter =[];
+
+        btnKnapp.onclick = function() {
+            if (inpLeggTil.value !== ""){
+                punkter.push(inpLeggTil.value);
+                inpLeggTil.value = "";
+            }
+            ulListe.innerHTML = "";
+            for (let i=0; i<punkter.length; i++){
+                leggtilPunkt(punkter[i]);
+            }
+        };
+
+        function leggtilPunkt(tekst) {
+            ulListe.innerHTML += `<li>${tekst}</li>`;
+        };
+
+
+        function fjernPunkt (liste, punkt){
+            for (let i = 0; i < liste.length; i++)
+                if(punkt === liste[i]){
+                    liste.splice(i,1);
+                }
+        };
+
+
+
+    </script>
+
+
+</body>
+</html>
