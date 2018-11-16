@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Muli|Open+Sans+Condensed:300|PT+Sans+Narrow|Poppins" rel="stylesheet">
+    <title>PickAPizza - 3 steg til din drømmepizza</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+
+        <h1>PickAPizza</h1>
+        <h4>3 STEG TIL DIN DRØMMEPIZZA</h4>
+
+    </header>
+
+    <main>
+        <nav>
+            <a href="#" class="navbar">1. lag pizza</a>
+            <a href="#" class="navbar">2. fyll inn info</a>
+            <a href="#" class="navbar">3. bekreft bestilling</a>
+        </nav>
+
+        <div id="lag">
+            <div id="velg">
+                <div class="ting" id="bunn">
+                    <h3>bunn</h3>
+                    <div><input type="radio" class="bunn" name="bunn" value="American" checked> American</div>
+                        <div><input type="radio" class="bunn" name="bunn" value="Italian"> Italian</div>
+                        <div><input type="radio" class="bunn" name="bunn" value="Deep Dish"> Deep Dish</div>
+                        <div><input type="radio" class="bunn" name="bunn" value="Cheesestuffed"> Cheesestuffed</div>
+                </div>
+                <div class="ting" id="ost">
+                    <h3>Ost</h3>
+                        <div><input type="checkbox" class="ost" value="mozzarella"> mozzarella</div>
+                        <div><input type="checkbox" class="ost" value="parmesan"> parmesan</div>
+                        <div><input type="checkbox" class="ost" value="cheddar"> cheddar</div>
+                        <div><input type="checkbox" class="ost" value="Guada"> Guada</div>
+                        <div><input type="checkbox" class="ost" value="Blue Cheese"> Blue Cheese</div>
+                </div>
+                <div class="ting" id="topping">
+                    <h3>Topping</h3>
+                        <div><input type="checkbox" class="topping" value="skinke"> skinke </div>
+                        <div><input type="checkbox" class="topping" value="pepperoni"> pepperoni </div>
+                        <div><input type="checkbox" class="topping" value="kylling"> kylling </div>
+                        <div><input type="checkbox" class="topping" value="bacon"> bacon </div>
+                    <div><input type="checkbox" class="topping" value="tomat"> tomat</div>
+                    <div><input type="checkbox" class="topping" value="sopp"> sopp</div>
+                    <div><input type="checkbox" class="topping" value="paprika"> paprika</div>
+                    <div><input type="checkbox" class="topping" value="mais"> mais</div>
+                    <div><input type="checkbox" class="topping" value="ruccola"> ruccola </div>
+                    <div><input type="checkbox" class="topping" value="løk"> løk</div>
+                    <div><input type="checkbox" class="topping" value="oliven"> oliven </div>
+                    <div><input type="checkbox" class="topping" value="ananas"> ananas</div>
+                </div>
+                <div class="ting" id="dressing">
+                    <h3>dressing</h3>
+                        <div><input type="checkbox" class="dressing" value="hvitløk"> hvitløk</div>
+                        <div><input type="checkbox" class="dressing" value="rømme"> rømme</div>
+                        <div><input type="checkbox" class="dressing" value="salsa"> salsa</div>
+                        <div><input type="checkbox" class="dressing" value="pesto"> pesto</div>
+                        <div><input type="checkbox" class="dressing" value="olje"> olje</div>
+                        <div><input type="checkbox" class="dressing" value="hot saus"> hot saus</div>
+                </div>
+                <div class="ting" id="knapp">
+                <button id="btnNeste">NESTE</button>
+                </div>
+            </div>
+            <div id="pizza">
+                <img src="bilder/bunn-01.png">
+            </div>
+        </div>
+
+        <div id="info">
+                <h2>Personopplysninger</h2>
+                <div id="form">
+                    <h17>Fornavn</h17>
+                    <h17>Etternavn</h17>
+                    <input type="text" placeholder="Fornavn" id="inpfornavn">
+                    <input type="text" placeholder="Etternavn" id="inpetternavn">
+                    <h17 class="span2">Adresse</h17>
+                    <input class="span2" type="text" placeholder="Adresse" id="inpadresse">
+                    <h17>Postnummer</h17>
+                    <h17>By</h17>
+                    <input type="number" placeholder="Postnummer" id="inppostnr">
+                    <input type="text" placeholder="By" id="inpby">
+                    <h17 class="span2" >E-Mail</h17>
+                    <input class="span2"  type="text" placeholder="E-mail" id="inpemail">
+                    <h17 class="span2" >Telefonnummer</h17>
+                    <input class="span2"  type="text" placeholder="Telefon" id="inptlf">
+                    <h2 class="span2" style="margin-top: 30px">Betal ved henting eller leveranse</h2>
+                    <button id="btnbet" >Neste</button>
+                </div>
+        </div>
+
+        <div id="bekreft">
+            <h2>Sjekk om all info er korrekt</h2>
+            <div id="sjekk">
+                <div id="bestilling">
+
+                </div>
+                <div id="person">
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

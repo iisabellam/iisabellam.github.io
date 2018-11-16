@@ -1,0 +1,86 @@
+*{
+    color: black;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+body{
+    margin: auto;
+    background-color: lightgray;
+}
+header{
+    background-color: lightgray;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
+main{
+    text-transform: uppercase;
+}
+nav{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: darkgray;
+    padding: 6px;
+    margin: auto;
+}
+#lag{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.ting{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    margin: 15px;
+}
+#pizza{
+    position: relative;
+    width: 100%;
+}
+img{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+#info{
+    display: none;
+    margin: auto;
+    width: 60%;
+}
+#form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+#bekreft{
+    display: none;
+    width: 80%;
+    margin: auto;
+}
+#sjekk{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+a{
+    text-decoration: none;
+    margin: auto;
+}
+h1, h3, h4{
+    margin: 0;
+}
+h3{
+    grid-column: span 2;
+}
+button{
+    padding: 10px;
+    margin: 5px;
+    font-size: 15px;
+}
+.span2{
+    grid-column: span 2;
+}
