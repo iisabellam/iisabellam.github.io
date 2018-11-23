@@ -1,16 +1,30 @@
 *{
     color: black;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: "PT Sans Narrow", sans-serif;
+    user-select: none;
 }
 body{
     margin: auto;
-    background-color: lightgray;
+    background-color: rgb(255, 245, 187);
 }
 header{
-    background-color: lightgray;
     text-align: center;
     margin: auto;
     padding: 10px;
+}
+#logo{
+    height: 60px;
+}
+#boks{
+    position: absolute;
+    height: 130px;
+    top:-5px;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+video{
+    width: 100vw;
 }
 main{
     text-transform: uppercase;
@@ -18,9 +32,10 @@ main{
 nav{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background-color: darkgray;
+    background-color: #daa437;
     padding: 6px;
     margin: auto;
+    box-shadow: 0px 2px 5px #a3a3a3;
 }
 #lag{
     display: grid;
@@ -38,8 +53,8 @@ nav{
     position: relative;
     width: 100%;
 }
-img{
-    width: 100%;
+.lol{
+    width: 90%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -60,27 +75,46 @@ img{
     display: none;
     width: 80%;
     margin: auto;
+    text-align: center;
 }
 #sjekk{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
 }
-a{
+p{
     text-decoration: none;
     margin: auto;
 }
-h1, h3, h4{
+h3, h4{
     margin: 0;
+}
+h4{
+    color: #daa437;
 }
 h3{
     grid-column: span 2;
+    font-size: 25px;
 }
 button{
     padding: 10px;
     margin: 5px;
     font-size: 15px;
+    background-color: #daa437;
+    border: hidden;
 }
 .span2{
     grid-column: span 2;
+}
+#pris{
+    margin-top: 10%;
+    font-size: 2.5em;
+    color: #daa437;
+    text-shadow: 0px 1px 3px #a0a0a0;
+}
+#nav2, #nav3{
+    color: white;
+}
+input{
+    padding: 5px;
 }

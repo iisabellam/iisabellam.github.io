@@ -9,17 +9,20 @@
 <body>
 
     <header>
+        <div id="boks">
+        <video src="bilder/gulrulle.mov" autoplay loop muted></video>
+        </div>
 
-        <h1>PickAPizza</h1>
+        <img src="bilder/logo-01.png" id="logo">
         <h4>3 STEG TIL DIN DRØMMEPIZZA</h4>
 
     </header>
 
     <main>
         <nav>
-            <a href="#" class="navbar">1. lag pizza</a>
-            <a href="#" class="navbar">2. fyll inn info</a>
-            <a href="#" class="navbar">3. bekreft bestilling</a>
+            <p id="nav1" href="#" class="navbar">1. lag pizza</p>
+            <p id="nav2" href="#" class="navbar">2. fyll inn info</p>
+            <p id="nav3" href="#" class="navbar">3. bekreft bestilling</p>
         </nav>
 
         <div id="lag">
@@ -32,7 +35,7 @@
                         <div><input type="radio" class="bunn" name="bunn" value="Cheesestuffed"> Cheesestuffed</div>
                 </div>
                 <div class="ting" id="ost">
-                    <h3>Ost</h3>
+                    <h3>Ost: 10,-</h3>
                         <div><input type="checkbox" class="ost" value="mozzarella"> mozzarella</div>
                         <div><input type="checkbox" class="ost" value="parmesan"> parmesan</div>
                         <div><input type="checkbox" class="ost" value="cheddar"> cheddar</div>
@@ -40,7 +43,7 @@
                         <div><input type="checkbox" class="ost" value="Blue Cheese"> Blue Cheese</div>
                 </div>
                 <div class="ting" id="topping">
-                    <h3>Topping</h3>
+                    <h3>Topping: 20,-</h3>
                         <div><input type="checkbox" class="topping" value="skinke"> skinke </div>
                         <div><input type="checkbox" class="topping" value="pepperoni"> pepperoni </div>
                         <div><input type="checkbox" class="topping" value="kylling"> kylling </div>
@@ -55,7 +58,7 @@
                     <div><input type="checkbox" class="topping" value="ananas"> ananas</div>
                 </div>
                 <div class="ting" id="dressing">
-                    <h3>dressing</h3>
+                    <h3>dressing: 30,-</h3>
                         <div><input type="checkbox" class="dressing" value="hvitløk"> hvitløk</div>
                         <div><input type="checkbox" class="dressing" value="rømme"> rømme</div>
                         <div><input type="checkbox" class="dressing" value="salsa"> salsa</div>
@@ -68,12 +71,13 @@
                 </div>
             </div>
             <div id="pizza">
-                <img src="bilder/bunn-01.png">
+                <p id="pris"> Pris: 100,- </p>
+                <img src="bilder/bunn-01.png" class="lol">
             </div>
         </div>
 
         <div id="info">
-                <h2>Personopplysninger</h2>
+                <h1>Personopplysninger</h1>
                 <div id="form">
                     <h17>Fornavn</h17>
                     <h17>Etternavn</h17>
@@ -90,12 +94,13 @@
                     <h17 class="span2" >Telefonnummer</h17>
                     <input class="span2"  type="text" placeholder="Telefon" id="inptlf">
                     <h2 class="span2" style="margin-top: 30px">Betal ved henting eller leveranse</h2>
+                    <button id="btnback" >Tilbake</button>
                     <button id="btnbet" >Neste</button>
                 </div>
         </div>
 
         <div id="bekreft">
-            <h2>Sjekk om all info er korrekt</h2>
+            <h1>Sjekk om all info er korrekt</h1>
             <div id="sjekk">
                 <div id="bestilling">
 
@@ -103,6 +108,8 @@
                 <div id="person">
 
                 </div>
+                <button id="btnbak" >Tilbake</button>
+                <button id="btnbek" >Bekreft Ordre</button>
             </div>
         </div>
 
