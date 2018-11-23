@@ -1,0 +1,410 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    font-family: Montserrat, Arial;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+body > header{
+    padding: 5px 0px 2px 0px;
+    z-index: 4;
+}
+body > header > nav{
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    border-bottom: 1px black solid;
+    background-color: white;
+    position: fixed;
+    top: 0px;
+    padding-top: 5px;
+    width: 100vw;
+}
+body > header > nav > .logo{
+    grid-column: span 2;
+    text-align: left;
+    margin-left: 15%;
+}
+body > header > nav > .icon > img{
+    margin-top: 15px;
+    max-height: 30px;
+    transition: transform 200ms ease-in-out;
+    opacity: 0.5;
+}
+body > header > nav > .icon > img:hover{
+    opacity: 1;
+    transform: scale(1.07);
+}
+body > header > nav > .logo > img{
+    margin-top: 2px;
+    max-width: 200px;
+    transition: transform 200ms ease-in-out;
+}
+body > header > nav > .logo > img:hover {
+    transform: scale(1.1);
+}
+body > header > .undermeny{
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    padding: 5px;
+    text-transform: uppercase;
+    margin-top: 68px;
+    border-bottom: 1px solid black;
+}
+body > main{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 40px;
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+body > main > .bilder{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+}
+body > main .bilder > input{
+    display: none;
+}
+body > main > .bilder > img {
+    width: 100%;
+}
+body > main > .info{
+    margin-left: 40px;
+    margin-top: 40px;
+    max-width: 350px;
+}
+
+body > main > .info > select{
+    background-color: white;
+    width: 100%;
+    height: 30px;
+    border-radius: 0;
+    font-family: Montserrat, Arial;
+    text-transform: uppercase;
+    padding: 7px 10% 7px 8px;
+}
+body > main > .info > label > .kjøp{
+    background-color: red;
+    color: white;
+    width: 95%;
+    font-family: Montserrat, Arial;
+    font-size: 15px;
+    border: 0px #979797 solid;
+    transition: 0.2s;
+    text-align: center;
+    padding: 10px;
+    line-height: normal;
+    user-select: none;
+}
+body > main > .info > input{
+    display: none;
+}
+body > main > .info > label > .kjøp:hover{
+    background-color: #b00002;
+    cursor: pointer;
+}
+body > main > .info > #buy:checked ~ .buy{
+    display: block;
+}
+body > main > .info > .buy{
+    user-select: none;
+    margin-top: 10px;
+    display: none;
+}
+body > main > .info > .buy > form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-column-gap: 10px;
+}
+body > main > .info > .buy > form > div{
+    margin-top: 5px;
+}
+body > main > .info > .buy > form > input{
+    height: 20px;
+    padding: 0px 5px;
+}
+body > main > .info > .buy > form > .submit{
+    height: 35px;
+    border-radius: 0;
+    background-color: red;
+    color: white;
+    border: solid lightgray 0;
+    transition: 0.2s;
+}
+body > main > .info > .buy > form > .submit > a{
+    color: white;
+}
+body > main > .info > .buy > form > .submit:hover{
+    background-color: #b00002;
+    cursor: pointer;
+}
+body > main > .info > .buy > form > select{
+    background-color: white;
+    height: 30px;
+    border-radius: 0;
+    font-family: Montserrat, Arial;
+    padding: 7px 10% 7px 8px;
+    margin-top: 5px;
+}
+body > main > .info > .produkt{
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+body > main > .info > .produkt > input{
+    display: none;
+}
+body > main > .info > .produkt > label{
+    background-color: lightgray;
+    padding: 5px;
+    text-align: center;
+    border: 0.5px solid lightgray;
+    cursor: pointer;
+}
+body > main > .info > .produkt > .vis{
+    display: none;
+    padding: 10px;
+    border: solid lightgray 1px;
+    border-top: none;
+    font-size: 10px;
+    line-height: 17px;
+}
+body > main > .info > .produkt > #om:checked ~ #om2{
+    background-color: white;
+    border-bottom: none;
+}
+body > main > .info > .produkt > #om:checked ~ .visom{
+    display: block;
+}
+body > main > .info > .produkt > #dar:checked ~ #dandr{
+    background-color: white;
+    border-bottom: none;
+}
+body > main > .info > .produkt > #dar:checked ~ .visdar{
+    display: block;
+}
+body > main > .info > .produkt > #size:checked ~ #fit{
+    background-color: white;
+    border-bottom: none;
+}
+body > main > .info > .produkt > #size:checked ~ .vissize{
+    display: block;
+}
+body > .main {
+    background-color: white;
+    margin: 0;
+    margin-top: 20px;
+    width: 100vw;
+    border-top: solid 1px black;
+    padding-bottom: 20px;
+    position: relative;
+}
+body > .main > .shop {
+    max-width: 1200px;
+    margin: auto;
+    background-color: transparent;
+    overflow: hidden;
+}
+.pil {
+    position: absolute;
+    top: 50%;
+    height: 25px;
+    cursor: pointer;
+}
+.pil1{
+    left: 15px;
+}
+.pil2{
+    right: 15px;
+}
+.pil3{
+    left: 15px;
+    z-index: 5;
+}
+.pil4{
+    right: 15px;
+    z-index: 5;
+}
+.insta{
+    display: grid;
+    grid-template-columns: repeat(26,1fr);
+    grid-gap: 9px;
+    width: 371.43%; /* 1 bilde = 14,28% */
+    margin-left: 0%;
+    transition: 1s;
+}
+body > .main > article > h2{
+    margin: 20px;
+    text-align: center;
+}
+body > .main > article > .boksforig > .insta > div > img {
+    width: 100%;
+    user-select: none;
+    transition: 0.5s;
+}
+body > .main > article > .boksforig > .insta > div > img:hover {
+    opacity: 0.8;
+}
+body > footer{
+    background-color: gray;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: white;
+    padding: 0px 30px;
+}
+body > footer > article{
+    text-align: left;
+    margin: 10px;
+    font-size: 10px;
+    color: #565656;
+}
+body > footer > article > a{
+    color: white;
+    font-size: 15px;
+}
+body > footer > article > li {
+    text-decoration: none;
+    list-style: none;
+    line-height: 1.7em;
+    letter-spacing: 1.3px;
+    padding-top: 5px;
+}
+body > footer > article > li > a{
+    color: #3f3f3f;
+    font-size: 13px;
+}
+body > footer > article > li > a:hover{
+    color: #aeaeae;
+}
+h2{
+
+    line-height: 30px;
+    text-transform: uppercase;
+
+}
+h4{
+
+    line-height: 30px;
+}
+h6{
+    font-size: 12px;
+
+    line-height: 50px;
+}
+h7{
+    font-size: 12px;
+    line-height: 30px;
+}
+h8{
+    transition: 0.5s;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+a{
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+a:hover{
+    color: red;
+}
+
+.col2{
+    grid-column: span 2;
+}
+.col3{
+    grid-column: span 3;
+    letter-spacing: normal;
+}
+.col4{
+    grid-column: span 4;
+    letter-spacing: normal;
+}
+.col5{
+    grid-column: span 5;
+}
+.col7{
+    grid-column: span 7;
+}
+.row2{
+    grid-row: span 2;
+}
+.row7{
+    grid-row: span 7;
+}
+.row12{
+    grid-row: span 12;
+}
+.jakke2{
+    display: none;
+}
+.jakke3{
+    display: none;
+}
+label{
+    max-height: 119.81px;
+}
+#velg1 {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: 125px;
+}
+#toggle-1:checked ~ #velg1 {
+    border: solid red 2px;
+}
+#toggle-1:checked ~ img ~ #ting1{
+    display: block;
+}
+
+#toggle-1:checked ~ img:not(#ting1) {
+    display: none;
+}
+#velg2 {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: calc(125px + 135px);
+}
+#toggle-2:checked ~ #velg2 {
+    border: solid red 2px;
+}
+#toggle-2:checked ~ #ting2{
+    display: block;
+}
+#toggle-2:checked ~ img:not(#ting2){
+    display: none;
+}
+#velg3 {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    top: calc(125px + 135px + 135px);
+}
+#toggle-3:checked ~ #velg3 {
+    border: solid red 2px;
+}
+#toggle-3:checked ~ #ting3{
+    display: block;
+}
+#toggle-3:checked ~ img:not(#ting3){
+    display: none;
+}
+.trykk1{
+    max-width: 80px;
+}
+.trykk2{
+    max-width: 80px;
+}
+.trykk3{
+    max-width: 80px;
+}

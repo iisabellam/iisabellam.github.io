@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+body{
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    font-family: Montserrat, Arial;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+body > header{
+    padding: 5px 0px 2px 0px;
+    z-index: 4;
+}
+body > header > nav{
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    border-bottom: 1px black solid;
+    background-color: white;
+    position: fixed;
+    top: 0px;
+    padding-top: 5px;
+    width: 100vw;
+}
+body > header > nav > .logo{
+    grid-column: span 2;
+    text-align: left;
+    margin-left: 15%;
+}
+body > header > nav > .icon > img{
+    margin-top: 15px;
+    max-height: 30px;
+    transition: transform 200ms ease-in-out;
+    opacity: 0.8;
+}
+body > header > nav > .icon > img:hover{
+    opacity: 1;
+    transform: scale(1.07);
+}
+body > header > nav > .logo > img{
+    margin-top: 2px;
+    max-width: 200px;
+    transition: transform 200ms ease-in-out;
+}
+body > header > nav > .logo > img:hover {
+    transform: scale(1.1);
+}
+body > header > .undermeny{
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    padding: 5px;
+    text-transform: uppercase;
+    margin-top: 68px;
+    border-bottom: 1px solid black;
+}
+body > main{
+    margin: auto;
+    text-align: center;
+    max-width: 1200px;
+    margin: 70px 0px;
+}
+body > main > a > img{
+    max-width: 700px;
+    margin: 40px;
+}
+body > footer{
+    background-color: gray;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: white;
+    padding: 0px 30px;
+}
+body > footer > article{
+    text-align: left;
+    margin: 10px;
+    font-size: 10px;
+    color: #565656;
+}
+body > footer > article > a{
+    color: white;
+    font-size: 15px;
+}
+body > footer > article > li {
+    text-decoration: none;
+    list-style: none;
+    line-height: 1.7em;
+    letter-spacing: 1.3px;
+    padding-top: 5px;
+}
+body > footer > article > li > a{
+    color: #3f3f3f;
+    font-size: 13px;
+}
+body > footer > article > li > a:hover{
+    color: #aeaeae;
+}
+h5{
+    font-size: 25px;
+    text-transform: uppercase;
+}
+h6{
+    font-size: 12px;
+}
+h7{
+    font-size: 10px;
+}
+h8{
+    transition: 0.5s;
+}
+h11{
+    font-size: 18px;
+    text-transform: uppercase;
+}
+h12{
+    font-size: 13px;
+    text-transform: uppercase;
+}
+a{
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+a:hover{
+    color: red;
+}
+.lol{
+    opacity: 0;
+}
+.lik{
+    position: absolute;
+    right: 5px;
+    top: 20%;
+}
+.col2{
+    grid-column: span 2;
+}
+.col3{
+    grid-column: span 3;
+    letter-spacing: normal;
+}
+.col4{
+    grid-column: span 4;
+    letter-spacing: normal;
+}
+.col5{
+    grid-column: span 5;
+}
+.col6{
+    grid-column: span 6;
+}
+.row2{
+    grid-row: span 2;
+}
+.row3{
+    grid-row: span 3;
+}
+.row4{
+    grid-row: span 4;
+}
+.row10{
+    grid-row: span 10;
+}

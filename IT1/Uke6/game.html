@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <style>
+        img{
+            width: 40px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCDson5l0OwJLskgfqQowqG1ksziq5NgoU",
+            authDomain: "data-816f7.firebaseapp.com",
+            databaseURL: "https://data-816f7.firebaseio.com",
+            projectId: "data-816f7",
+            storageBucket: "data-816f7.appspot.com",
+            messagingSenderId: "501788615625"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+
+
+    <script type="text/javascript">
+        initApp = function() {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    // User is signed in.
+                    var displayName = user.displayName;
+                    var email = user.email;
+                    var emailVerified = user.emailVerified;
+                    var photoURL = user.photoURL;
+                    var uid = user.uid;
+                    var phoneNumber = user.phoneNumber;
+                    var providerData = user.providerData;
+                    user.getIdToken().then(function(accessToken) {
+
+                        const db = firebase.database();
+                        const bilder = db.ref("game/bilder");
+
+                        function lagrebilde(klikk) {
+                            bilder.push({
+                               url: photoURL,
+                               x: klikk.clientX,
+                               y: klikk.clientY
+                            });
+                        }
+
+                        function visbilde(snap){
+                            const bilde = snap.val();
+                            document.body.innerHTML += `<img src="${bilde.url}" style="left: ${bilde.x}px; top:${bilde.y}px;">`;
+                        }
+
+                        document.onclick = lagrebilde;
+                        bilder.on("child_added", visbilde)
+
+                    });
+                } else {
+                    // User is signed out.
+                }
+            }, function(error) {
+                console.log(error);
+            });
+        };
+
+        window.addEventListener('load', function() {
+            initApp()
+        });
+    </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: paleturquoise;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="velgfarge" placeholder="Velg Farge">
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCDson5l0OwJLskgfqQowqG1ksziq5NgoU",
+            authDomain: "data-816f7.firebaseapp.com",
+            databaseURL: "https://data-816f7.firebaseio.com",
+            projectId: "data-816f7",
+            storageBucket: "data-816f7.appspot.com",
+            messagingSenderId: "501788615625"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+        let velgfarge = document.getElementById("velgfarge")
+
+        let db = firebase.database();
+        let farge = db.ref("farge");
+
+        function byttfarge(){
+            farge.set(velgfarge.value);
+        }
+
+        function visfarge(snapshot){
+            document.body.style.backgroundColor = snapshot.val();
+        }
+
+        velgfarge.onchange = byttfarge;
+
+        farge.on("value",visfarge); //når dataene endres i databasen, endrer vi bakgrunnsfargen med "visfarge"
+
+
+
+
+    </script>
+
+
+</body>
+</html>

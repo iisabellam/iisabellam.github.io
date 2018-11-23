@@ -1,0 +1,77 @@
+* { /* alle elementer på nettsiden*/
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin:0;
+}
+.eksempel{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 2px;
+    margin-bottom: 70px;
+}
+.eksempel > p {
+    background-color: bisque;
+    color: darkgray;
+    font-family: "Open Sans Condensed", Arial;
+    text-align: center;
+    font-size: 30px;
+}
+.kol3{
+    grid-column: span 3;
+}
+.rad3{
+    grid-row: span 3;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 2px;
+    margin-bottom: 70px;
+}
+.grid > *{
+    background-color: lightgray;
+    color: transparent;
+    font-size: 30px;
+    text-align: center;
+    font-family: "Open Sans Condensed", Arial;
+}
+.row1{ grid-row: span 1; }
+.row2{ grid-row: span 2; }
+.row3{ grid-row: span 3; }
+.row4{ grid-row: span 4; }
+.row5{ grid-row: span 5; }
+.row6{ grid-row: span 6; }
+.row7{ grid-row: span 7; }
+
+.col1{ grid-column: span 1; background-color: lemonchiffon;}
+.col2{ grid-column: span 2; background-color: deepskyblue}
+.col3{ grid-column: span 3; background-color: mediumpurple}
+.col4{ grid-column: span 4; background-color: coral}
+.col5{ grid-column: span 5; background-color: lightpink}
+.col6{ grid-column: span 6; background-color: darkred;}
+.col7{ grid-column: span 7; }
+.col8{ grid-column: span 8; }
+.col9{ grid-column: span 9; }
+.col10{ grid-column: span 10; }
+.col11{ grid-column: span 11; }
+.col12{ grid-column: span 12; background-color: darkred;}
+
+.land{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 2px;
+    max-width: 700px;
+    margin: auto;
+}
+img{
+    width: 100%;
+}
+.sted > p{
+    text-align: center;
+    font-family: "Open Sans Condensed", Arial;
+    font-size: 18px;
+    padding: 5px;
+    color: white;
+}

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pink Fur Jacket</title>
+    <link rel="stylesheet" type="text/css" href="prod.css">
+    <link rel="shortcut icon" href="bilder/logo-02.png" type="image/gif" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo"><img src="bilder/logo.png"></a>
+        <a href="klaer.html" class="icon "><img src="bilder/iconer-01.png"></a>
+        <a href="sko.html" class="icon"><img src="bilder/iconer-02.png"></a>
+        <a href="tilbehor.html" class="icon"><img src="bilder/iconer-03.png"></a>
+        <a href="insta.html" class="icon"><img src="bilder/iconer-04.png"></a>
+    </nav>
+    <div class="undermeny">
+        <a href="nytt.html" class="under">news</a>
+        <a href="coll.html" class="under">collections</a>
+        <a href="soon.html" class="under">get the look</a>
+        <a href="soon.html" class="under">sale</a>
+    </div>
+    <input type="checkbox" id="cb">
+    <label for="cb" id="burger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </label>
+    <div class="undermeny2" id="menu">
+        <div></div>
+        <a href="klaer.html" class="iiicon "><img class="valgt" src="bilder/iconer-01.png"></a>
+        <a href="sko.html" class="iiicon"><img src="bilder/iconer-02.png"></a>
+        <div></div>
+        <div></div>
+        <a href="tilbehor.html" class="iiicon"><img src="bilder/iconer-03.png"></a>
+        <a href="insta.html" class="iiicon"><img src="bilder/iconer-04.png"></a>
+        <div></div>
+        <a href="nytt.html" class="iicon col4">news</a>
+        <a href="coll.html" class="iicon col4">collections</a>
+        <a href="soon.html" class="iicon col4">get the look</a>
+        <a href="soon.html" class="iicon col4">sale</a>
+    </div>
+</header>
+
+<main>
+    <article class="bilder col4">
+        <input type="radio" name="velg" id="toggle-1" checked>
+        <label for="toggle-1" id="velg1">
+            <img class="trykk1" src="bilder/klaer/rosapusjakke1.jpg">
+        </label>
+        <input type="radio" name="velg" id="toggle-2">
+        <label for="toggle-2" id="velg2">
+            <img class="trykk2" src="bilder/klaer/rosapusjakke2.jpg">
+        </label>
+        <input type="radio" name="velg" id="toggle-3">
+        <label for="toggle-3" id="velg3">
+            <img class="trykk3" src="bilder/klaer/rosapusjakke3.jpg">
+        </label>
+        <div></div>
+        <img id="ting1" class="jakke1 col5 row7" src="bilder/klaer/rosapusjakke1.jpg">
+        <img id="ting2" class="jakke2 col5 row7" src="bilder/klaer/rosapusjakke2.jpg">
+        <img id="ting3" class="jakke3 col5 row7" src="bilder/klaer/rosapusjakke3.jpg">
+        <div> </div>
+        <div> </div>
+        <div> </div>
+    </article>
+
+    <article class="info col3">
+        <h2>Pink Fur Jacket</h2>
+        <h4> NOK 1479 </h4>
+        <h6 class="color">COLOR:
+            Pink </h6>
+        <h7>SIZE:</h7>
+        <select name="Choose Size">
+            <option value="Choose">Choose Size</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select><br><br>
+        <input type="checkbox" id="buy">
+        <label for="buy" id="knapp">
+            <div class="kjøp">BUY</div>
+        </label>
+        <div class="buy">
+            <form >
+                <div><h8>First name:</h8></div>
+                <div><h8>Last name:</h8></div>
+                <input type="text" name="first" required>
+                <input type="text" name="last" required>
+                <div class="col2"><h8>e-mail:</h8></div>
+                <input type="text" name="mail" class="col2" required>
+                <div class="col2"><h8>phone number:</h8></div>
+                <input type="number" name="number" class="col2" required>
+                <div class="col2"><h8>address:</h8></div>
+                <input type="text" name="adress" class="col2" required>
+                <div class="col2"><h8>postcode:</h8></div>
+                <input type="number" name="postcode" class="col2" required>
+                <div class="col2"><h8>city:</h8></div>
+                <input type="text" name="city" class="col2" required>
+                <div class="col2" style="height: 10px"> </div>
+                <div class="col2"><h4 style="text-transform: uppercase">add credit card</h4></div>
+                <div class="col2"><h8>card number:</h8></div>
+                <input type="number" name="kortnummer" class="col2" required>
+                <div class="col2"><h8>cvv:</h8></div>
+                <input type="number" name="cvc" class="col2" required>
+                <div class="col2"><h8>expiry date:</h8></div>
+                <select name="Month" required>
+                    <option value="Choose">MONTH</option>
+                    <option value="january">January</option>
+                    <option value="february">February</option>
+                    <option value="march">March</option>
+                    <option value="april">April</option>
+                    <option value="may">May</option>
+                    <option value="june">June</option>
+                    <option value="july">July</option>
+                    <option value="august">August</option>
+                    <option value="september">September</option>
+                    <option value="october">October</option>
+                    <option value="november">November</option>
+                    <option value="december">December</option>
+                </select>
+                <select name="year" required>
+                    <option value="Choose">YEAR</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                </select>
+                <div class="col2" style="height: 10px"></div>
+                <button type="submit" class="col2 submit"><a href="bought.html">SUBMIT</a></button>
+            </form>
+        </div>
+        <div class="produkt">
+            <input type="radio" name="about" id="om" checked>
+            <label for="om" id="om2">
+                <h8>About Product</h8>
+            </label>
+            <input type="radio" name="about" id="dar">
+            <label for="dar" id="dandr">
+                <h8>Delivery & Return</h8>
+            </label>
+            <input type="radio" name="about" id="size">
+            <label for="size" id="fit">
+                <h8>Size & Fit</h8>
+            </label>
+            <div class="col3 visom vis">
+                <br>
+                <p>
+                    This is the absolute dream coat! The Colored Faux Fur Coat by ISSA Trend features a collared neckline,
+                    three hidden snap button closures on the front, soft faux fur material, and smooth pink inner lining.
+                    Wear this coat with a lot of dark denim and heeled ankle boots!
+                </p>
+                <br>
+                <p>
+                    Materials:
+                    Shell: 100% Acrylic Lining: 100% Polyester
+                </p>
+                <br>
+            </div>
+            <div class="col3 visdar vis">
+                <br>
+                <li> Free Return</li>
+                <li> Free Shipping with purchase over 900 NOK  </li>
+                <li> Delivery within 3 - 5 workdays</li>
+                <br>
+            </div>
+            <div class="col3 vissize vis">
+                <br>
+                <li>Model wears: XS</li>
+                <li>Model's height: 176cm / 5'9”</li>
+                <br>
+            </div>
+        </div>
+    </article>
+</main>
+
+<div class="main">
+    <img class="pil pil1" src="bilder/pil-02.png" onclick="forover()">
+    <img class="pil pil2" src="bilder/pil-01.png" onclick="bakover()">
+    <img class="pil pil1 piil1" src="bilder/pil-02.png" onclick="forover_bottom()">
+    <img class="pil pil2 piil2" src="bilder/pil-01.png" onclick="bakover_bottom()">
+    <article class="col3 shop">
+        <h2><a href="insta.html">SHOP INSTAGRAM</a></h2>
+        <div class="boksforig">
+            <div class="insta">
+                <div>
+                    <img src="bilder/gensernakd-kopi.jpg">
+                </div>
+                <div>
+                    <img src="bilder/blusenakd.jpg">
+                </div>
+                <div>
+                    <img src="bilder/meshnakd-kopi.jpg">
+                </div>
+                <div>
+                    <img src="bilder/sweatnakd-kopi.jpg">
+                </div>
+                <div>
+                    <img src="bilder/boobtop.jpg">
+                </div>
+                <div>
+                    <img src="bilder/denimnakd-kopi.jpg">
+                </div>
+                <div>
+                    <img src="bilder/dressnakd-kopi.jpg ">
+                </div>
+                <div>
+                    <img src="bilder/img1.png">
+                </div>
+                <div>
+                    <img src="bilder/img3.png">
+                </div>
+                <div>
+                    <img src="bilder/img4.png">
+                </div>
+                <div>
+                    <img src="bilder/img5.png">
+                </div>
+                <div>
+                    <img src="bilder/img6.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img7.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img8.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img9.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img10.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img11.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img12.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img13.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img14.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img15.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img16.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img17.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img18.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img19.jpg">
+                </div>
+                <div>
+                    <img src="bilder/img20.jpg">
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <article class="fot1">
+        <a href="soon.html">INFORMATION</a>
+        <li><a href="soon.html">About</a></li>
+        <li><a href="soon.html">Work with Us</a></li>
+        <li><a href="soon.html">Membership</a></li>
+        <li><a href="soon.html">Brands A-Z</a></li>
+    </article>
+    <article class="fot1">
+        <a href="soon.html"> HJELP</a>
+        <li><a href="soon.html">FAQ</a></li>
+        <li><a href="soon.html">Delivery and Return</a></li>
+        <li><a href="soon.html">Customer service</a></li>
+        <li><a href="soon.html">Terms and Conditions</a></li>
+    </article>
+    <article class="fot1">
+        <a href="soon.html">SOCIALS </a>
+        <li><a href="http://facebook.com" target="_blank"><i class="fa fa-facebook"></i>  Facebook</a></li>
+        <li><a href="http://instagram.com/isabel.lam" target="_blank"><i class="fa fa-instagram"></i>  Instagram</a></li>
+        <li><a href="http://twitter.com" target="_blank"><i class="fa fa-twitter"></i>  Twitter</a></li>
+        <li><a href="http://youtube.com" target="_blank"><i class="fa fa-youtube-play"></i>  YouTube</a></li>
+    </article>
+    <article class="fot1">
+        <a href="soon.html">CONTACT</a>
+        <li><a href="mailto:iisabellam@hotmail.com"><i class="fa fa-envelope-o"></i>  iisabellam@hotmail.com</a></li>
+        <li><a href="soon.html"><i class="fa fa-phone"></i>  +47 41 37 08 64</a></li>
+        <li><a href="soon.html"><i class="fa fa-home"></i>  Gartnerveien 6B, 1394 Nesbru</a></li>
+    </article>
+    <article class="col4 fot1 fot2">
+        IssaBoutique - The hottest online global marketplace bringing you the best in fashion, accessories and beauty from around the world. We offer our customers new arrivals every day and free worldwide shipping. Stocking over 100 international brands including Aeryne Paris, Amuse Society, Calvin Klein, For Love and Lemons, Ray-Ban, Cheap Monday, Dagmar, Delacy, Just Female, Motel Rocks, Naanaa, Nookie, Quay Australia, Samsoe and Samsoe, Saylor and our own ISSA brand including Accessories, Basics, Boho, Lingerie, Party, Shoes, Swimwear, Trend and Vintage.
+    </article>
+</footer>
+
+<script>
+    let slides = document.querySelector(".insta");
+    let slides_bottom = document.querySelector(".insta");
+    let marg = 0;
+    let marg1 = 0;
+
+    function forover() {
+        if(marg < 0) {
+            marg = marg + 14.28;
+        } else {
+            slides.animate([
+                {transform: "translateX(-20px)"},
+                {transform: "translateX(0)"},
+                {transform: "translateX(-10px)"},
+                {transform: "translateX(0)"},
+            ], {
+                duration: 200
+            });
+        }
+        slides.style.marginLeft = marg + "%";
+    }
+
+
+    function bakover() {
+
+        if (marg > -257.04) {
+            marg = marg - 14.28;
+        } else {
+            slides.animate([
+                {transform: "translateX(20px)"},
+                {transform: "translateX(0)"},
+                {transform: "translateX(10px)"},
+                {transform: "translateX(0)"}
+            ], {
+                duration: 200
+            });
+        }
+        slides.style.marginLeft = marg + "%";
+    }
+
+    function forover_bottom() {
+        if(marg1 < 0) {
+            marg1 = marg1 + 50;
+        } else {
+            slides_bottom.animate([
+                {transform: "translateX(-20px)"},
+                {transform: "translateX(0)"},
+                {transform: "translateX(-10px)"},
+                {transform: "translateX(0)"},
+            ], {
+                duration: 200
+            });
+        }
+        slides_bottom.style.marginLeft = marg1 + "%";
+    }
+
+
+    function bakover_bottom() {
+
+        if (marg1 > -1200) {
+            marg1 = marg1 - 50;
+        } else {
+            slides_bottom.animate([
+                {transform: "translateX(20px)"},
+                {transform: "translateX(0)"},
+                {transform: "translateX(10px)"},
+                {transform: "translateX(0)"}
+            ], {
+                duration: 200
+            });
+        }
+        slides_bottom.style.marginLeft = marg1 + "%";
+    }
+
+</script>
+</body>
+</html>

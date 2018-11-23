@@ -1,0 +1,34 @@
+{
+  "dyrene": [
+    {
+        "navn": "Fido",
+        "type": "hund",
+        "bilde": "fido.jpg",
+        "telefon": "413 28 975",
+        "tekst": "Fido forsvant etter lufteturen på fredag"
+      },
+      {
+        "navn": "Silkesvarten",
+        "type": "hest",
+        "bilde": "svarten.jpg",
+        "telefon": "957 62 412",
+        "tekst": "Silkesvarten stakk av ved skolen på lørdag"
+      }
+  ],
+  "hva": [
+    {
+      "navn": "Fido",
+      "type": "hund",
+      "bilde": "fido.jpg",
+      "telefon": "413 28 975",
+      "tekst": "Fido forsvant etter lufteturen på fredag"
+    },
+    {
+      "navn": "Silkesvarten",
+      "type": "hest",
+      "bilde": "svarten.jpg",
+      "telefon": "957 62 412",
+      "tekst": "Silkesvarten stakk av ved skolen på lørdag"
+    }
+  ]
+}

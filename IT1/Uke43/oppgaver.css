@@ -1,0 +1,122 @@
+@keyframes svar {
+    0%{
+        opacity: 0;
+        height: 0px;
+    }
+    100%{
+        height: 115px;
+        opacity: 1;
+    }
+}
+@keyframes svarb {
+    0%{
+        opacity: 0;
+        height: 0px;
+    }
+    100%{
+        height: 145px;
+        opacity: 1;
+    }
+}
+@keyframes svarc {
+    0%{
+        opacity: 0;
+        height: 0px;
+    }
+    100%{
+        height: 70px;
+        opacity: 1;
+    }
+}
+body{
+    margin-left: 120px;
+    background-color: floralwhite;
+    margin-top: 0px;
+    margin-right: 140px;
+}
+header {
+    width: 100%;
+    z-index: 20;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+header #meny{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+header a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 30px;
+    opacity: 1;
+}
+header{
+    margin: auto;
+    text-align: center;
+    margin-top: 5px;
+    background-color: darkgray;
+    background: rgba(152, 152, 152, 0.8);
+}
+h1{
+    font-size: 60px;
+    font-family: "Open Sans Condensed";
+    color: grey;
+    text-shadow: 3px 3px 5px lightgray;
+    text-align: center;
+}
+main{
+    margin-top: 70px;
+}
+ol{
+    margin-top: 20px;
+}
+li{
+    list-style: none;
+    text-align: center;
+    margin-bottom: 30px;
+}
+h2{
+    color: gray;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 25px;
+}
+.svar{
+    height: 0px;
+    opacity: 0;
+    font-family: "Open Sans Condensed", Arial;
+    color: grey;
+}
+.spm:hover .svar{
+    height: 0px;
+    animation: svar 0.3s ease-in-out forwards;
+}
+.svarb{
+    height: 0px;
+    opacity: 0;
+    font-family: "Open Sans Condensed", Arial;
+    color: grey;
+}
+.spm:hover .svarb{
+    height: 0px;
+    animation: svarb 0.3s ease-in-out forwards;
+}
+.svarc{
+    height: 0px;
+    opacity: 0;
+    font-family: "Open Sans Condensed", Arial;
+    color: grey;
+}
+.spm:hover .svarc{
+    height: 0px;
+    animation: svarc 0.3s ease-in-out forwards;
+}
+footer{
+    height: 100px;
+}

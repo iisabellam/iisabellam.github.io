@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Bortkomne dyr</title>
+</head>
+<body>
+
+    <main id="main"></main>
+
+    <script>
+
+        const main = document.getElementById("main");
+
+
+        function visdyra(json){
+            const dyrene = json.dyrene;
+
+            for (const dyr of dyrene) {
+                main.innerHTML += `
+                    <article>
+                        <h1>${dyr.navn} er en ${dyr.type}</h1>
+                        <img src="bilder/${dyr.bilde}">
+                        <p>${dyr.tekst}</p>
+                        <p>Ring <b>${dyr.telefon}</b> hvis du vet noe</p>
+                        <br>
+                    </article>
+                `;
+            }
+        }
+
+        fetch("dyrene.json")
+            .then( response => { return response.json() })
+            .then( json => { visdyra(json) } )
+            .catch( error => { main.innerHTML = error });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css">
+    <style>
+        main{
+            max-width: 800px;
+            margin: auto;
+            padding: 10px;
+        }
+        table > tbody > tr > td > img{
+            width: 24px;
+        }
+        th {
+            cursor: pointer;
+        }
+    </style>
+    <title>Medaljeoversikt</title>
+</head>
+<body>
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th id="thnasjon"> Nasjon </th>
+                    <th id="thgull"> Gull </th>
+                    <th id="thsolv"> Sølv </th>
+                    <th id="thbronse"> Bronse </th>
+                    <th id="thtotal"> Total </th>
+                </tr>
+            </thead>
+            <tbody id="tb">
+
+            </tbody>
+        </table>
+    </main>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCDson5l0OwJLskgfqQowqG1ksziq5NgoU",
+            authDomain: "data-816f7.firebaseapp.com",
+            databaseURL: "https://data-816f7.firebaseio.com",
+            projectId: "data-816f7",
+            storageBucket: "data-816f7.appspot.com",
+            messagingSenderId: "501788615625"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+
+        const thnasjon = document.getElementById("thnasjon");
+        const thgull = document.getElementById("thgull");
+        const thsolv = document.getElementById("thsolv");
+        const thbronse = document.getElementById("thbronse");
+        const thtotal = document.getElementById("thtotal");
+
+        const tb = document.getElementById("tb");
+
+
+        const db = firebase.database();
+        const landene = db.ref("medaljer");
+
+        function visland(data) {
+            let land = data.val();
+            let pk = data.key;
+
+            tb.innerHTML = `
+                <tr>
+                    <td>
+                        <img src="bilder/${pk}.svg">
+                        <span>${land.navn}</span>
+                    </td>
+                    <td>${land.gold}</td>
+                    <td>${land.silver}</td>
+                    <td>${land.bronze}</td>
+                    <td>${land.total}</td>
+                </tr>
+            ` + tb.innerHTML;
+
+        }
+
+        function vislandomvendt(data) {
+            let land = data.val();
+            let pk = data.key;
+
+            tb.innerHTML += `
+                <tr>
+                    <td>
+                        <img src="bilder/${pk}.svg">
+                        <span>${land.navn}</span>
+                    </td>
+                    <td>${land.gold}</td>
+                    <td>${land.silver}</td>
+                    <td>${land.bronze}</td>
+                    <td>${land.total}</td>
+                </tr>
+            `;
+
+        }
+
+
+        function sorternasjon() {
+            tb.innerHTML = "";
+            landene
+                .orderByChild("navn")
+                .on("child_added", vislandomvendt);
+        }
+
+        function sortergull() {
+            tb.innerHTML = "";
+            landene
+                .orderByChild("gold")
+                .on("child_added", visland);
+        }
+
+        function sortersolv() {
+            tb.innerHTML = "";
+            landene
+                .orderByChild("silver")
+                .on("child_added", visland);
+        }
+
+        function sorterbronse() {
+            tb.innerHTML = "";
+            landene
+                .orderByChild("bronze")
+                .on("child_added", visland);
+        }
+
+        function sortertotal() {
+            tb.innerHTML = "";
+            landene
+                .orderByChild("total")
+                .on("child_added", visland);
+        }
+
+        landene
+            .orderByChild("total")
+            .on("child_added", visland);
+
+        thgull.onclick = sortergull;
+        thsolv.onclick = sortersolv;
+        thbronse.onclick = sorterbronse;
+        thtotal.onclick = sortertotal;
+        thnasjon.onclick = sorternasjon;
+
+    </script>
+
+
+</body>
+</html>

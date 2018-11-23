@@ -1,0 +1,226 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: #404040;
+}
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+header{
+    text-align: center;
+}
+#overmeny{
+    text-transform: uppercase;
+    font-family: Montserrat, serif;
+    font-size: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+#overmeny > .valgt{
+    font-style: italic;
+}
+#overmeny > a{
+    text-decoration: none;
+    color: gray;
+    border-bottom: 1px solid lightgray;
+    padding: 5px;
+}
+#overmeny > a:hover {
+    font-style: italic;
+}
+#logo{
+    max-height: 70px;
+    padding: 5px;
+}
+#logo > a > img{
+    max-height: 60px;
+}
+#logo > a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+main{
+    background-color: #eeeeee;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+#main{
+    max-width: 80%;
+    margin: auto;
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 10px;
+}
+table{
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    border-collapse: collapse;
+}
+th, td{
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+}
+tbody > tr:hover{
+    background-color: #EEEEEE;
+}
+th {
+    font-size: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #3f3f3f;
+    text-transform: uppercase;
+}
+td{
+    font-size: 12px;
+    font-family: Montserrat, serif;
+    color: #3f3f3f;
+    text-transform: uppercase;
+}
+td > img{
+    max-width: 120px;
+}
+tfoot > tr > td:first-child{
+    font-size: 20px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 900;
+    color: #3f3f3f;
+    text-transform: uppercase;
+}
+tfoot > tr > td{
+    font-size: 20px;
+    font-family: Montserrat, serif;
+    color: #3f3f3f;
+    text-transform: uppercase;
+}
+select{
+    background-color: white;
+    height: 30px;
+    width: 50px;
+    border-radius: 0;
+    font-family: Montserrat, Arial;
+    padding: 7px 20px;
+    margin-top: 5px;
+    text-align: center;
+}
+#kasse{
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+}
+input{
+    margin: 2px;
+}
+#inpfornavn, #inpetternavn, #inppostnr, #inpby, #inpcvv, #inputlop{
+    padding: 8px;
+    width: 400px;
+    margin: 0;
+    font-family: Montserrat,Arial;
+
+}
+#inpadresse, #inpemail, #inptlf, #inpkortnr{
+    padding: 8px;
+    width: 818.5px;
+}
+.inphva{
+    width: 850px;
+    text-align: left;
+    padding: 10px 0px 0px 0px;
+    margin-left: 58px;
+}
+.delto{
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    grid-gap: 5px;
+}
+#btnbet{
+    width: 842.5px;
+    padding: 9px;
+    margin: 20px;
+    background-color: darkolivegreen;
+    color: white;
+    border: 1px solid darkolivegreen;
+    font-family: Montserrat, Arial;
+    font-size: 12px;
+    cursor: pointer;
+}
+footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+}
+footer > a{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: Montserrat, Arial;
+    font-size: 12px;
+}
+footer > a:hover{
+    font-style: italic;
+}
+h1{
+    font-size: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #3f3f3f;
+    text-transform: uppercase;
+}
+h2{
+    font-size: 20px;
+    font-family: Montserrat, serif;
+    color: #3f3f3f;
+    text-transform: uppercase;
+    margin: 7px;
+    margin-left: 5px;
+}
+h17{
+    font-size: 12px;
+    font-family: Montserrat, serif;
+    color: #3f3f3f;
+    text-transform: uppercase;
+    margin: 7px;
+}
+@media (max-width: 900px) {
+    #main{
+        max-width: 90%;
+        margin: auto;
+    }
+    #ting{
+        margin: auto;
+        width: 100%;
+    }
+    #kasse{
+        max-width: 90%;
+        margin: auto;
+        overflow: hidden;
+    }
+    #inpfornavn, #inpetternavn, #inppostnr, #inpby, #inpcvv, #inputlop{
+        padding: 8px;
+        margin: 0;
+        width: 45%;
+        font-family: Montserrat,Arial;
+
+    }
+    #inpadresse, #inpemail, #inptlf, #inpkortnr{
+        padding: 8px;
+        width: 95%;
+    }
+    .inphva{
+        width: 100%;
+        text-align: left;
+        padding: 10px 0px 0px 0px;
+        margin-left: 5px;
+    }
+    .delto{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    #btnbet{
+        margin: 10px;
+        max-width: 95%;
+    }
+}

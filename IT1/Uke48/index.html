@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Slideshow</title>
+    <link rel="stylesheet" type="text/css" href="slide.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
+</head>
+<body>
+
+    <main>
+        <h1>slides</h1>
+
+        <div class="wrapper">
+            <a href="#" onclick="bakover()">
+                <
+            </a>
+            <a href="#" onclick="forover()">
+                >
+            </a>
+            <div class="slides">
+                <div class="bilde">
+                    <img src="bilder/img1.jpg">
+                </div>
+                <div class="bilde">
+                    <img src="bilder/img2.jpg">
+                </div>
+                <div class="bilde">
+                    <img src="bilder/img3.jpg">
+                </div>
+                <div class="bilde">
+                    <img src="bilder/img4.jpg">
+                </div>
+                <div class="bilde">
+                    <img src="bilder/img5.jpg">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let slides = document.querySelector(".slides");
+        let marg = 0;
+
+        function bakover() {
+
+            if (marg > -400) {
+                marg = marg - 100;
+            } else {
+                slides.animate([
+                    {transform: "translateX(20px)"},
+                    {transform: "translateX(0)"},
+                    {transform: "translateX(10px)"},
+                    {transform: "translateX(0)"}
+                ], {
+                    duration: 200
+                });
+            }
+            slides.style.marginLeft = marg + "%";
+        }
+
+        function forover() {
+            if(marg < 0) {
+                marg = marg + 100;
+            } else {
+                slides.animate([
+                    {transform: "translateX(-20px)"},
+                    {transform: "translateX(0)"},
+                    {transform: "translateX(-10px)"},
+                    {transform: "translateX(0)"},
+                ], {
+                    duration: 200
+                });
+            }
+            slides.style.marginLeft = marg + "%";
+        }
+
+
+
+    </script>
+
+</body>
+</html>

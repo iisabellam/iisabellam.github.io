@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Forside / fin side</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+    <style>
+        body{
+            margin: 0;
+        }
+        header{
+            background-color: #fff8b3;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            z-index: 2;
+        }
+        nav{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            padding: 10px;
+
+        }
+        nav a{
+            text-align: center;
+            text-decoration: none;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 30px;
+            color: grey;
+        }
+        nav a:hover{
+            font-size: 30px;
+            color: darkorange;
+            font-style: italic;
+            transition: 0.5s;
+        }
+        footer{
+            background-color: #3A6F65;
+            margin: auto;
+        }
+        img{
+            max-width: 100vw;
+            margin-top: 60px;
+            z-index: 2;
+        }
+        .overskrift{
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 90px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 4px darkorange;
+            color: #fff8b3;
+            position: absolute;
+            top: 100px;
+            left: 41.5%;
+            z-index: 1;
+        }
+        main{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            text-align: center;
+        }
+        h1{
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-weight: 500;
+            color: darkorange;
+        }
+        .boks1{
+            border: 2px dashed #fff8b3;
+            margin: 30px;
+            margin-right: 15px;
+            padding: 0px 20px 20px 20px;
+            color: grey;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+        .boks2{
+            border: 2px dashed #fff8b3;
+            margin: 30px;
+            margin-left: 15px;
+            padding: 0px 20px 20px 20px;
+            color: grey;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+        main>div>img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="http://iisabellam.github.io">Forside</a>
+        <a href="wheights.html">Wuthering Heigths</a>
+        <a href="provselv.html">Prøv Selv</a>
+    </nav>
+</header>
+
+<div class="head">
+    <img src="bilder/head38-01.png">
+    <div class="overskrift">Uke 38</div>
+</div>
+
+<main>
+    <div class="boks1">
+        <h1>Venstre</h1>
+        Venstresiden på forsiden. Vet ikke hva jeg skal skrive så nå kommer en sang tekst:<br>
+        Waiting here for someone <br>
+        Only yesterday we were on the run<br>
+        You smile back at me and your face lit up the sun<br>
+        Now I'm waiting here for someone<br>
+
+        And oh, love, do you feel this rough?<br>
+        Why's it only you I'm thinking of
+        <img style="padding-top: 20px;" src="bilder/vmusikk.jpg">
+    </div>
+    <div class="boks2">
+        <h1>Høyre</h1>
+        Høyresiden på forsiden. Vet ikke hva jeg skal skrive så nå fortsetter jeg sangen fra venstresiden:<br>
+        My shadow's dancing<br>
+        Without you for the first time<br>
+        My heart is hoping<br>
+        You'll walk right in tonight<br>
+        You tell me there are things that you regret<br>
+        'Cause if I'm being honest I ain't over you yet
+        <img src="bilder/hmusikk.jpg">
+    </div>
+</main>
+
+<footer>
+
+</footer>
+
+</body>
+</html>

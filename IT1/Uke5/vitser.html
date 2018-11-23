@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuck Norris</title>
+</head>
+<body>
+
+    <main id="main"></main>
+
+    <script>
+
+        const main = document.getElementById("main");
+
+
+        function visvits(json){
+            main.innerHTML = `<h1>${json.value}</h1><img src="${json.icon_url}"> `;
+        }
+
+        fetch("https://api.chucknorris.io/jokes/random")
+            .then( response => { return response.json() })
+            .then( json => { visvits(json) } )
+            .catch( error => { main.innerHTML = error });
+
+    </script>
+
+</body>
+</html>

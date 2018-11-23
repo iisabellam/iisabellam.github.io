@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="bilder/logo-01.png" type="image/gif" />
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="prod.css" type="text/css">
+    <title>Thirstea - Shop Coffee and Tea</title>
+</head>
+<body>
+
+    <header>
+        <div id="overmeny">
+            <a href="kaffe.html">kaffe</a>
+            <a href="te.html">te</a>
+            <a href="melding.html">tilbakemelding</a>
+            <a href="handlekurv.html">handlekurv</a>
+        </div>
+        <div id="logo">
+            <a href="index.html"><img src="bilder/logo-01.png">thirstea</a>
+        </div>
+    </header>
+
+    <main>
+        <article id="main">
+            <article id="inf" class="col3">
+
+            </article>
+            <hr class="col3">
+            <article class="col3" id="mer">
+                <h2>Se også:</h2>
+                <div id="fler">
+
+                </div>
+            </article>
+        </article>
+    </main>
+
+
+    <footer>
+        <a href="om.html">om oss</a>
+        <a href="levering.html">levering</a>
+        <a href="spm.html">FAQ</a>
+    </footer>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAuacdcw3Z2qnXxWkpp0ZdwYB6jU5wkj_8",
+            authDomain: "thirtea-120b2.firebaseapp.com",
+            databaseURL: "https://thirtea-120b2.firebaseio.com",
+            projectId: "thirtea-120b2",
+            storageBucket: "thirtea-120b2.appspot.com",
+            messagingSenderId: "97746196238"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script>
+
+        //Finne id for te
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var id = url.searchParams.get("id");
+        console.log(id);
+
+
+        // HTML-elementer
+        const fler = document.getElementById("fler");
+        const inf = document.getElementById("inf");
+
+
+
+        //firebase-kontakt
+        const db = firebase.database();
+        const te = db.ref("produkter/te");
+        const beha = db.ref("produkter/te/beha");
+        const handlekurv = db.ref("handlekurv");
+
+
+        function kjop(key) {
+            alert(key + " er lagt til i din handlekurv");
+
+
+            handlekurv.push({
+                vareid: key,
+                antall: 1,
+                user: "USERID",
+                varetype: "te"
+            });
+        }
+
+        function visinfo(data) {
+
+            const key = data.key;
+            const beha = data.val();
+            const handlekurv = db.ref("handlekurv");
+
+
+            function kjop(key) {
+                alert(key + " er lagt til i din handlekurv");
+
+
+                handlekurv.push({
+                    vareid: key,
+                    antall: 1,
+                    user: "USERID",
+                    varetype: "te"
+                });
+            }
+
+            let article = `
+                    <article id="lage">
+                    <div id="friskhet">
+                        <h23>${beha.bryggetid}</h23><br>
+                        <h7>Bryggetid</h7>
+                    </div>
+                    <div id="sodme">
+                        <h23>${beha.temp}</h23><br>
+                        <h7>Temp</h7>
+                    </div>
+                    <div id="intensitet">
+                        <h23>${beha.mengde}</h23><br>
+                        <h7>Menge</h7>
+                    </div>
+                    </article>
+                    <article id="bilde">
+                        <img src="${beha.bilde}">
+                    </article>
+                    <article id="info">
+                        <h1>${beha.navn}</h1>
+                        <h3>${beha.undertekst}</h3>
+                        <hr>
+                        <h4>${beha.tekst}</h4>
+                        <h4>Inneholder: ${beha.ingredienser}</h4>
+                        <hr>
+                        <div id="tall">
+                            <h5>vekt: ${beha.vekt}</h5>
+                            <h5>${beha.pris},00 NOK</h5>
+                        </div>
+                        <hr>
+                        <div id="kjop" onclick="kjop('${key}')"><h6>Legg i Handlekurv</h6></div>
+                    </article>
+                `;
+            inf.innerHTML += article;
+
+
+            te
+                .orderByChild("type")
+                .limitToFirst(6)
+                .equalTo(`${beha.type}`)
+                .on("child_added", visprod);
+        }
+
+
+        function visprod(data) {
+            // Primærnøkkel
+            const key = data.key;
+            // Data om filmen
+            const teen = data.val();
+
+            let article = `
+                    <a href="tenr.html?id=${key}" id="${teen.id}" class="prod">
+                        <img src="${teen.bilde}">
+                        <h13>${teen.navn}</h13>
+                        <div class="linje"></div>
+                        <br>
+                        <h16 class="flytt">${teen.undertekst}</h16>
+                        <h17 class="flytt">${teen.pris},00 NOK</h17>
+                        <div class="kjop vis" onclick="kjop('${key}')"><h18>kjøp nå</h18></div>
+                        <div class="mer vis"><h18>les mer</h18></div>
+                    </a>
+                `;
+            fler.innerHTML += article;
+
+        }
+
+
+
+
+        te
+            .orderByChild("id")
+            .equalTo(id.toLowerCase())
+            .on("child_added", visinfo)
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="bilder/logo-01.png" type="image/gif" />
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="kurv.css" type="text/css">
+    <title>Handlekurv - Thirstea - Shop Coffee and Tea</title>
+</head>
+<body>
+
+    <header>
+        <div id="overmeny">
+            <a href="kaffe.html">kaffe</a>
+            <a href="te.html">te</a>
+            <a href="melding.html">tilbakemelding</a>
+            <a href="handlekurv.html" class="valgt">handlekurv</a>
+        </div>
+        <div id="logo">
+            <a href="index.html"><img src="bilder/logo-01.png">thirstea</a>
+        </div>
+    </header>
+
+
+    <main>
+        <div id="main">
+            <h1>din handlekurv</h1>
+            <div id="ting">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Produkt</th>
+                            <th>Vekt</th>
+                            <th>Antall</th>
+                            <th>Pris</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbprod">
+
+                    <tfoot>
+                        <tr>
+                            <td>Totalt:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><span id="visPris"></span> NOK</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <h1 style="margin-top:20px">Kasse</h1>
+            <div id="kasse">
+                <h2>Personopplysninger</h2>
+                <form id="perinfo">
+                    <div class="inphva delto">
+                        <h17>Fornavn</h17>
+                        <h17>Etternavn</h17>
+                    </div>
+                    <input type="text" placeholder="Fornavn" id="inpfornavn">
+                    <input type="text" placeholder="Etternavn" id="inpetternavn">
+                    <div class="inphva hel"><h17>Adresse</h17></div>
+                    <input type="text" placeholder="Adresse" id="inpadresse">
+                    <div class="inphva delto">
+                        <h17>Postnummer</h17>
+                        <h17>By</h17>
+                    </div>
+                    <input type="number" placeholder="Postnummer" id="inppostnr">
+                    <input type="text" placeholder="By" id="inpby">
+                    <div class="inphva delto">
+                        <h17>E-Mail</h17>
+                    </div>
+                    <input type="text" placeholder="E-mail" id="inpemail">
+                    <div class="inphva delto">
+                        <h17>Telefonnummer</h17>
+                    </div>
+                    <input type="text" placeholder="Telefon" id="inptlf">
+                    <h2 style="margin-top: 30px">Betaling</h2>
+                    <div class="inphva delto">
+                        <h17>Kortnummer</h17>
+                    </div>
+                    <input type="number" placeholder="Kortnummer" id="inpkortnr">
+                    <div class="inphva delto">
+                        <h17>Utløpsdato</h17>
+                        <h17>CVV / CVC</h17>
+                    </div>
+                    <input type="text" placeholder="DD/MM" id="inputlop">
+                    <input type="number" placeholder="CVV/CVC" id="inpcvv">
+                    <button type="submit" id="btnbet" onclick="slettkurv()">Betal nå</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <a href="om.html">om oss</a>
+        <a href="levering.html">levering</a>
+        <a href="spm.html">FAQ</a>
+    </footer>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAuacdcw3Z2qnXxWkpp0ZdwYB6jU5wkj_8",
+            authDomain: "thirtea-120b2.firebaseapp.com",
+            databaseURL: "https://thirtea-120b2.firebaseio.com",
+            projectId: "thirtea-120b2",
+            storageBucket: "thirtea-120b2.appspot.com",
+            messagingSenderId: "97746196238"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script>
+
+        const db = firebase.database();
+        const handlekurv = db.ref("handlekurv");
+        const ordrer = db.ref("ordrer");
+        const tbprod = document.getElementById("tbprod");
+        const visPris = document.getElementById("visPris");
+        const perinfo = document.getElementById("perinfo");
+        const inpfornavn = document.getElementById("inpfornavn");
+        const inpetternavn = document.getElementById("inpetternavn");
+        const inpadresse = document.getElementById("inpadresse");
+        const inppostnr = document.getElementById("inppostnr");
+        const inpby = document.getElementById("inpby");
+        const inpemail = document.getElementById("inpemail");
+        const inptlf = document.getElementById("inptlf");
+        const inpkortnr = document.getElementById("inpkortnr");
+        const inputlop = document.getElementById("inputlop");
+        const inpcvv = document.getElementById("inpcvv");
+
+        let varene = [];
+
+
+        function slettkurv() {
+            let bestilling = handlekurv;
+            bestilling.remove();
+            tbprod.innerHTML = "";
+            pris = 0;
+            handlekurv.on("child_added", visVare);
+        }
+
+        function lagreordre(evt) {
+            alert("Takk for at du handlet hos oss!");
+
+            evt.preventDefault();
+            const order = {
+                fornavn: inpfornavn.value,
+                etternavn: inpetternavn.value,
+                adresse: inpadresse.value,
+                postnr: inppostnr.value,
+                by: inpby.value,
+                email: inpemail.value,
+                tlf: inptlf.value,
+                kortnr: inpkortnr.value,
+                utlop: inputlop.value,
+                cvv: inpcvv.value
+            };
+
+
+            let nyordre = db.ref("ordrer/" + new Date());
+
+            nyordre.set({
+                ordre: order,
+                produkter: varene
+            });
+
+
+            //personinfo.push(order);
+            //produkter.push(varene);
+            perinfo.reset();
+            inpfornavn.focus();
+        }
+        perinfo.onsubmit = lagreordre;
+
+        let pris = 0;
+
+        function fjern(id) {
+            let bestilling = handlekurv.child(id);
+            bestilling.remove();
+            //let rad = document.getElementById(id);
+            //tbprod.removeChild(rad);
+
+            tbprod.innerHTML = "";
+            pris = 0;
+            handlekurv.on("child_added", visVare);
+
+        }
+
+        function visVare(snapshot) {
+            let vare = snapshot.val();
+
+            varene.push(vare);
+
+            let bestillingsid = snapshot.key;
+
+            let produkt = db.ref("produkter/" + vare.varetype + "/" + vare.vareid);
+
+            produkt.on("value", function(varesnap){
+               let data = varesnap.val();
+               let varenavn = data.navn;
+               console.log(varenavn);
+
+               pris += data.pris;
+               visPris.innerHTML = pris;
+
+               tbprod.innerHTML += `
+                   <tr id="${bestillingsid}">
+                        <td>
+                            <img src="${data.bilde}">
+                        </td>
+                        <td>
+                            <h3>${data.navn}</h3>
+                        </td>
+                        <td>
+                            <h4>${data.vekt} G</h4>
+                        </td>
+                        <td>
+                            <select name="antall">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <h4>${data.pris} NOK</h4>
+                        </td>
+                        <td>
+                            <h4 style="cursor: pointer;" onclick="fjern('${bestillingsid}')">X</h4>
+                        </td>
+                    </tr>
+               `;
+
+
+
+            });
+
+        }
+
+        handlekurv.on("child_added", visVare);
+
+    </script>
+
+
+
+</body>
+</html>

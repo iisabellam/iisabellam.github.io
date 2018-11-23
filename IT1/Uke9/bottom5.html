@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FilmWeb</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #eeeeee;
+            font-family: 'Open Sans', sans-serif;
+        }
+        main {
+            max-width: 1100px;
+            margin: auto;
+        }
+        main >h1 {
+            margin: 10px;
+            text-align: center;
+        }
+        section{
+            margin: 10px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 20px;
+        }
+        #allefilmer > article {
+            background-color: white;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            padding: 10px;
+            box-shadow: lightgray 0px 2px 0px;
+            position: relative;
+        }
+        #allefilmer > article > div {
+            grid-template-columns: 300px auto;
+            grid-column-gap: 30px;
+        }
+        #allefilmer > article > img {
+            max-width: 120px;
+        }
+        #allefilmer > article > div > h1{
+            font-family: "Raleway", sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            margin: 10px;
+        }
+        #allefilmer > article > div > span > h2{
+            font-family: "Raleway", sans-serif;
+            font-size: 14px;
+            margin: 10px;
+            color: gray;
+        }#allefilmer > article > div > span > a{
+             text-decoration: none;
+         }
+        #allefilmer > article > div > span > a > h2{
+            font-family: "Raleway", sans-serif;
+            font-size: 14px;
+            margin: 10px;
+            color: rebeccapurple;
+        }
+        #allefilmer > article > div > h3{
+            font-family: "Raleway", sans-serif;
+            font-size: 14px;
+            margin: 10px;
+        }
+        .meta{
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: white;
+            background-color: rebeccapurple;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <h1> Bottom 5 </h1>
+        <section id="allefilmer">
+
+        </section>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCDson5l0OwJLskgfqQowqG1ksziq5NgoU",
+            authDomain: "data-816f7.firebaseapp.com",
+            databaseURL: "https://data-816f7.firebaseio.com",
+            projectId: "data-816f7",
+            storageBucket: "data-816f7.appspot.com",
+            messagingSenderId: "501788615625"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script>
+        // HTML-elementer
+        const allefilmer = document.getElementById("allefilmer");
+
+        //firebase-kontakt
+        const db = firebase.database();
+        const filmer = db.ref("imdb/filmer");
+
+        function visfilm(data) {
+            // Primærnøkkel
+            const key = data.key;
+            // Data om filmen
+            const film = data.val();
+
+            let article = `
+                        <article>
+                            <img src="${film.Poster}" class="row3">
+                            <div>
+                                <h1><b>${film.Title}</b></h1>
+                                <span><h2>${film.Genre}</h2></span>
+                                <span><a href="#"><h2>${film.Actors}</h2></a></span>
+                                <h3>${film.Plot}</h3>
+                            </div>
+                            <div class="meta">${film.Metascore}</div>
+                        </div>
+                    `;
+            allefilmer.innerHTML += article;
+
+        }
+
+        function visfilmoppned (data) {
+            // Primærnøkkel
+            const key = data.key;
+            // Data om filmen
+            const film = data.val();
+
+            let article = `
+                        <article>
+                            <img src="${film.Poster}">
+                            <div>
+                                <h1><b>${film.Title}</b></h1>
+                                <span><h2>${film.Genre}</h2></span>
+                                <span><a href="#"><h2>${film.Actors}</h2></a></span>
+                                <h3>${film.Plot}</h3>
+                            </div>
+                            <div class="meta">${film.Metascore}</div>
+                        </div>
+                        </article>
+                    `;
+            allefilmer.innerHTML = article + allefilmer.innerHTML ;
+
+        }
+
+        filmer
+            .orderByChild("Metascore")
+            .limitToFirst(5)
+            .on("child_added", visfilm);
+
+    </script>
+
+
+
+</body>
+</html>

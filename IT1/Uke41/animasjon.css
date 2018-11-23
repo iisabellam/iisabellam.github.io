@@ -1,0 +1,242 @@
+body{
+    margin: 0;
+}
+@keyframes flytt {
+    to{
+        margin-left: 100vw;
+    }
+}
+@keyframes zoomut{
+    from{
+        transform: scale(3);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes walkright{
+    to{
+        background-position: -256px 0;
+    }
+}
+@keyframes karsten {
+    from{
+        left: 0;
+    }
+    to{
+        left: 128px;
+    }
+}
+@keyframes karstennede {
+    from{
+        left: 128px;
+    }
+    to{
+        left: 568px;
+    }
+}
+@keyframes karstenfaller {
+    from{
+        left: 128px;
+    }
+    to{
+        top: calc(450px - 32px);
+        left: 128px;
+    }
+}
+@keyframes catwalk{
+    100%{
+        background-position: 0 -2280px;
+    }
+}
+@keyframes moveright {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100vw);
+        opacity: 1;
+    }
+}
+@keyframes fall{
+    to{
+        background-position: center -300px;
+    }
+}
+@keyframes snurr{
+    0%{
+        transform: rotate(0);
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.4;
+    }
+    100%{
+        transform: rotate(1turn);
+        opacity: 1;
+    }
+}
+
+header {
+    background-color: darkgray;
+    background: rgba(152, 152, 152, 0.8);
+    width: 100%;
+    z-index: 20;
+}
+header #meny{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+header a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+    font-family: 'Abel', sans-serif;
+    font-size: 50px;
+    opacity: 1;
+}
+#firkant{
+    width: 50px;
+    height: 50px;
+    background-color: darkgray;
+
+    /* animation: flytt 5s infinite alternate forwards; */
+
+    animation-name: flytt;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear; /* ease-out, ease-in, default, steps(x) */
+}
+#tekst{
+    background-color: darkgray;
+    width: 100vw;
+    margin: 0;
+}
+h1{
+    font-size: 70px;
+    color: white;
+    text-align: center;
+    animation: zoomut 3s forwards;
+    font-family: "Helvetica", sans-serif;
+}
+#t1{
+    animation-delay: 0;
+}
+#t2{
+    animation-delay: 0.5s;
+    opacity:0;
+}
+#t3{
+    animation-delay: 1s;
+    opacity:0;
+}
+#lemmings{
+    overflow: hidden;
+    position: relative;
+    width: 600px;
+    height: 450px;
+    margin: 30px auto;
+    background-color: black;
+    border: 15px solid peru;
+}
+#lemmings > *  { /* alt som ligger i spillet */
+    position: absolute;
+}
+#karsten{
+    width: 32px;
+    height: 32px;
+    top: calc(200px - 32px);
+    left: -100px;
+    animation: karsten 4s steps(32);
+}
+.walkright{
+    background-image: url("bilder/lemmingwalkr.gif");
+    width: 32px;
+    height: 32px;
+    animation: walkright 1s steps(8) forwards infinite;
+}
+#karstenfaller{
+    width: 32px;
+    height: 32px;
+    top: calc(200px - 32px);
+    left: -100px;
+    animation: karstenfaller 4s steps(40);
+    animation-delay: 4s;
+}
+.fallright{
+    background-image: url("bilder/lemmingfloatr.gif");
+    width: 32px;
+    height: 32px;
+    animation: walkright 1s steps(8) forwards infinite;
+}
+#karstennede{
+    width: 32px;
+    height: 32px;
+    top: calc(450px - 32px);
+    left: -100px;
+    animation: karstennede 12s steps(90) forwards;
+    animation-delay: 8s;
+}
+#gulv{
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 128px;
+    height: 15px;
+    background-color: peru;
+}
+#katter{
+    height: 190px;
+}
+.katt{
+    position: absolute;
+    background-image: url("bilder/animasjon.png");
+     width: 400px;
+    height: 190px;
+    animation: catwalk steps(12) 0.8s infinite;
+    animation-name: catwalk, moveright;
+    animation-timing-function: steps(12), steps(48);
+    animation-duration: 0.8s, 4s;
+    animation-iteration-count: infinite;
+}
+#k1{
+    animation-delay: 0;
+    opacity: 1;
+}
+#k2{
+    animation-delay: 1.33s;
+    opacity: 0;
+}
+#k3{
+    animation-delay: 2.67s;
+    opacity: 0;
+}
+
+#fallned{
+    width: 100vw;
+    background-color: black;
+}
+#tunnel{
+    background-image: url("bilder/bgtunnel.png");
+    background-size: 100% 300px;
+    width: 60%;
+    height: 100vh;
+    margin: 0 auto; /* 0 marg over og under, men like mye på hver side */
+    background-color: darkgray;
+    /* Midtstille det som er inne i tunnellen */
+    /* På denne måten kan dere midtstille alt mulig */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fall 0.7s infinite linear;
+}
+#alice{
+    width: 50%;
+    animation: snurr 4s linear infinite;
+}

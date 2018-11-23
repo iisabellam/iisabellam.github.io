@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+</head>
+<body>
+
+    <header>
+        <input type="text" placeholder="Skriv en melding" id="inpmelding">
+    </header>
+
+    <main id="main">
+
+    </main>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCDson5l0OwJLskgfqQowqG1ksziq5NgoU",
+            authDomain: "data-816f7.firebaseapp.com",
+            databaseURL: "https://data-816f7.firebaseio.com",
+            projectId: "data-816f7",
+            storageBucket: "data-816f7.appspot.com",
+            messagingSenderId: "501788615625"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script>
+
+        const inpmelding = document.getElementById("inpmelding");
+        const main = document.getElementById("main");
+
+        const db = firebase.database();
+        const meldinger = db.ref("meldinger");
+
+        function lagremelding() {
+            meldinger.push(inpmelding.value);
+            inpmelding.value = "";
+        }
+
+        function vismelding(snap) {
+            const melding = snap.val();
+            main.innerHTML = `<p>${melding}</p>` + main.innerHTML;
+
+        }
+
+        inpmelding.onchange = lagremelding;
+        meldinger.on("child_added", vismelding);
+
+
+    </script>
+
+</body>
+</html>

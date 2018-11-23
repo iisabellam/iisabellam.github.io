@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Hva er din farge?</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        header{
+            padding-bottom: 8px;
+
+        }
+        #rutenett {
+            display: grid;
+            grid-template-columns: repeat(60, 1fr);
+            grid-auto-rows: 20px;
+            grid-gap: 2px;
+        }
+        #rutenett > div {
+            background-color: royalblue;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <input type="color" id="inpfarge" >
+    </header>
+
+    <main id="rutenett">
+
+    </main>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCDson5l0OwJLskgfqQowqG1ksziq5NgoU",
+            authDomain: "data-816f7.firebaseapp.com",
+            databaseURL: "https://data-816f7.firebaseio.com",
+            projectId: "data-816f7",
+            storageBucket: "data-816f7.appspot.com",
+            messagingSenderId: "501788615625"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script>
+        const inpfarge = document.getElementById("inpfarge");
+        const rutenett = document.getElementById("rutenett");
+
+        const db = firebase.database();
+        const allefargene = db.ref("allefargene");
+
+        function lagrefarge() {
+            allefargene.push(inpfarge.value);
+        }
+
+        function visfarge(snap){
+            const rute = document.createElement("div");
+            rute.style.backgroundColor = snap.val();
+            rutenett.appendChild(rute);
+
+            const keyframes = [
+                {transform: "scale(3)"},
+                {transform: "scale(1)"}
+            ];
+            const settings = {
+                duration: 800
+            };
+
+            rute.animate(keyframes, settings);
+        }
+
+        inpfarge.onchange = lagrefarge;
+        allefargene.on("child_added", visfarge);
+
+    </script>
+
+</body>
+</html>

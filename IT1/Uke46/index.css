@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body >header > nav{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: gainsboro;
+    padding: 10px 100px 10px 100px;
+}
+body >header > nav > a{
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    color: gray;
+}
+body >header > nav > a:hover{
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+}
+body > main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+}
+body > main > a{
+    color: gray;
+    text-transform: uppercase;
+    margin: auto;
+    margin-top: 35vh;
+    text-decoration: none;
+    font-family: "Open Sans Condensed", Arial;
+    font-size: 50px;
+    text-align: center;
+}
+body > main > a:hover{
+    text-decoration: none;
+}

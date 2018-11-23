@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS</title>
+    <style>
+        #minCSS{
+            font-family: "Helvetica", sans-serif;
+            font-size: 15px;
+            padding: 0;
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+            color: dimgray;
+        }
+    </style>
+    <style id="styleElement"></style>
+</head>
+<body>
+
+    <textarea id="minCSS"></textarea>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCDson5l0OwJLskgfqQowqG1ksziq5NgoU",
+            authDomain: "data-816f7.firebaseapp.com",
+            databaseURL: "https://data-816f7.firebaseio.com",
+            projectId: "data-816f7",
+            storageBucket: "data-816f7.appspot.com",
+            messagingSenderId: "501788615625"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script>
+        let db = firebase.database();
+        let stil = db.ref("stil");
+
+        let styleElement = document.getElementById("styleElement");
+        let minCSS = document.getElementById("minCSS");
+
+        function endreCSS() {
+            styleElement.innerHTML = minCSS.value;
+            stil.set(minCSS.value);
+        }
+
+        function endreSide(snap) {
+            styleElement.innerHTML = snap.val();
+            minCSS.value = snap.val();
+        }
+
+        minCSS.oninput = endreCSS;
+        stil.on("value", endreSide)
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+</head>
+<body>
+
+    <h1 id="klokken">0</h1>
+
+    <script>
+
+        const klokken = document.getElementById("klokken");
+
+        //starte funksjonen oppdaterklokken hvert sekund
+        // hvert titusende millisekund
+
+        let millisekunder = 0;
+
+        function oppdaterklokken() {
+            millisekunder = millisekunder + 10;
+
+            let sekunder = millisekunder / 1000
+            klokken.innerHTML = sekunder;
+        }
+
+        setInterval(oppdaterklokken, 10);
+
+    </script>
+
+</body>
+</html>

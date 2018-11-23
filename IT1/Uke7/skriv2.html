@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Hvem skriver?</title>
+    <style>
+        @keyframes animer {
+            from{
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-3px);
+            }
+        }
+        body {
+            margin: auto;
+        }
+        .load {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        .load > span{
+            display: inline-block;
+            animation: animer 500ms infinite alternate;
+        }
+        .load > span:nth-child(2) {
+            animation-delay: 200ms;
+        }
+        .load > span:last-child {
+            animation-delay: 400ms;
+        }
+        #info {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="inpmelding">
+
+    <p id="info" class="load">Loading <span>.</span><span>.</span><span>.</span></p>
+
+
+    <script>
+
+        const inpmelding = document.getElementById("inpmelding");
+        const info = document.getElementById("info");
+
+        let timer;
+
+        function visinfo() {
+            info.style.display = "block";
+            timer = clearTimeout(timer);
+            timer = setTimeout(skjulmelding, 5000);
+        }
+
+        function skjulmelding() {
+            info.style.display = "none";
+        }
+
+        inpmelding.oninput = visinfo;
+
+    </script>
+
+
+</body>
+</html>

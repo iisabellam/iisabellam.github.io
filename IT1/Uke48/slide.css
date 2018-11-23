@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: lightgray;
+}
+main{
+    margin: auto;
+    max-width: 900px;
+    min-height: 100vh;
+    background-color: #eeeeee;
+    overflow: hidden;
+}
+main > h1{
+    font-family: "Open Sans Condensed", Arial;
+    color: #333333;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.wrapper {
+    position: relative;
+}
+.wrapper > a {
+    position: absolute;
+    top: 50%;
+}
+.wrapper > a:first-child {
+    left: 15px;
+}
+.wrapper > a:nth-child(2) {
+    right: 15px;
+}
+.slides{
+    width: 500%;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    margin-left: 0%;
+    transition: 1s;
+}
+.slides > div{
+    text-align: center;
+}
+.slides > div > img{
+    width: 100%;
+    user-select: none;
+}

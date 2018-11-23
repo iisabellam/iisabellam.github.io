@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    font-family: "Open Sans Condensed", Arial;
+    font-size: 20px;
+}
+body > header{
+    background-color: white;
+    filter: drop-shadow(0px 2px 5px gray);
+    padding: 0px 50px 0px 0px;
+}
+body > header > nav{
+    display: grid;
+    grid-auto-flow: column;
+}
+body > header > nav > a{
+    text-decoration: none;
+    text-align: center;
+    color: gray;
+    padding: 10px;
+}
+body > header > nav > a#logo{
+    background-color: darkseagreen;
+    color: white;
+}
+body > header > nav > a#onlink{
+    color: darkseagreen;
+    font-style: italic;
+}
+body > main{
+    background-image: url(bilder/nyc.jpeg);
+    background-size: cover;
+    background-position: center ;
+    color: black;
+}
+body > main > article{
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    margin-top: 150px;
+}
+body > main > article > h1{
+    font-weight: 100;
+    font-size: 40px;
+}
+body > main > article > h2{
+    font-weight: 100;
+    font-size: 30px;
+}
+body > main > div{
+    margin: auto;
+    font-weight: 100;
+    color: white;
+    background-color: darkseagreen;
+    width: 150px;
+    text-align: center;
+    margin-top: 90px;
+    padding: 5px 0px 5px 0px;
+}
+body > main > div > a{
+    font-weight: 100;
+    color: white;
+    background-color: darkseagreen;
+    width: 100px;
+    height: 20px;
+    text-decoration: none;
+}
+body > footer{
+    background-color: white;
+    filter: drop-shadow(0px -2px 5px gray);
+    display: grid;
+    grid-auto-flow: column;
+    padding: 15px 50px 30px 50px;
+}
+body > footer > article{
+    text-align: center;
+    color: gray;
+    font-size: 35px;
+    margin: 0px 50px 0px 50px;
+}
+body > footer > article > p{
+    text-align: center;
+    color: gray;
+    font-size: 10px;
+    font-family: Arial;
+}
+@media (max-width: 600px) {
+    body > header{
+        padding: 0px 0px 0px 0px;
+    }
+    body > header > nav {
+        display: grid;
+        grid-auto-flow: row;
+    }
+    body > main > div{
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 20px;
+    }
+    .hei{
+        grid-column: span 0;
+    }
+    #logo{
+        grid-column: span 5;
+    }
+    body > footer{
+        display: grid;
+        grid-auto-flow: row;
+    }
+    body > footer > article{
+        margin-bottom: 30px;
+    }
+}
