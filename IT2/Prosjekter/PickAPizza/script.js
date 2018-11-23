@@ -104,7 +104,7 @@
     */
 
     function leggtil(){
-        let ingredienser = `<img class="lol" src="bilder/bunn-01.png">`;
+        let ingredienser = `<img class="lol" src="bilder/Bunn-01.png">`;
         kr = 100;
         for (let i = 0; i <= 4; i++) {
             if (ostArray[i].checked) {
