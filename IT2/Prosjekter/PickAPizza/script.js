@@ -52,6 +52,8 @@
     const db = firebase.database();
     const ordre = db.ref("ordre");
 
+
+    // Lagre Pizza toppinger og pris, går fra lag til info
     function neste() {
         for (let i = 0; i <= 11; i++) {
             if (toppingArray[i].checked) {
@@ -112,6 +114,7 @@
     }
     */
 
+    // Viser pizza toppingne på bilde ved checked boks
     function leggtil(){
         let ingredienser = `<img class="lol" src="bilder/Bunn-01.png">`;
         kr = 100;
@@ -139,6 +142,8 @@
 
     velg.onclick = leggtil;
 
+
+    // Lagrer navn og info til kunde, skriver ut bestilling og kundeinfo i bekreft-boksen, går fra info til bekreft
     function bet(){
         navn.fornavn = inpfornavn.value;
         navn.etternavn = inpetternavn.value;
@@ -200,6 +205,7 @@
     // nav3.onclick = bet;
 
 
+    // Går tilbake til lag, sletter pizzainfo for å lagre igjen når man trykker neste(så det ikke blir dobbelt)
     function back() {
         lag.style.display = "grid";
         info.style.display = "none";
@@ -222,6 +228,7 @@
     btnback.onclick = back;
 
 
+    // Går tilbake til info, sletter kontaktinfo for å ikke dobbelt lagre.
     function bak() {
         bekreft.style.display = "none";
         info.style.display = "block";
@@ -248,8 +255,8 @@
     }
 
     btnbak.onclick = bak;
-    //nav2.onclick = bak;
 
+    // kan bruke navigasjonsbar til å velge trinn
     nav1.onclick = function () {
         if (bekreftet.style.display === "block"){
             console.log("kan ikke");
@@ -258,6 +265,7 @@
         }
     };
 
+    // kan bruke navigasjonsbar til å velge trinn
     nav2.onclick = function () {
         if (bekreftet.style.display === "block"){
             console.log("kan ikke");
@@ -273,6 +281,7 @@
         }
     };
 
+    // kan bruke navigasjonsbar til å velge trinn
     nav3.onclick = function () {
         if (bekreftet.style.display === "block"){
             console.log("kan ikke");
@@ -291,6 +300,7 @@
         }
     };
 
+    // bekrefte kjøp, lagrer i database og viser bekreft melding
     function bekr(evt) {
         bekreft.style.display = "none";
         vent.style.display = "block";

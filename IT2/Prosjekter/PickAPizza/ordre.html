@@ -70,6 +70,7 @@
     const tbordre = document.getElementById("tbordre");
 
 
+    /* Slette i tabellen, etter at de har blitt lagd og levert */
     function slett(key) {
         const ord = ordre.child(key);
         ord.remove(); //sletter
@@ -77,6 +78,8 @@
         tbordre.removeChild(ordslett);
     }
 
+
+    /* Viser alle ordrene i rekkefølge, første bestilling på topp */
     function visordre(snap) {
         const order = snap.val();
         const key = snap.key;
