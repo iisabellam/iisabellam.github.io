@@ -59,7 +59,7 @@ nav{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%)
+    -ms-transform: translate(-50%, -50%);
 }
 #info{
     display: none;
@@ -117,4 +117,31 @@ button{
 }
 input{
     padding: 5px;
+}
+#vent{
+    display: none;
+    width: 100vw;
+}
+#vidvent{
+    width: 100%;
+}
+#bekreftet{
+    display: none;
+    margin: auto;
+}
+#meld{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.ferdig{
+    color: #daa437;
+}
+a{
+    cursor: pointer;
+    text-decoration: none;
+    color: darkgray;
 }

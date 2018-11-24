@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ordre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css">
+    <style>
+        body{
+            padding: 8px;
+            max-width: 700px;
+            margin: auto;
+        }
+        div{
+
+            text-align: center;
+        }
+        img{
+            height: 90px;
+        }
+        .lbldelete{
+            padding-right: 7px;
+            font-weight: bold;
+            opacity: 0.3;
+        }
+        .lbldelete:hover{
+            opacity: 1;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+<div><img src="bilder/logo-01.png" id="logo"></div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Kunde</th>
+        <th>Pizza</th>
+        <th>Pris</th>
+        <th> </th>
+    </tr>
+    </thead>
+    <tbody id="tbordre">
+
+    </tbody>
+</table>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCDson5l0OwJLskgfqQowqG1ksziq5NgoU",
+        authDomain: "data-816f7.firebaseapp.com",
+        databaseURL: "https://data-816f7.firebaseio.com",
+        projectId: "data-816f7",
+        storageBucket: "data-816f7.appspot.com",
+        messagingSenderId: "501788615625"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script>
+
+    const db = firebase.database();
+    const ordre = db.ref("ordre");
+    const tbordre = document.getElementById("tbordre");
+
+
+    function slett(key) {
+        const ord = ordre.child(key);
+        ord.remove(); //sletter
+        const ordslett = document.getElementById(key);
+        tbordre.removeChild(ordslett);
+    }
+
+    function visordre(snap) {
+        const order = snap.val();
+        const key = snap.key;
+        tbordre.innerHTML += `
+                <tr id="${key}">
+                    <td><b>Navn:</b> ${order.kunde.fornavn} ${order.kunde.etternavn} <br>
+                    <b>E-Mail:</b>${order.kunde.email} <br>
+                    <b>Telefon:</b> ${order.kunde.tlf} <br>
+                    <b>Adresse:</b> ${order.kunde.adresse} <br>
+                    <b>By:</b> ${order.kunde.postnummer}, ${order.kunde.by} <br>
+                    </td>
+                    <td><b>Bunn:</b> ${order.pizza.bunn}<br>
+                    <b>Ost:</b> ${order.pizza.ost}<br>
+                    <b>Topping:</b> ${order.pizza.topping}<br>
+                    <b>Dressing:</b> ${order.pizza.dressing}<br>
+                    </td>
+                    <td>${order.pizza.pris},-</td>
+                    <td class="lbldelete" onclick="slett('${key}')"> X </td>
+                </tr>
+            `;
+    }
+
+    ordre.on("child_added", visordre);
+
+
+</script>
+
+
+</body>
+</html>

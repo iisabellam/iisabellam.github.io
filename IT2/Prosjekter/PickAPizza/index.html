@@ -66,6 +66,7 @@
                         <div><input type="checkbox" class="dressing" value="olje"> olje</div>
                         <div><input type="checkbox" class="dressing" value="hot saus"> hot saus</div>
                 </div>
+                <audio src="bilder/klikk.mp4" id="klikk"></audio>
                 <div class="ting" id="knapp">
                 <button id="btnNeste">NESTE</button>
                 </div>
@@ -109,13 +110,43 @@
 
                 </div>
                 <button id="btnbak" >Tilbake</button>
-                <button id="btnbek" >Bekreft Ordre</button>
+                <button id="btnbek">Bekreft Ordre</button>
+            </div>
+        </div>
+
+        <div id="vent">
+            <video src="bilder/vent.mov" autoplay muted loop></video>
+        </div>
+
+        <div id="bekreftet">
+            <div id="meld">
+                <h1 class="ferdig">Din ordre er bekreftet!</h1>
+                <h1 class="ferdig">Pizzaen din er klar om litt</h1>
+                <a href="index.html">Ferdig, tilbake til start</a>
             </div>
         </div>
 
     </main>
 
-    <script src="script.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCDson5l0OwJLskgfqQowqG1ksziq5NgoU",
+            authDomain: "data-816f7.firebaseapp.com",
+            databaseURL: "https://data-816f7.firebaseio.com",
+            projectId: "data-816f7",
+            storageBucket: "data-816f7.appspot.com",
+            messagingSenderId: "501788615625"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script src="script.js">
+    </script>
+
+
 
 </body>
 </html>

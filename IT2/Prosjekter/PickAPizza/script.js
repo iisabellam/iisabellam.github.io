@@ -1,4 +1,5 @@
 
+
     let ostArray = document.querySelectorAll(".ost");
     let bunnArray = document.querySelectorAll(".bunn");
     let toppingArray = document.querySelectorAll(".topping");
@@ -9,7 +10,8 @@
         bunn: " ",
         ost: [],
         topping: [],
-        dressing: []
+        dressing: [],
+        pris: " "
     };
 
     let navn = {
@@ -43,9 +45,12 @@
     const nav1 = document.getElementById("nav1");
     const nav2 = document.getElementById("nav2");
     const nav3 = document.getElementById("nav3");
-    
-    
-
+    const klikk = document.getElementById("klikk");
+    const btnbek = document.getElementById("btnbek");
+    const vent = document.getElementById("vent");
+    const bekreftet = document.getElementById("bekreftet");
+    const db = firebase.database();
+    const ordre = db.ref("ordre");
 
     function neste() {
         for (let i = 0; i <= 11; i++) {
@@ -68,6 +73,9 @@
                 minPizza.bunn = bunnArray[i].value;
             }
         }
+
+        minPizza.pris = kr;
+
         console.log(minPizza)
         lag.style.display = "none";
         info.style.display = "block";
@@ -75,6 +83,7 @@
         nav1.style.color = "white";
         nav3.style.color = "white";
         nav2.style.color = "black";
+        klikk.play();
     }
 
     btnNeste.onclick = neste;
@@ -125,7 +134,6 @@
             }
         }
 
-
         pizza.innerHTML = ingredienser + `<p id="pris"> Pris: ${kr},- </p>`;
     }
 
@@ -140,10 +148,15 @@
         navn.email = inpemail.value;
         navn.tlf = inptlf.value;
         console.log(navn);
-        
+
+        bestilling.innerHTML = "";
+        person.innerHTML = "";
+
         info.style.display = "none";
         bekreft.style.display = "block";
         lag.style.display = "none";
+
+        klikk.play();
 
         let utost = "";
         for (let i = 0; i<=(minPizza.ost.length)-1; i++){
@@ -161,22 +174,22 @@
         }
 
         bestilling.innerHTML += `
-        <h3>Pizza</h3>
-        <p><b>Bunn: </b><br> - ${minPizza.bunn}</p><br>
-        <p><b>Ost:</b> ${utost}</p><br>
-        <p><b>Topping: </b> ${uttopp}</p><br>
-        <p><b>Dressing:</b> ${utdre}</p><br>
-        <p><b>Pris:</b> <br>  - ${kr},-</p>
-        `;
+            <h3>Pizza</h3>
+            <p><b>Bunn: </b><br> - ${minPizza.bunn}</p><br>
+            <p><b>Ost:</b> ${utost}</p><br>
+            <p><b>Topping: </b> ${uttopp}</p><br>
+            <p><b>Dressing:</b> ${utdre}</p><br>
+            <p><b>Pris:</b> <br>  - ${kr},-</p>
+            `;
 
         person.innerHTML += `
-        <h3>Person Info</h3>
-        <p><b>Navn: </b><br> - ${navn.fornavn}  ${navn.etternavn}</p><br>
-        <p><b>Adresse:</b> <br> - ${navn.adresse}</p><br>
-        <p><b>By: </b><br> - ${navn.postnummer}, ${navn.by}</p><br>
-        <p><b>E-mail: </b><br> - ${navn.email}</p><br>
-        <p><b>Telefonnummer: </b><br> - ${navn.tlf}</p>
-        `;
+            <h3>Person Info</h3>
+            <p><b>Navn: </b><br> - ${navn.fornavn}  ${navn.etternavn}</p><br>
+            <p><b>Adresse:</b> <br> - ${navn.adresse}</p><br>
+            <p><b>By: </b><br> - ${navn.postnummer}, ${navn.by}</p><br>
+            <p><b>E-mail: </b><br> - ${navn.email}</p><br>
+            <p><b>Telefonnummer: </b><br> - ${navn.tlf}</p>
+            `;
 
         nav1.style.color = "white";
         nav2.style.color = "white";
@@ -196,11 +209,14 @@
             bunn: " ",
             ost: [],
             topping: [],
-            dressing: []
+            dressing: [],
+            pris: " "
         };
         nav1.style.color = "black";
         nav2.style.color = "white";
         nav3.style.color = "white";
+
+        klikk.play();
     }
 
     btnback.onclick = back;
@@ -227,15 +243,25 @@
         nav3.style.color = "white";
         nav1.style.color = "white";
 
+        klikk.play();
+
     }
 
     btnbak.onclick = bak;
     //nav2.onclick = bak;
 
-    nav1.onclick = back;
+    nav1.onclick = function () {
+        if (bekreftet.style.display === "block"){
+            console.log("kan ikke");
+        } else {
+            back();
+        }
+    };
 
     nav2.onclick = function () {
-        if (lag.style.display === ""){
+        if (bekreftet.style.display === "block"){
+            console.log("kan ikke");
+        } else if (lag.style.display === ""){
             neste();
             console.log("nest");
         } else if(lag.style.display === "grid") {
@@ -248,7 +274,9 @@
     };
 
     nav3.onclick = function () {
-        if (bekreft.style.display === "block"){
+        if (bekreftet.style.display === "block"){
+            console.log("kan ikke");
+        } else if (bekreft.style.display === "block"){
             console.log("bli");
         } else if (lag.style.display === "none"){
             bet();
@@ -262,3 +290,25 @@
             console.log("bet1");
         }
     };
+
+    function bekr(evt) {
+        bekreft.style.display = "none";
+        vent.style.display = "block";
+
+        klikk.play();
+
+        setTimeout(function () {
+            vent.style.display = "none";
+            bekreftet.style.display = "block";
+        }, 8000);
+
+        console.log("bet1");
+        evt.preventDefault();
+        const order = {
+            kunde: navn,
+            pizza: minPizza
+        };
+        ordre.push(order);
+    }
+
+    btnbek.onclick = bekr;
