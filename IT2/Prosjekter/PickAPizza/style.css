@@ -23,7 +23,7 @@ header{
     z-index: -1;
     overflow: hidden;
 }
-video{
+#rull{
     width: 100vw;
 }
 main{
@@ -120,7 +120,13 @@ input{
 }
 #vent{
     display: none;
-    width: 100vw;
+    margin: auto;
+    width: 67vw;
+    overflow: hidden;
+}
+#load{
+    width: 100%;
+    margin-top: 10px;
 }
 #vidvent{
     width: 100%;

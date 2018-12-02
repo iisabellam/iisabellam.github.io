@@ -144,41 +144,45 @@
 
 
     // Lagrer navn og info til kunde, skriver ut bestilling og kundeinfo i bekreft-boksen, går fra info til bekreft
+    // må fylle telefonnummer
     function bet(){
-        navn.fornavn = inpfornavn.value;
-        navn.etternavn = inpetternavn.value;
-        navn.adresse = inpadresse.value;
-        navn.postnummer = inppostnr.value;
-        navn.by = inpby.value;
-        navn.email = inpemail.value;
-        navn.tlf = inptlf.value;
-        console.log(navn);
+        if(navn.tlf === " "){
+            alert("Du må fylle inn telefonnummer!");
+        }else{
+            navn.fornavn = inpfornavn.value;
+            navn.etternavn = inpetternavn.value;
+            navn.adresse = inpadresse.value;
+            navn.postnummer = inppostnr.value;
+            navn.by = inpby.value;
+            navn.email = inpemail.value;
+            navn.tlf = inptlf.value;
+            console.log(navn);
 
-        bestilling.innerHTML = "";
-        person.innerHTML = "";
+            bestilling.innerHTML = "";
+            person.innerHTML = "";
 
-        info.style.display = "none";
-        bekreft.style.display = "block";
-        lag.style.display = "none";
+            info.style.display = "none";
+            bekreft.style.display = "block";
+            lag.style.display = "none";
 
-        klikk.play();
+            klikk.play();
 
-        let utost = "";
-        for (let i = 0; i<=(minPizza.ost.length)-1; i++){
-            utost += ` <br> - ${minPizza.ost[i]} `;
-        }
+            let utost = "";
+            for (let i = 0; i<=(minPizza.ost.length)-1; i++){
+                utost += ` <br> - ${minPizza.ost[i]} `;
+            }
 
-        let uttopp = "";
-        for (let i = 0; i<=(minPizza.topping.length)-1; i++){
-            uttopp += ` <br> - ${minPizza.topping[i]} `;
-        }
+            let uttopp = "";
+            for (let i = 0; i<=(minPizza.topping.length)-1; i++){
+                uttopp += ` <br> - ${minPizza.topping[i]} `;
+            }
 
-        let utdre = "";
-        for (let i = 0; i<=(minPizza.dressing.length)-1; i++){
-            utdre += ` <br> - ${minPizza.dressing[i]} `;
-        }
+            let utdre = "";
+            for (let i = 0; i<=(minPizza.dressing.length)-1; i++){
+                utdre += ` <br> - ${minPizza.dressing[i]} `;
+            }
 
-        bestilling.innerHTML += `
+            bestilling.innerHTML += `
             <h3>Pizza</h3>
             <p><b>Bunn: </b><br> - ${minPizza.bunn}</p><br>
             <p><b>Ost:</b> ${utost}</p><br>
@@ -187,7 +191,7 @@
             <p><b>Pris:</b> <br>  - ${kr},-</p>
             `;
 
-        person.innerHTML += `
+                person.innerHTML += `
             <h3>Person Info</h3>
             <p><b>Navn: </b><br> - ${navn.fornavn}  ${navn.etternavn}</p><br>
             <p><b>Adresse:</b> <br> - ${navn.adresse}</p><br>
@@ -196,9 +200,10 @@
             <p><b>Telefonnummer: </b><br> - ${navn.tlf}</p>
             `;
 
-        nav1.style.color = "white";
-        nav2.style.color = "white";
-        nav3.style.color = "black";
+            nav1.style.color = "white";
+            nav2.style.color = "white";
+            nav3.style.color = "black";
+        }
     }
 
     btnbet.onclick = bet;
