@@ -146,7 +146,7 @@
     // Lagrer navn og info til kunde, skriver ut bestilling og kundeinfo i bekreft-boksen, går fra info til bekreft
     // må fylle telefonnummer
     function bet(){
-        if(navn.tlf === " "){
+        if(inptlf.value === ""){
             alert("Du må fylle inn telefonnummer!");
         }else{
             navn.fornavn = inpfornavn.value;
