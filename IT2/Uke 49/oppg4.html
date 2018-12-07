@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 4</title>
+    <style>
+        body{
+            background-color: white;
+            text-align: center;
+        }
+        #info{
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color: lightgray;
+            padding: 10px;
+        }
+        #divArtister{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+        }
+        .album{
+            width: 100%;
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="info">
+
+    </div>
+
+    <h1>Grammys - Album of the Year 2018</h1>
+    <div>
+        <h3>Nominerte</h3>
+        <div id="divArtister">
+        </div>
+    </div>
+    <div>
+        <h3>Album</h3>
+        <div id="divAlbum">
+
+        </div>
+    </div>
+
+    <script>
+
+        const divArtister = document.getElementById("divArtister");
+        const divAlbum = document.getElementById("divAlbum");
+        const info = document.getElementById("info");
+
+
+        let lorde = {
+            id: "idlorde",
+            navn: "Lorde",
+            album: "Melodrama",
+            bilde: "bilder/melodrama.jpg",
+            artist: "bilder/lorde.png",
+            info: "Melodrama er et nytt album av artisten Lorde som ble utgitt i 2017. Lorde er mest kjent for sangen Royals som ble utgitt i 2013. Det er hennes andre album."
+        };
+
+        let gambino = {
+            id: "idgambino",
+            navn: "Childish Gambino",
+            album: "Awaken, My Love!",
+            bilde: "bilder/awaken.jpg",
+            artist: "bilder/gambino.png",
+            info: "Awaken er det fjerde albumet til Gambino og ble utgitt i 2017. Chilidish Gabino er mest kjent for sin sang Redbone fra dette albumet."
+        };
+
+        let jayz = {
+            id: "idjayz",
+            navn: "Jay-Z",
+            album: "444",
+            artist: "bilder/jayz.png",
+            bilde: "bilder/444.jpg",
+            info: ""
+        };
+
+        let bruno = {
+            id: "idbruno",
+            navn: "Bruno Mars",
+            album: "24K Magic",
+            bilde: "bilder/24KMagic.jpg",
+            artist: "bilder/brunomars.png",
+            info: "Bruno Mars sitt 24K Magic album er hans tredje album. Albumet har 9 sanger som blant annet 24K Magic og Finesse. Bruno Mars fikk mye oppmerksomhet for dette albumet med hitten med samme navn som albumet. "
+        };
+
+        let kendrick = {
+            id: "idkendrick",
+            navn: "Kendrick Lamar",
+            album: "Damn",
+            bilde: "bilder/damn.jpg",
+            artist: "bilder/kendrick.png",
+            info: "Damn er Kendrick Lamar sitt sjette album. Det innerholder hit-låtene HUMBLE. og DNA. Kendrick er en amerikansk rapper og fikk mye oppmerksomhet for dette albumet."
+        };
+
+
+        let grammyArray = [gambino, jayz, bruno, kendrick, lorde]
+
+        for (let i = 0; i<=4; i++){
+            divArtister.innerHTML += `<img id="${grammyArray[i].id}" src="${grammyArray[i].artist}" class="album">`;
+        }
+
+        const idlorde = document.getElementById("idlorde");
+        const idjayz = document.getElementById("idjayz");
+        const idgambino = document.getElementById("idgambino");
+        const idkendrick = document.getElementById("idkendrick");
+        const idbruno = document.getElementById("idbruno");
+        let albumArray = document.querySelectorAll(".album");
+
+        /*idlorde.onclick = function(){
+            info.innerHTML = `
+            <h2>${lorde.navn}</h2>
+            <h3>${lorde.album}</h3>
+            <p>${lorde.info}</p>
+            `;
+            info.style.display = "block";
+        }*/
+
+        for (let u = 0; u< grammyArray.length; u++){
+            console.log(grammyArray[u].id);
+            grammyArray[u].id.onclick = function(){
+                info.innerHTML = `
+            <h2>${grammyArray[u].navn}</h2>
+            <h3>${grammyArray[u].album}</h3>
+            <p>${grammyArray[u].info}</p>
+            `;
+                info.style.display = "block";
+                console.log("hei");
+            }
+        }
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

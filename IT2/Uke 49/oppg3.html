@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 3</title>
+</head>
+<body>
+
+    <p id="oppgA"></p>
+    <input type="number" placeholder="Skriv inn alder" id="inpAlder">
+    <input type="radio" name="rabatt" value="student" id="chStudent">Student</input>
+    <input type="radio" name="rabatt" value="pensjonist" id="chPensjonist">Pensjonist</input>
+    <input type="radio" name="rabatt" value="pensjonist" id="chIngen">Ingen Rabatt</input>
+    <button id="btnPris">Se pris</button>
+    <p id="pBillett"></p>
+    <p id="oppgCa"></p>
+    <p id="oppgCb"></p>
+
+    <script>
+
+        //Oppgave A)
+
+        const oppgA = document.getElementById("oppgA");
+
+        var tall = Math.floor(Math.random()*10); //Tilfeldig tall mellom 0 og 10
+
+        if (tall < 5){
+            oppgA.innerHTML = "Tallet er mindre enn 5";
+        } else if(tall === 5){
+            oppgA.innerHTML = "Tallet er 5";
+        } else{
+            oppgA.innerHTML = "Tallet er større enn 5";
+        }
+        
+        //Oppgave B)
+        //a.
+
+        const inpAlder = document.getElementById("inpAlder");
+        const pBillett = document.getElementById("pBillett");
+        const chStudent = document.getElementById("chStudent");
+        const btnPris = document.getElementById("btnPris");
+
+
+        const chPensjonist = document.getElementById("chPensjonist");
+
+
+
+        let pris = 0;
+
+        /* inpAlder.oninput = function () {
+            if (inpAlder.value < 5){
+                pris = 0;
+            } else if (inpAlder.value < 18){
+                pris = 30;
+            } else{
+                pris= 70;
+            }
+            pBillett.innerHTML = `Billettprisen er ${pris},-`
+        } */
+
+        //b.
+
+        function rabatt(){
+            if (chStudent.checked){
+                pris = (70 * 0.8);
+            } else if (chPensjonist.checked){
+                pris = (70*0.4);
+            } else{
+                pris = 70;
+            }
+        }
+
+
+        btnPris.onclick = function () {
+            if (inpAlder.value < 5){
+                pris = 0;
+            } else if (inpAlder.value < 18){
+                pris = 30;
+            } else{
+                rabatt();
+            }
+            pBillett.innerHTML = `Billettprisen er ${pris},-`;
+        };
+
+        //OPPGAVE C)
+        //a.
+        const oppgCa = document.getElementById("oppgCa");
+        const oppgCb = document.getElementById("oppgCb");
+
+        for (let u = 0; u <=10; u++) {
+            oppgCa.innerHTML += u + ", ";
+        };
+
+        //b.
+        for (let i = 1; i<=30; i++){
+            oppgCb.innerHTML += `${4*i}, `;
+        }
+
+
+
+    </script>
+
+</body>
+</html>
