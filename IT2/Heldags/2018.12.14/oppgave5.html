@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 5 - Presentasjon av politiske partier</title>
+    <style>
+        body{
+            margin: auto;
+            text-align: center;
+            user-select: none;
+            background-color: rgba(150, 199, 138, 0.55);
+            font-family: "Devanagari Sangam MN";
+            color: darkolivegreen;
+        }
+        nav{
+            height: 100px;
+            padding: 10px;
+            border-bottom: solid 2px olivedrab;
+            margin-bottom: 20px;
+            background-color: white;
+        }
+        .parti{
+            height: 100%;
+        }
+        #velg{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+        #info{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 70%;
+            margin: auto;
+        }
+        #divParti{
+            position: relative;
+        }
+        #plasser{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+        #slide{
+            display: none;
+        }
+        #bilder{
+            height: 400px;
+        }
+        button{
+            padding: 10px;
+            width: 50px;
+            font-size: 15px;
+            background-color: darkolivegreen;
+            border: none;
+            color: white;
+        }
+        h2{
+            font-family: "Devanagari Sangam MN";
+            font-size: 80px;
+            color: darkolivegreen;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img class="parti" src="bilder/sp.png" id="imgSp">
+        <img class="parti" src="bilder/miljopartiet.png" id="imgMdg">
+    </nav>
+
+    <div id="velg">
+        <h2>VELG ET PARTI</h2>
+    </div>
+
+    <div id="info">
+        <div id="divParti">
+        </div>
+
+        <div id="slide">
+            <img id="bilder" src="">
+            <div>
+                <button id="btnbak"><</button>
+                <button id="btnfram">></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const divParti = document.getElementById("divParti");
+        const imgParti = document.querySelectorAll(".parti");
+        const btnbak = document.getElementById("btnbak");
+        const btnfram = document.getElementById("btnfram");
+        const bilder = document.getElementById("bilder");
+        const slide = document.getElementById("slide");
+        const velg = document.getElementById("velg");
+        
+
+        let n = 0;
+
+        let sp = {
+            navn: "Senterpartiet",
+            repr: 19,
+            slagord: "Vi tror på hele Norge",
+            bilder: ["bilder/sp01.jpg","bilder/sp02.jpg","bilder/sp03.jpg"]
+        };
+
+        let mdg = {
+            navn: "Miljøpartiet de grønne",
+            repr: 1,
+            slagord: "Ta vare på fremtiden",
+            bilder: ["bilder/mdg01.jpg","bilder/mdg02.jpg","bilder/mdg03.jpg"]
+        };
+
+        let parti = [sp, mdg];
+
+        // lager slideshowet inni her fordi det avhenger av hva i er for hvilke bilder som skal vises
+        // løkke som plukker opp hvilket objekt som trykkes på
+        for (let i = 0; i< imgParti.length; i++){
+            imgParti[i].onclick = function (){
+                divParti.innerHTML = `
+                <div id="plasser">
+                    <h1>${parti[i].navn}</h1>
+                    <p>Representanter i Stortinget: ${parti[i].repr}</p>
+                    <p>Slagord: ${parti[i].slagord}</p>
+                </div>
+            `;
+            
+            velg.style.display = "none";
+            slide.style.display = "block";
+            bilder.src = parti[i].bilder[0];
+
+            btnbak.onclick = function () {
+                if (n < 1){
+                    n = 2;
+                } else{
+                    n--;
+                }
+                console.log(n);
+                visbilder();
+            };
+
+            btnfram.onclick = function () {
+                if (n > 1){
+                    n = 0;
+                } else{
+                    n++;
+                }
+                console.log(n);
+                visbilder();
+            };
+
+            function visbilder(){
+                bilder.src = parti[i].bilder[n];
+            }
+
+            };
+        }
+
+    </script>
+
+</body>
+</html>

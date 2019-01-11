@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 4 - Tilfeldig person i berg- og dalbanen</title>
+    <style>
+        body{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            width: 70%;
+            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+        }
+        button{
+            padding: 15px;
+            font-size: 14px;
+            background-color: lightgray;
+        }
+        img{
+            width: 400px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btnNy">Ny tilfeldig person</button>
+    <div id="melding"></div>
+    <img id="bilde">
+
+    <script>
+
+        // referer til html-objekter
+        const btnNy = document.getElementById("btnNy");
+        const melding = document.getElementById("melding");
+        const bilde = document.getElementById("bilde");
+
+
+        let alder = 1;
+
+        // når man trykker på knappen skal det lages et tilfeldig tall, hva som skjer avhenger av hvor stort tallet er
+        btnNy.onclick = function () {
+            alder = Math.floor(Math.random()*70)+1;
+            console.log(alder);
+            if (alder < 15){
+                melding.innerHTML = "Ikke for smårollinger, minst 15 år!";
+                bilde.src = "bilder/ung.jpg";
+            } else if (alder > 60){
+                melding.innerHTML = "Ikke for gamlinger, maks 60 år!";
+                bilde.src = "bilder/gammel.jpg";
+            } else {
+                melding.innerHTML = `${alder} år! Gratulerer, du er akkurat passe gammel!`;
+                bilde.src = "bilder/passe.jpg";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

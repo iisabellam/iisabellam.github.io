@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 3 - Imporrtkalkulator</title>
+    <style>
+        body {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            width: 70%;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 15px;
+            text-align: center;
+        }
+        input{
+            font-size: 14px;
+            padding: 5px;
+            text-align: center;
+        }
+        button{
+            font-size: 15px;
+            padding: 5px;
+            background-color: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="number" id="inpVerdi" placeholder="Skriv inn varens verdi i kr">
+    <button id="btnRegn">Regn ut</button>
+    <div id="resultat"> </div>
+
+    <script>
+
+        // lager konstanter slik at det er lett å referere til htmlobjekter
+        const inpVerdi = document.getElementById("inpVerdi");
+        const btnRegn = document.getElementById("btnRegn");
+        const resultat = document.getElementById("resultat");
+
+
+        let pris = 0;
+        let toll = 158;
+
+        btnRegn.onclick = function () {
+            if (inpVerdi.value<350){ // hva som skjer dersom prisen er under 350
+                pris = inpVerdi.value;
+                resultat.innerHTML = `Det er ingen moms for varer under 350kr. Varen vil derfor fortsatt koste ${pris},-`;
+            } else { // hva som skjer dersom det koster mer enn 350
+                pris = inpVerdi.value*1.25;
+                resultat.innerHTML = `Du må betale moms og toll for varer over 350kr, derfor vil varen nå koste ${pris + toll},-`;
+            }
+            console.log(pris);
+        }
+
+    </script>
+
+</body>
+</html>

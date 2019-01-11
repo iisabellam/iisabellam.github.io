@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Draft</title>
+    <style>
+        body{
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        #kontosaldo{
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            text-align: center;
+        }
+        #kontobetal{
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            text-align: center;
+        }
+        #saldo{
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            padding: 40px;
+            border: solid 1px gray;
+        }
+        #bruk{
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+        #txtsaldo{
+            font-size: 30px;
+        }
+        #table{
+            display: none;
+            min-height: 300px;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid gray;
+        }
+        th, td{
+            padding: 7px;
+        }
+        p{
+            margin: 10px;
+        }
+        button{
+            background-color: lightgray;
+            padding: 10px;
+            border: darkgray;
+            margin: auto;
+        }
+        #overfør{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 3px;
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="kontosaldo">
+        <div id="saldo">
+            <p id="txtsaldo"> </p>
+            <p id="txtkonto"> Brukskonto</p>
+        </div>
+    </div>
+
+
+    <div id="kontobetal">
+        <div id="bruk">
+            <button id="btnoverfør">Overfør</button>
+            <button id="btnutskrift">Kontoutskrift</button>
+            <br><br>
+            <div id="overfør">
+                <input type="text" id="inptil" placeholder="Overfør til:">
+                <input type="number" id="inpbeløp" placeholder="Beløp">
+                <input type="text" id="inpmeld" placeholder="Melding">
+                <button id="btnbetal">Betal</button>
+            </div>
+            <div id="table">
+                <table id="tabell">
+                    <tr>
+                        <th>Fra</th>
+                        <th>Til</th>
+                        <th>Beløp</th>
+                        <th>Melding</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        const btnoverfør = document.getElementById("btnoverfør");
+        const btnutskrift = document.getElementById("btnutskrift");
+        const overfør = document.getElementById("overfør");
+        const table = document.getElementById("table");
+        const txtsaldo = document.getElementById("txtsaldo");
+        const btnbetal = document.getElementById("btnbetal");
+        const inptil = document.getElementById("inptil");
+        const inpbeløp = document.getElementById("inpbeløp");
+        const inpmeld = document.getElementById("inpmeld");
+        const tabell = document.getElementById("tabell");
+
+
+        let saldo = 30000;
+        let transaksjoner = [""];
+
+        txtsaldo.innerHTML = `${saldo},-`;
+
+        btnoverfør.onclick = function visoverfør() {
+            btnoverfør.style.backgroundColor = "darkgray";
+            btnutskrift.style.backgroundColor = "lightgray";
+            overfør.style.display = "grid";
+            table.style.display = "none";
+        };
+
+        btnutskrift.onclick = function visoverfør() {
+            btnutskrift.style.backgroundColor = "darkgray";
+            btnoverfør.style.backgroundColor = "lightgray";
+            table.style.display = "block";
+            overfør.style.display = "none";
+        };
+
+        /*
+        btnbetal.onclick = function betal() {
+            tabell.innerHTML += `
+            <tr>
+                <td> Brukskonto </td>
+                <td> ${inptil.value} </td>
+                <td> ${inpbeløp.value},- </td>
+                <td> ${inpmeld.value} </td>
+            </tr>
+            `;
+
+            saldo = saldo - Number(inpbeløp.value);
+            txtsaldo.innerHTML = saldo + ",-";
+
+            inptil.value = "";
+            inpbeløp.value = "";
+            inpmeld.value = "";
+
+
+        }*/
+
+        btnbetal.onclick = function betal() {
+            transaksjoner.push = {
+                fra: "konto1",
+
+            };
+
+
+            saldo = saldo - Number(inpbeløp.value);
+            txtsaldo.innerHTML = saldo + ",-";
+
+            inptil.value = "";
+            inpbeløp.value = "";
+            inpmeld.value = "";
+
+
+        }
+
+    </script>
+
+</body>
+</html>

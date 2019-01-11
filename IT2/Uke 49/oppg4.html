@@ -9,13 +9,6 @@
             text-align: center;
         }
         #info{
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            background-color: lightgray;
             padding: 10px;
         }
         #divArtister{
@@ -26,14 +19,15 @@
             width: 100%;
             margin: auto;
         }
+        #kryss{
+            position: relative;
+            right: 20px;
+            top: 20px;
+        }
 
     </style>
 </head>
 <body>
-
-    <div id="info">
-
-    </div>
 
     <h1>Grammys - Album of the Year 2018</h1>
     <div>
@@ -41,17 +35,20 @@
         <div id="divArtister">
         </div>
     </div>
+    <div id="info">
+    </div>
     <div>
         <h3>Album</h3>
         <div id="divAlbum">
-
+            <img id="albumer" src="bilder/awaken.jpg"><br>
         </div>
+        <button id="btnbak"><</button>
+        <button id="btnfram">></button>
     </div>
 
     <script>
 
         const divArtister = document.getElementById("divArtister");
-        const divAlbum = document.getElementById("divAlbum");
         const info = document.getElementById("info");
 
 
@@ -79,7 +76,7 @@
             album: "444",
             artist: "bilder/jayz.png",
             bilde: "bilder/444.jpg",
-            info: ""
+            info: "Jay-Z sitt album het 444. Og ble utgitt i 2017. Han er gift med Beyonce og har mange kjente sanger."
         };
 
         let bruno = {
@@ -114,31 +111,87 @@
         const idbruno = document.getElementById("idbruno");
         let albumArray = document.querySelectorAll(".album");
 
-        /*idlorde.onclick = function(){
-            info.innerHTML = `
-            <h2>${lorde.navn}</h2>
-            <h3>${lorde.album}</h3>
-            <p>${lorde.info}</p>
-            `;
-            info.style.display = "block";
+        /*for(let i = 0; i< grammyArray.length; i++){
+            grammyArray[i].id.onclick = function(){
+                info.innerHTML = `
+                <h2>${grammyArray[i].navn}</h2>
+                <h3>${grammyArray[i].album}</h3>
+                <p>${grammyArray[i].info}</p>
+                `;
+                info.style.display = "block";
+            }
         }*/
 
-        for (let u = 0; u< grammyArray.length; u++){
-            console.log(grammyArray[u].id);
-            grammyArray[u].id.onclick = function(){
-                info.innerHTML = `
-            <h2>${grammyArray[u].navn}</h2>
-            <h3>${grammyArray[u].album}</h3>
-            <p>${grammyArray[u].info}</p>
-            `;
-                info.style.display = "block";
-                console.log("hei");
+        idlorde.onclick = function(){
+            info.innerHTML = `
+        <h4>${lorde.navn} - ${lorde.album}</h4>
+        <p>${lorde.info}</p>
+        `;
+            console.log("hei");
+        };
+
+        idbruno.onclick = function(){
+            info.innerHTML = `
+        <h4>${bruno.navn} - ${bruno.album}</h4>
+        <p>${bruno.info}</p>
+        `;
+            console.log("hei");
+        };
+
+        idjayz.onclick = function(){
+            info.innerHTML = `
+        <h4>${jayz.navn} - ${jayz.album}</h4>
+        <p>${jayz.info}</p>
+        `;
+            console.log("hei");
+        };
+
+        idgambino.onclick = function(){
+            info.innerHTML = `
+        <h4>${gambino.navn} - ${gambino.album}</h4>
+        <p>${gambino.info}</p>
+        `;
+            console.log("hei");
+        };
+
+        idkendrick.onclick = function(){
+            info.innerHTML = `
+        <h4>${kendrick.navn} - ${kendrick.album}</h4>
+        <p>${kendrick.info}</p>
+        `;
+            console.log("hei");
+        };
+
+        let n = 0;
+
+        const btnfram = document.getElementById("btnfram");
+        const btnbak = document.getElementById("btnbak");
+        const albumer = document.getElementById("albumer");
+        
+
+        btnbak.onclick = function () {
+            if (n < 1){
+                n = 4;
+            } else{
+                n--;
             }
+            console.log(n);
+            visalbum();
+        };
+
+        btnfram.onclick = function () {
+            if (n > 3){
+                n = 0;
+            } else{
+                n++;
+            }
+            console.log(n);
+            visalbum();
+        };
+        
+        function visalbum(){
+            albumer.src = grammyArray[n].bilde;
         }
-
-
-
-
 
 
 
