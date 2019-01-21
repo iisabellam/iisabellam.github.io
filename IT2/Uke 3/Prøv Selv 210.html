@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Prøv Selv s. 210</title>
+</head>
+<body>
+
+    <ul id="forof">
+    </ul>
+
+    <ul id="forr">
+    </ul>
+
+    <ul id="bokListe">
+    </ul>
+
+    <script>
+
+        //Oppgave 1
+        let matvarer = ["ost", "brød", "paprika", "kaviar"];
+        const forof = document.querySelector("#forof");
+        const forr = document.querySelector("#forr");
+
+
+        for (let mat of matvarer){
+            forof.innerHTML += `
+            <li> ${mat} </li>`;
+        }
+
+        for(let i = 0; i < matvarer.length; i++){
+            forr.innerHTML += `<li>${matvarer[i]}</li>`;
+        }
+
+        //Oppgave 2
+        let boker = ["Uten en tråd", "albertine", "Ung jente, Voksen mann", "Appelsinpiken", "sang om den røde rubin"];
+        const bokListe = document.querySelector("#bokListe");
+
+        for (let bok of boker) {
+            bokListe.innerHTML += `<li>${bok}</li>`;
+        }
+
+        boker.sort(sorterBokstaver);
+        console.log(boker);
+
+        //Oppgave 3
+        let karakterer = [3,4,5,6,5,5,6,4,4,5];
+        let antall = 0;
+
+        for (let karakter of karakterer){
+            if (karakter === 5){
+                antall++;
+            }
+        }
+        console.log(antall);
+
+        karakterer.sort();
+        console.log(karakterer);
+
+        let gjennomsnitt = 0;
+        for (let karakter of karakterer){
+            gjennomsnitt += karakter;
+        }
+        gjennomsnitt = gjennomsnitt/(karakterer.length);
+        console.log(gjennomsnitt);
+
+
+        //Oppave 4
+        let personer = [
+            {
+                navn: "Isabel",
+                alder: 18
+            },
+            {
+
+            }
+        ]
+
+
+        // Funksjoner
+        function sorterBokstaver(a,b) {
+            a = a.toLowerCase();
+            b = b.toLowerCase();
+            if (a <= b){
+                return -1
+            }
+        }
+    </script>
+
+</body>
+</html>

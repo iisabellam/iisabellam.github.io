@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Prøv Selv s.206</title>
+    <style>
+        body{
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <ul id = "liste">
+
+    </ul>
+
+    <div>
+        <img src="bilder/bilde1.jpg" style="width: 60%" id="bilder">
+        <button class="btnBilde"> < </button>
+        <button class="btnBilde"> > </button>
+
+    </div>
+
+    <select>
+        <option value="Mamma">Mamma</option>
+        <option value="Pappa">Pappa</option>
+        <option value="Helena">Helena</option>
+        <option value="Isabel">Isabel</option>
+        <option value="Leo">Leo</option>
+    </select>
+    <input type="text" id="inptext">
+    <button id="pushh">Push</button>
+
+    <ul id="inpArray">
+    </ul>
+
+    <ul id="optionArray">
+    </ul>
+
+    <script>
+        // NB!! I sort() bytter den om det blir mindre enn 0.
+
+         //Oppgave 1
+        let matvarer =["ost", "paprika", "brød", "kaviar"];
+
+        matvarer.unshift("melk");
+        matvarer.pop();
+        matvarer.splice(3,1, "knekkebrød");
+
+
+        //Oppgave 2
+        let traer = ["Lønn", "Hassel", "bjørk", "Eik", "blodlønn", "Furu", "gran"];
+        //traer.splice(3,1);
+        //traer.splice(2,1, "hengebjørk");
+        //traer.splice(4,2);
+        //traer.splice(5,0, "fjellbjørk", "dvergbjørk");
+        //traer.sort();
+
+        //Oppgave 3
+        const liste = document.querySelector("#liste");
+        const bilder = document.querySelector("#bilder");
+        let btnBilde = document.querySelectorAll(".btnBilde");
+        console.log(btnBilde);
+        let bildeArray = ["bilde1.jpg", "bilde3.jpg", "Bilde2.jpg", "Bilde4.jpg"];
+
+        for (let bilde of bildeArray){
+            liste.innerHTML +=`
+            <li> ${bilde} </li>
+            `;
+        }
+
+        let bildenr = 0;
+
+        btnBilde[0].onclick = function () {
+            if (bildenr <= 0){
+                bildenr = bildeArray.length - 1;
+            } else {
+                bildenr--;
+            }
+            bilder.src = `bilder/${bildeArray[bildenr]}`;
+        }
+
+        btnBilde[1].onclick = function () {
+            if (bildenr > (bildeArray.length-2)){
+                bildenr = 0;
+            } else {
+                bildenr++;
+            }
+            bilder.src = `bilder/${bildeArray[bildenr]}`;
+        }
+
+        //Oppgave 4
+        function sorterBokstaver(a,b) {
+            a = a.toLowerCase();
+            b = b.toLowerCase();
+            if( a <= b){
+                return -1;
+            }
+
+        }
+
+        bildeArray.sort(sorterBokstaver);
+        console.log(bildeArray);
+
+
+        // Oppgave 5
+        let tallArray =[3, 14, 66, 29, 39];
+
+        function sorterTall(a,b) {
+            return a-b;
+        }
+
+        tallArray.sort(sorterTall);
+        console.log(tallArray);
+
+
+        //Oppgave 6
+        let inputArray = [];
+        let selectArray = [];
+        const pushh = document.querySelector("#pushh");
+        const inptext = document.querySelector("#inptext");
+        const option = document.querySelectorAll("option");
+        const inpArray = document.querySelector("#inpArray");
+        const optionArray = document.querySelector("#optionArray");
+
+
+
+        pushh.onclick = function () {
+            if (inptext.value === ""){
+                console.log("går ikke")
+            } else{
+                for(let i = 0; i<option.length; i++){
+                    if (option[i].selected === true){
+                        selectArray.push(option[i].value);
+                        console.log(selectArray);
+                        optionArray.innerHTML = "";
+                        for (let select of selectArray){
+                            optionArray.innerHTML += `
+                            <li> ${select}</li>`;
+                        }
+                    }
+                }
+                inputArray.push(inptext.value);
+                inptext.value = "";
+                console.log(inputArray);
+                inpArray.innerHTML = "";
+                for (let inp of inputArray){
+                    inpArray.innerHTML += `
+                            <li> ${inp}</li>`;
+                }
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>

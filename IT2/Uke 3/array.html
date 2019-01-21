@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Array</title>
+</head>
+<body>
+
+
+    <ul id="filmListe">
+
+    </ul>
+
+    <script>
+
+        // Samme som getElementById men nyere, kan også velge class og tagger
+        let filmListe = document.querySelector("#filmListe");
+        // let filmListe = document.querySelectorAll(".filmListe");
+
+        let filmer = ["Ben Hur", "Shawshank Redemption", "Star Wars"];
+
+        //skrive ut alle elementene i en array
+        // looper gjennom arrayer
+        /*for ( let i = 0; i < filmer.length; i++){
+            document.write(filmer[i]);
+        }
+        // definerer en variabel fra elementene i arrayen og skriver de ut
+        for (let film of filmer){
+            document.write(film);
+        }*/
+
+
+
+        // Skrive ut en liste med alle elementer fra en array
+        for (let film of filmer) {
+            filmListe.innerHTML += `
+            <li> ${film} </li>
+            `;
+        }
+
+        /* alternativ løsning
+        for (let thor of filmer){
+            let nyttElement = document.createElement("li");
+            nyttElement.innerHTML = thor;
+            filmListe.appendChild(nyttElement);
+        }*/
+
+
+
+
+        filmer.push("Inglorius Bastards"); // legger til et element bakerst
+        filmer.unshift("Hawaii Oslo");// legger til et element foran
+        filmer.pop(); //Fjerner siste element
+        filmer.shift(); // Fjerner første elementet
+        filmer.splice(1,2); // Starter å fjerne element 1, og fjerner 2 elementer etter den
+        filmer.splice(2,1,"Blade Runner"); // Legger til i plassen 2, fjerner 1 elementer bak
+
+        console.log(filmer);
+
+    </script>
+
+</body>
+</html>
