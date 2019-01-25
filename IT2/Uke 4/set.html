@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Set</title>
+</head>
+<body>
+
+    <script>
+        // Array
+        let presidentArray = ["Barack Obama", "Donald Trump", "Ronald Reagan"];
+
+        //Alle elementer i et sett må være unike
+        let presidenter = new Set();
+        presidenter.add("Barack Obama");
+        presidenter.add("Donald Trump");
+        presidenter.add("Ronald Reagan");
+
+        // sjekke i et set
+        console.log(presidenter.has("Barack Obama"));
+
+        // Sjekke i en array
+        for (let president of presidentArray){
+            if (president === "Barack Obama"){
+                console.log(true);
+            }
+        }
+
+        for (let president of presidenter){
+            document.write(president)
+        }
+
+    </script>
+
+</body>
+</html>

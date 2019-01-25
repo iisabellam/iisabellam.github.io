@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Prøv selv</title>
+    <style>
+        body{
+            height: 100%;
+            background-color: black;
+        }
+        .stjerne{
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+
+        //Oppgave 1 s. 214
+        let landene = new Set();
+        landene.add("Norge");
+        landene.add("Sverige");
+        landene.add("Danmark");
+        landene.add("Frankrike");
+        landene.add("Spania");
+        console.log(landene.has("Norge"));
+        landene.delete("Spania");
+
+        for (let land of landene){
+            console.log(land);
+        }
+
+        //Oppgave 1 s. 220
+        let infoOm = new Map();
+        infoOm.set("001", {
+            navn: "Isabel Lam",
+            tlf: "41370864"
+        });
+        infoOm.set("002", {
+            navn: "Helena Lam",
+            tlf: "46758966"
+        });
+        infoOm.set("003", {
+            navn: "Helene Fisher",
+            tlf: "96782435"
+        });
+        infoOm.set("004", {
+            navn: "Henrik Nilsen",
+            tlf: "49872564"
+        });
+
+        console.log(infoOm.get("003"));
+        console.log(infoOm.get("004"));
+
+        for (let info of infoOm.values()){
+            console.log(`${info.navn} sitt telefonnummer er ${info.tlf}`);
+        }
+
+
+        // Eksempel stjerner
+
+        // med for-løkke
+        /*for (let i = 0; i <2000; i++){
+            var stjerne = document.createElement("div");
+            stjerne.className = "stjerne";
+            stjerne.style.left = Math.random()*innerWidth+"px";
+            stjerne.style.top = Math.random()*innerHeight+"px";
+            stjerne.style.width = Math.random()*3 + "px";
+            stjerne.style.height = stjerne.style.width;
+            document.body.appendChild(stjerne);
+        }*/
+
+        // med nodeList
+        for (let i = 0; i <2000; i++){
+            let stjerne = document.createElement("div");
+            stjerne.className = "stjerne";
+            document.body.appendChild(stjerne);
+        }
+        let stjerner = document.querySelectorAll(".stjerne");
+        function scrable(){
+            for (let stjerne of stjerner){
+                stjerne.style.left = Math.random()*innerWidth+"px";
+                stjerne.style.top = Math.random()*innerHeight+"px";
+                stjerne.style.width = Math.random()*3 + "px";
+                stjerne.style.height = stjerne.style.width;
+            }
+        }
+        scrable();
+        // setInterval(scrable, 1500);
+
+
+    </script>
+
+
+</body>
+</html>

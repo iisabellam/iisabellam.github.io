@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hjelpeliste</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-float.css">
+    <style>
+        body{
+            padding: 8px;
+            max-width: 700px;
+            margin: auto;
+        }
+        h1{
+            margin: 10px;
+            text-align: center;
+            font-family: "Helvetica", sans-serif;
+            text-transform: uppercase;
+            font-size: 40px;
+            color: darkorange;
+            font-weight: 800;
+        }
+        #tab{
+            width: auto;
+        }
+        table{
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+        img{
+            height: 90px;
+        }
+        .lbldelete{
+            padding-right: 7px;
+            font-weight: bold;
+            opacity: 0.3;
+        }
+        .lbldelete:hover{
+            opacity: 1;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hjelpeliste</h1>
+
+    <div id="tab">
+        <table>
+            <thead>
+            <tr>
+                <th>Elev</th>
+                <th>Hva</th>
+                <th> </th>
+            </tr>
+            </thead>
+            <tbody id="tbhjelp">
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCDson5l0OwJLskgfqQowqG1ksziq5NgoU",
+            authDomain: "data-816f7.firebaseapp.com",
+            databaseURL: "https://data-816f7.firebaseio.com",
+            projectId: "data-816f7",
+            storageBucket: "data-816f7.appspot.com",
+            messagingSenderId: "501788615625"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script>
+
+        const db = firebase.database();
+        const hjelp = db.ref("hjelp");
+        const tbhjelp = document.getElementById("tbhjelp");
+
+
+        /* Slette i tabellen, etter at de har blitt lagd og levert */
+        function slett(key) {
+            const ord = hjelp.child(key);
+            ord.remove(); //sletter
+            const ordslett = document.getElementById(key);
+            tbhjelp.removeChild(ordslett);
+        }
+
+
+        /* Viser alle ordrene i rekkefølge, første bestilling på topp */
+        function vishjelp(snap) {
+            const hva = snap.val();
+            const key = snap.key;
+            tbhjelp.innerHTML += `
+                    <tr id="${key}">
+                        <td>${hva.elev}</td>
+                        <td>${hva.hva}</td>
+                        <td class="lbldelete" onclick="slett('${key}')" style="text-align: right; padding-right: 20px"> X </td>
+                    </tr>
+                `;
+        }
+
+        hjelp.on("child_added", vishjelp);
+
+
+    </script>
+
+
+</body>
+</html>
