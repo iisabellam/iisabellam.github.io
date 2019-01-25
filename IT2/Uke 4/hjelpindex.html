@@ -93,7 +93,7 @@
 
         btnSubmit.onclick = lagrehjelp;
 
-        function lagrehjelp(event) {
+        function lagrehjelp(event, snapshot) {
             event.preventDefault();
             if (inpNavn.value === ""){
                 alert("Du må fylle ut navn");
@@ -110,8 +110,10 @@
                 console.log(inpNavn.value);
                 console.log("pushed");
 
-                for (let i = 0; i < hva.length; i++){
-                    if (inpNavn.value === hva[i].navn){
+                let arrayy = hjelp.toArray(snapshot.val());
+
+                for (let i = 0; i < arrayy.length; i++){
+                    if (inpNavn.value = arrayy[i].navn){
                         bekreftet.innerHTML += `Du er nr: ${i+1} i køen`;
                         console.log(i);
                     }
