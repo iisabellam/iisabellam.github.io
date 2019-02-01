@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Prøv Selv s. 261</title>
+    <style>
+    </style>
+</head>
+<body>
+
+    <h1 id="oppg2">OPPGAVE 2</h1>
+
+    <div id="oppg3"></div>
+
+
+    <input id="oppg4" type="text" placeholder="roter">
+
+    <div id="planke"></div>
+
+
+    <div id="oppg5"></div>
+    <input class="inputt" type="range" id="bredde5" placeholder="Bredde">
+    <input class="inputt" type="range" id="høyde5" placeholder="Høyde">
+    <input class="inputt" type="color" id="farge5" placeholder="Bakgrunn">
+    <input class="inputt" type="number" id="avrunding5" placeholder="Avrunding">
+    <input class="inputt" type="number" id="xpos5" placeholder="X-Posisjon">
+    <input class="inputt" type="number" id="ypos5" placeholder="Y-Posisjon">
+
+
+    <script>
+        //Oppgave 2
+        let oppg2 = document.querySelector("#oppg2");
+
+        oppg2.style.transition = "3s";
+        oppg2.style.textAlign = "center";
+
+        oppg2.onmouseover = function () {
+            oppg2.style.transform = "scale(3)";
+        }
+        oppg2.onmouseout = function () {
+            oppg2.style.transform = "scale(1)";
+        }
+
+
+        //Oppgave 3
+        let oppg3 = document.querySelector("#oppg3");
+
+        oppg3.style.height = "50px";
+        oppg3.style.width = "50px";
+        oppg3.style.position = "absolute";
+        oppg3.style.transition = "0.7s";
+        oppg3.style.backgroundColor = "red";
+        oppg3.style.transform = "translate(-50%,-50%)";
+
+
+        window.onclick = function () {
+            oppg3.style.top = event.clientY + "px";
+            oppg3.style.left = event.clientX + "px";
+        }
+
+
+        //Oppgave 4
+        let oppg4 = document.querySelector("#oppg4");
+        const planke = document.querySelector("#planke");
+
+        planke.style.height = "30px";
+        planke.style.width = "200px";
+        planke.style.backgroundColor = "blue";
+        planke.style.margin = "auto";
+        planke.style.transition = "1s";
+
+        oppg4.oninput = function () {
+            planke.style.transform = `rotate(${oppg4.value}deg)`;
+        }
+
+
+        //Oppgave 5
+        const oppg5 = document.querySelector("#oppg5");
+
+        const bredde5 = document.querySelector("#bredde5");
+        const høyde5 = document.querySelector("#høyde5");
+        const farge5 = document.querySelector("#farge5");
+        const avrunding5 = document.querySelector("#avrunding5");
+        const xpos5 = document.querySelector("#xpos5");
+        const ypos5 = document.querySelector("#ypos5");
+        const inputt = document.querySelectorAll(".inputt");
+
+        oppg5.style.height = "40px";
+        oppg5.style.width = "40px";
+        oppg5.style.position = "absolute";
+        oppg5.style.top = "250px";
+        oppg5.style.left = "50px";
+        oppg5.style.transition = "0.5s";
+        oppg5.style.backgroundColor = "green";
+
+        for(let i =0; i<inputt.length; i++){
+            inputt[i].oninput = function () {
+                oppg5.style.width = bredde5.value + "px";
+                oppg5.style.height = høyde5.value + "px";
+                oppg5.style.backgroundColor = farge5.value;
+                oppg5.style.borderRadius = avrunding5.value + "%";
+                oppg5.style.top = ypos5.value + "px";
+                oppg5.style.left = xpos5.value + "px";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>

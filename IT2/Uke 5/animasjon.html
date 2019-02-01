@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>animasjon</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+        .container > .person > img{
+            width: 100%;
+        }
+        .container > .person{
+            transition: 0.2s 0.1s;
+        }
+        .container > .person:hover{
+            transform: scale(1.2);
+        }
+        .container > .person > p{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 20px;
+            font-family: "Helvetica", sans-serif;
+            opacity: 0;
+            transition: 0.2s 0.1s;
+        }
+        .container > .person:hover > p{
+            opacity: 1;
+        }
+        .container > .person:hover > img{
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="person">
+            <img src="bilder/bilde1.jpg" alt="Bilde nummer 1">
+            <p>Tekst #1</p>
+        </div>
+        <div class="person">
+            <img src="bilder/bilde2.jpg" alt="Bilde nummer 2">
+            <p>Tekst #2</p>
+        </div>
+        <div class="person">
+            <img src="bilder/bilde3.jpg" alt="Bilde nummer 3">
+            <p>Tekst #3</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Endre Farge</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <input id="inpFarge" type="text">
+
+    <script>
+        let inpFarge = document.querySelector("#inpFarge");
+
+        document.body.style.transition = "0.5s";
+
+        inpFarge.oninput = function () {
+            document.body.style.backgroundColor = inpFarge.value;
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>

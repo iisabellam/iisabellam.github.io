@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Raketten</title>
+    <style>
+        body{
+            background-image: url("bilder/space.jpg");
+            background-size: cover;
+        }
+        @keyframes lette {
+            0%{
+                left: -20%;
+                bottom: 0%;
+                transform: rotate(90deg);
+            }
+            50%{
+                left: 80%;
+                bottom: 0%;
+            }
+            100%{
+                left: 100%;
+                bottom: 200%;
+            }
+        }
+        @keyframes lande {
+            0%{
+                left: 100%;
+                bottom: 200%;
+            }
+            50%{
+                 left: 80%;
+                 bottom: 0%;
+            }
+            100%{
+                left: -20%;
+                bottom: 0%;
+            }
+        }
+        #imgRocket{
+            position: absolute;
+            bottom: -20%;
+            left: -20%;
+        }
+        button{
+            background-color: darkblue;
+            color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btnLette">Lette</button>
+    <button id="btnLande">Lande</button>
+    <img id="imgRocket" src="bilder/rocket.png">
+
+
+    <script>
+        const btnLette = document.querySelector("#btnLette");
+        const btnLande = document.querySelector("#btnLande");
+        const imgRocket = document.querySelector("#imgRocket");
+
+
+        btnLande.onclick = function () {
+            imgRocket.style.animation = "lande 5s forwards";
+        }
+
+        btnLette.onclick = function () {
+            imgRocket.style.animation = "lette 5s forwards";
+        }
+    </script>
+
+</body>
+</html>
