@@ -97,17 +97,23 @@
             </div>
         </div>
         <button id="btnLyd">Spill</button>
-        <audio id="musikk" src="bilder/musikk_eksamen_H2014.mp3" loop autoplay></audio>
+        <audio id="musikkk" src="bilder/musikk_eksamen_H2014.mp3" loop autoplay></audio>
     </div>
 
     <script>
 
         const btnLyd = document.querySelector("#btnLyd");
-        const musikk = document.querySelector("#musikk");
-        
+        const musikkk = document.querySelector("#musikkk");
 
+        musikk = true;
         btnLyd.onclick = function () {
-            
+            if(musikk){
+                musikkk.volume = 0;
+                musikk = false;
+            } else{
+                musikkk.volume = 1;
+                musikk = true;
+            }
         }
 
     </script>
