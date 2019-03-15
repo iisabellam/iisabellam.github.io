@@ -1,0 +1,26 @@
+*{
+    user-select: none;
+    font-family: 'Kavoon', Georgia, Serif;
+    color: white;
+}
+.adds{
+    border-bottom: 1px solid black;
+    background-color: cornflowerblue;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px;
+}
+body{
+    background-color: dodgerblue;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.span3{
+    grid-column: span 3;
+}
+.pluss{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    font-family: 'Kavoon', Georgia, Serif;
+    color: white;
+}
