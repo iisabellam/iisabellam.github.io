@@ -46,11 +46,34 @@ p{
 }
 #divcook{
     position: absolute;
-    top: 130px;
+    top: 160px;
     left: 50%;
     transform: translate(-50%,0);
 }
-
+.kjek{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    z-index: -2;
+}
+#kjek{
+    height: 80px;
+}
+#divHjelp{
+    border-right: solid 7px black;
+    border-left: solid 7px black;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto repeat(6, 1fr);
+    grid-gap: 10px;
+}
+.divBak{
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+}
+.inbilde{
+    height: 50px;
+}
 .span3{
     grid-column: span 2;
 }

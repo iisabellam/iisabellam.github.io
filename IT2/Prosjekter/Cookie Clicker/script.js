@@ -26,7 +26,8 @@
         bilde: "bilder/cursor.png",
         cps: 1/5,
         pris: 20,
-        antall: 0
+        antall: 0,
+        inbilde: "bilder/pointer.png"
     };
 
     let grandmaAd = {
@@ -35,7 +36,10 @@
         bilde: "bilder/grandma.png",
         cps: 1/2,
         pris: 100,
-        antall: 0
+        antall: 0,
+        inbilde: "bilder/grandma.png",
+        bakgrunn: "bilder/grandmaBackground.png",
+        boks: 0
     };
 
     let powerAd = {
@@ -53,7 +57,10 @@
         bilde: "bilder/farm.png",
         cps: 2,
         pris: 500,
-        antall: 0
+        antall: 0,
+        inbilde: "bilder/farmin.png",
+        bakgrunn: "bilder/farmBackground.png",
+        boks: 1
     };
 
     let factoryAd = {
@@ -62,7 +69,10 @@
         bilde: "bilder/factory.png",
         cps: 10,
         pris: 3000,
-        antall: 0
+        antall: 0,
+        inbilde: "bilder/factoryin.png",
+        bakgrunn: "bilder/factoryBackground.png",
+        boks: 2
     };
 
     let mineAd = {
@@ -71,7 +81,10 @@
         bilde: "bilder/mine.png",
         cps: 40,
         pris: 10000,
-        antall: 0
+        antall: 0,
+        inbilde: "bilder/minemin.png",
+        bakgrunn: "bilder/mineBackground.png",
+        boks: 3
     };
 
     let shipmentAd = {
@@ -80,7 +93,10 @@
         bilde: "bilder/shipment.png",
         cps: 100,
         pris: 40000,
-        antall: 0
+        antall: 0,
+        inbilde: "bilder/shipin.png",
+        bakgrunn: "bilder/shipmentBackground.png",
+        boks: 4
     };
 
     let alchemylabAd = {
@@ -89,7 +105,10 @@
         bilde: "bilder/alchemylab.png",
         cps: 400,
         pris: 200000,
-        antall: 0
+        antall: 0,
+        inbilde: "bilder/alchin.png",
+        bakgrunn: "bilder/alchemylabBackground.png",
+        boks: 5
     };
 
     let arrayAd = [cursorAd, grandmaAd, powerAd, farmAd, factoryAd, mineAd, shipmentAd, alchemylabAd]; //array av alle hjelpemidlene
@@ -106,10 +125,19 @@
                         <a>Cps: ${arrayAd[i].cps}</a>
                     </div>
                 `;
+        // skriver ut alle Add on boksene uten om til pekerne (0,2)
+        if (i===0 || i===2){
+            console.log("Trenger ikke div boks");
+        } else{
+            divHjelp.innerHTML += `
+                <div class="divBak" style="background-image: url('${arrayAd[i].bakgrunn}')"></div>
+            `;
+        }
     }
 
     //global variabel, lager array av hjelpemidlene
-    let divAdArray = document.querySelectorAll(".adds"); // lager array av div-elementene
+    let divAdArray = document.querySelectorAll(".adds"); // lager array av div-elementene i store
+    let divBakArray = document.querySelectorAll(".divBak"); // lager array av div-elementene i "add ons"
 
     //hendelsesfunksjoner
     kjeks.onclick = merPoeng; // kjører funksjonen merPoeng for hvert klikk på kjeksen
@@ -159,6 +187,16 @@
             } else { // dersom man ikke har råd kommer det opp i consolen
                 console.log("du har ikke råd");
             }
+
+            // tegner på figurene når du trykker på boksen, og gjør boksen synlig
+            if(u===0 || u===2){
+                console.log("pointer ass")
+            } else{
+                if(arrayAd[u].antall > 0){
+                    divBakArray[arrayAd[u].boks].style.opacity = 1;
+                }
+                tegnHjelp(arrayAd[u].antall, divBakArray[arrayAd[u].boks], arrayAd[u].inbilde);
+            }
         }
     }
 
@@ -177,6 +215,7 @@
         kjeks.animate(transf, {duration: 200});
         poeng.innerHTML = `${Math.floor(png)} cookies`;
         plussen();
+        kjekned();
     }
 
     // sjekker om man har råd til å kjøpe hjelpemidler, endrer opacity til boksene
@@ -184,7 +223,8 @@
         for (let y=0; y<arrayAd.length; y++){
             if (arrayAd[y].pris <= png) {
                 divAdArray[y].style.opacity = 1;
-            } /*else {
+            } // for ikke den til å funke, har skrevet den over, selvom det ikke er like praktisk
+            /*else {
                 divAdArray[y].style.opacity = 0.5;
             }*/
         }
@@ -208,3 +248,34 @@
             document.body.removeChild(pluss);
         }
     };
+
+    // kjeks som faller ned i bakgrunnen for hver gang man trykker, med random x-posisjon innenfor div
+    function kjekned() {
+        let kjek = document.createElement("div");
+        kjek.className = "kjek";
+        kjek.style.left = Math.floor(Math.random()*350)+1 + "px";
+        kjek.style.height = "70px";
+        kjek.innerHTML = `<img id="kjek" src="bilder/kjeks.png">`;
+        document.body.appendChild(kjek);
+        let animasjon = kjek.animate([{opacity:0.5, top: "-40px"},{opacity:0.5, top: "100vh"}],{duration:1000, easing: "linear"});
+        animasjon.onfinish = function(){
+            document.body.removeChild(kjek);
+        }
+    }
+
+
+    // tegner figurene i hjelpemidlene
+    function tegnHjelp(antall, boks, bilde) {
+        let x = 0;
+        for (let i=0; i<antall; i++){
+            let nyFigur = document.createElement("div");
+            nyFigur.className = "fig";
+            nyFigur.style.position = "absolute";
+            nyFigur.style.top = "50%";
+            nyFigur.style.left = x + "px";
+            nyFigur.style.transform = "translate(0%,-50%)";
+            nyFigur.innerHTML = `<img src="${bilde}" class="inbilde">`;
+            boks.appendChild(nyFigur);
+            x += 35;
+        }
+    }
